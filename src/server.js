@@ -63,8 +63,6 @@ if (!__DEV__) {
 
   app.use(
     require('webpack-hot-middleware')(compiler, {
-      path: './src/clint',
-      heartbeat: 2000,
       log: false // Turn it off for friendly-errors-webpack-plugin
     })
   );

@@ -1,21 +1,17 @@
-import path from 'path';
-import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
-import ManifestPlugin from 'webpack-manifest-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
-import ImageminPlugin from 'imagemin-webpack-plugin';
-import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import { ReactLoadablePlugin } from 'react-loadable/webpack';
-import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
-import fs from 'fs';
+const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
+const fs = require('fs');
 
-// Make sure any symlinks in the project folder are resolved:
-// https://github.com/facebookincubator/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
@@ -54,10 +50,7 @@ const getPlugins = () => {
   if (isDev) {
     // Development
     plugins.push(
-      new WatchMissingNodeModulesPlugin(resolveApp('node_modules')),
       new webpack.HotModuleReplacementPlugin(),
-      new CaseSensitivePathsPlugin(),
-      new webpack.NamedModulesPlugin(),
       new FriendlyErrorsWebpackPlugin()
     );
   } else {
@@ -92,8 +85,9 @@ const getPlugins = () => {
 // Setup the entry for development/prodcution
 const getEntry = () => {
   // Development
+
   let entry = [
-    'webpack-hot-middleware/client?path=./src/client.js&reload=true&overlay=false',
+    'webpack-hot-middleware/client?reload=true',
     resolveApp('src/client.js')
   ];
 
