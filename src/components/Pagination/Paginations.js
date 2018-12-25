@@ -1,10 +1,10 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
-import { Pagination } from "antd";
-import "antd/dist/antd.css";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { Pagination } from 'antd';
+import 'antd/dist/antd.css';
 
 // Export this for unit testing more easily
 
