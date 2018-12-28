@@ -12,6 +12,7 @@ import Loadable from 'react-loadable';
 
 import configureStore from './utils/configureStore';
 import routes from './routes';
+import './theme/Themes.scss';
 
 const history = createBrowserHistory();
 // Get the initial state from server-side rendering

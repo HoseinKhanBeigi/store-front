@@ -18,9 +18,6 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
 
-// Enable/disable css modules here
-const USE_CSS_MODULES = true;
-
 // Setup the plugins for development/prodcution
 const getPlugins = () => {
   // Common
@@ -162,29 +159,16 @@ module.exports = {
         ]
       },
       {
-        test: /\.(scss|sass)$/,
+        test: [/\.scss$/, /\.sass$/],
         use: [
-          'css-hot',
-          MiniCssExtractPlugin.loader,
+          require.resolve('style-loader'),
           {
-            loader: 'css',
+            loader: require.resolve('css-loader'),
             options: {
-              importLoaders: 2,
-              modules: USE_CSS_MODULES,
-              localIdentName: '[name]__[local]--[hash:base64:5]',
-              context: path.resolve(process.cwd(), 'src'),
-              sourceMap: true
+              importLoaders: 1
             }
           },
-          { loader: 'postcss', options: { sourceMap: true } },
-          {
-            loader: 'sass',
-            options: {
-              outputStyle: 'expanded',
-              sourceMap: true,
-              sourceMapContents: !isDev
-            }
-          }
+          require.resolve('sass-loader')
         ]
       },
       {
