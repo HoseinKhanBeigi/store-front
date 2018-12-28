@@ -1,19 +1,21 @@
 /* @flow */
 
-import UserList from "./UserList";
-import UserCard from "./UserCard";
-import ErrorDisplay from "./ErrorDisplay";
-import Loading from "./Loading";
-import InputCheckBox from "./CheckBox/InputCheckBox";
-import Paginations from "./Pagination/Paginations";
-import SearchBox from "./SearchBox/SearchBox";
+import ErrorDisplay from './ErrorDisplay';
+import Loading from './Loading';
+import TopMenuBar from './TopMenuBar/TopMenuBar';
+import InputCheckBox from './CheckBox/InputCheckBox';
+import Paginations from './Pagination/Paginations';
+import SearchBox from './SearchBox/SearchBox';
+import SliderComponent from './Slider/SliderComponent';
+import Footer from './Footer/Footer';
 
 export {
-  UserList,
-  UserCard,
   ErrorDisplay,
   Loading,
+  TopMenuBar,
+  Footer,
   InputCheckBox,
   Paginations,
-  SearchBox
+  SearchBox,
+  SliderComponent
 };
