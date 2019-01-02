@@ -32,10 +32,8 @@
 
 /* Main menu style */
 .cbp-hsmenu-wrapper .cbp-hsmenu {
-  width: 100%;
-  max-width: 69em;
-  margin: auto;
-  padding: 0 6.875em;
+  text-align: center;
+  margin: 0 auto;
   direction: rtl;
 }
 
@@ -43,7 +41,7 @@
   margin-left: 0em;
   display: inline-block;
   text-align: center;
-  width: calc(100% - 75%);
+  width: calc(100% - 90%);
 }
 
 .cbp-hsmenu > li:first-child {

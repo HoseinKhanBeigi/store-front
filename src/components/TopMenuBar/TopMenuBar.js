@@ -1,8 +1,9 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
-import { hot } from "react-hot-loader";
+import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
+import SearchBox from '../SearchBox/SearchBox';
 
 type State = {
   data: String
@@ -10,7 +11,7 @@ type State = {
 
 class TopMenuBar extends PureComponent<State> {
   state = {
-    data: "Home"
+    data: 'Home'
   };
 
   render() {
@@ -18,6 +19,7 @@ class TopMenuBar extends PureComponent<State> {
 
     return (
       <div className="container">
+        <SearchBox />
         <div className="main">
           <nav className="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
             <div className="cbp-hsinner">
@@ -143,7 +145,7 @@ class TopMenuBar extends PureComponent<State> {
                   </ul>
                 </li>
                 <li>
-                  <Link to="">بچگانه</Link>
+                  <Link to="">ورزشی</Link>
                   <ul className="cbp-hssubmenu">
                     <li>
                       <Link to="">
