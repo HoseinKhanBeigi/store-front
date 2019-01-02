@@ -16,20 +16,24 @@ class TopMenuBar extends PureComponent<State> {
   render() {
     const { data } = this.state;
     return (
-      <ul>
-        <li>
-          <Link to="/">{data}</Link>
-        </li>
-        <li>
-          <Link to="/storegallery">Woman</Link>
-        </li>
-        <li>
-          <Link to="/storegallery">Men</Link>
-        </li>
-        <li>
-          <Link to="/storegallery">Childs</Link>
-        </li>
-      </ul>
+      <header>
+        <div className="CategorySection">
+          <ul>
+            <li>
+              <Link to="/">{data}</Link>
+            </li>
+            <li>
+              <Link to="/storegallery">Woman</Link>
+            </li>
+            <li>
+              <Link to="/storegallery">Men</Link>
+            </li>
+            <li>
+              <Link to="/storegallery">Childs</Link>
+            </li>
+          </ul>
+        </div>
+      </header>
     );
   }
 }
