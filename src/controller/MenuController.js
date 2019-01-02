@@ -1,63 +1,37 @@
 export default class Slideoutmenu {
   constructor(el) {
     this.Dom = { el };
-    this.current = -1;
-    this.touch = 'touch';
-    this.Dom.menu = this.Dom.el.querySelector('.cbp-hsmenu');
     this.Dom.menuItems = this.Dom.el.querySelectorAll('.cbp-hsmenu > li');
-    this.Dom.menuBg = document.createElement('div');
-    this.Dom.menuBg.className = 'cbp-hsmenubg';
-    this.Dom.el.appendChild(this.Dom.menuBg);
     this.initEvents();
   }
 
   openMenu(el, ev) {
+    document.body.style.backgroundColor = '#383838';
+    ev.preventDefault();
     const item = el.parentNode;
-
-    const items = Array.from(this.Dom.menuItems);
-    const submenu = item.querySelector('.cbp-hssubmenu');
-    const closeCurrent = current => {
-      var current = current || this.Dom.menuItems[this.current];
-      current.className = '';
-      current.setAttribute('data-open', '');
-    };
-    const closePanel = () => {
-      this.current = -1;
-      this.Dom.menuBg.style.height = '0px';
-    };
-
-    if (submenu) {
-      ev.preventDefault();
-
-      if (item.getAttribute('data-open') === 'open') {
-        closeCurrent(item);
-        closePanel();
-      } else {
-        item.setAttribute('data-open', 'open');
-        if (this.current !== -1) {
-          closeCurrent();
-        }
-        this.current = items.indexOf(item);
-        item.className = 'cbp-hsitem-open';
-        this.Dom.menuBg.style.height = `${submenu.offsetHeight}px`;
-      }
-    } else if (this.current !== -1) {
-      closeCurrent();
-      closePanel();
-    }
+    const items = Array.prototype.slice.call(this.Dom.menuItems);
+    this.Dom.current = items.indexOf(item);
+    item.className = 'cbp-hsitem-open';
   }
 
   // Method
   initEvents() {
-    Array.from(this.Dom.menuItems).forEach(el => {
+    Array.prototype.slice.call(this.Dom.menuItems).forEach(el => {
       const trigger = el.querySelector('a');
+      const item = trigger.parentNode;
 
-      trigger.addEventListener('touchstart', ev => {
+      const submenu = item.querySelector('.cbp-hssubmenu');
+      trigger.addEventListener('mouseover', ev => {
         this.openMenu(trigger, ev);
       });
 
-      trigger.addEventListener('click', ev => {
+      submenu.addEventListener('mouseover', ev => {
         this.openMenu(trigger, ev);
+      });
+
+      document.body.addEventListener('mouseout', () => {
+        item.className = '';
+        document.body.style.backgroundColor = '#fff';
       });
     });
 
@@ -80,11 +54,12 @@ export default class Slideoutmenu {
   }
 
   resize() {
-    if (this.current !== -1) {
-      this.menuBg.style.height = `${
-        this.menuItems[this.current].querySelector('.cbp-hssubmenu')
-          .offsetHeight
-      }px`;
+    console.log(this.Dom.current);
+    if (this.Dom.current !== -1) {
+      // this.Dom.menuBg.style.height = `${
+      //   this.Dom.menuItems[this.Dom.current].querySelector('.cbp-hssubmenu')
+      //     .offsetHeight
+      // }px`;
     }
   }
 }
