@@ -54,12 +54,8 @@ export default class Slideoutmenu {
   }
 
   resize() {
-    console.log(this.Dom.current);
-    if (this.Dom.current !== -1) {
-      // this.Dom.menuBg.style.height = `${
-      //   this.Dom.menuItems[this.Dom.current].querySelector('.cbp-hssubmenu')
-      //     .offsetHeight
-      // }px`;
-    }
+    // this.Dom.menuItems.style.height = `${
+    //   document.querySelector('.cbp-hssubmenu').offsetHeight
+    // }px`;
   }
 }

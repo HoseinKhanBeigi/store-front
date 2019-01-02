@@ -1,7 +1,8 @@
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
-import queryString from "query-string";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { Icon } from 'antd';
+import queryString from 'query-string';
 
 type Props = {
   router: Object
@@ -12,11 +13,11 @@ type State = {
 };
 
 class SearchBox extends PureComponent<Props, State> {
-  state = { search: "" };
+  state = { search: '' };
 
   componentWillMount() {
     const { search } = this.props.location;
-    this.setState({ search: queryString.parse(search).name || "" });
+    this.setState({ search: queryString.parse(search).name || '' });
   }
 
   handleSubmit = event => {
@@ -32,7 +33,7 @@ class SearchBox extends PureComponent<Props, State> {
     console.log(string);
     this.props.history.push({
       pathname,
-      search: string ? `?${string}` : ""
+      search: string ? `?${string}` : ''
     });
   };
 
@@ -43,14 +44,16 @@ class SearchBox extends PureComponent<Props, State> {
   render() {
     const { search } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div className="formSearch">
+        <Icon type="search" />
         <input
+          className="InputSearch"
           type="text"
           placeholder="Search..."
           value={search}
           onChange={this.handleChange}
         />
-      </form>
+      </div>
     );
   }
 }
