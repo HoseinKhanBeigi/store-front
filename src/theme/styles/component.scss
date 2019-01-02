@@ -26,13 +26,14 @@
   background: #fff;
   position: relative;
   z-index: 100;
-
+  border-top: 0.3px solid;
   box-shadow: 1px 1px 0px 0px #e6e6e6;
 }
 
 /* Main menu style */
 .cbp-hsmenu-wrapper .cbp-hsmenu {
   text-align: center;
+  height: 50px;
   margin: 0 auto;
   direction: rtl;
 }
@@ -42,6 +43,7 @@
   display: inline-block;
   text-align: center;
   width: calc(100% - 90%);
+  height: 50px;
 }
 
 .cbp-hsmenu > li:first-child {
@@ -58,7 +60,7 @@
   width: 100%;
   z-index: 10000;
   outline: none;
-  padding: 0 28px 15px;
+  padding: 0 28px 0px;
 }
 
 .no-touch .cbp-hsmenu > li > a:hover,
@@ -112,6 +114,7 @@
   left: 50%;
   transform: translate(-50%, 0px);
   margin: auto;
+
   width: calc(100% - 800px);
   box-shadow: 1px -0.8px 0px 0px #e6e6e6;
   text-align: center; /* for aligning the sub items */

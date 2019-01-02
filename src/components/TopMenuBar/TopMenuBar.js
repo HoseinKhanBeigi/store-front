@@ -3,7 +3,9 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
+import { Icon } from 'antd';
 import SearchBox from '../SearchBox/SearchBox';
+import logo from '../../theme/pic.png';
 
 type State = {
   data: String
@@ -19,7 +21,25 @@ class TopMenuBar extends PureComponent<State> {
 
     return (
       <div className="container">
-        <SearchBox />
+        <div className="headerTop">
+          <div className="logoMeno">
+            <img src={logo} className="imageLogo" />
+          </div>
+          <SearchBox />
+          <div className="regesteri">
+            <li>
+              <span>ثبت نام</span>
+              <span>/</span>
+              <span>ورود</span>{' '}
+            </li>
+            <li>
+              <span>سبد خرید</span>
+              <span>
+                <Icon type="shopping" />
+              </span>
+            </li>
+          </div>
+        </div>
         <div className="main">
           <nav className="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
             <div className="cbp-hsinner">
