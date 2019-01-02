@@ -2,4 +2,14 @@ footer {
   width: 100%;
   height: 20vh;
   border-top: 0.1vh solid lightgrey;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CostumerService {
+  width: 30%;
+  background-color: lightgreen;
 }

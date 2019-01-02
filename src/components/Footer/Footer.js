@@ -3,6 +3,8 @@
 import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 
+import CostumerService from './CostumerServise';
+
 type State = {
   data: String
 };
@@ -14,7 +16,11 @@ class Footer extends PureComponent<State> {
 
   render() {
     const { data } = this.state;
-    return <div>{data}</div>;
+    return (
+      <footer>
+        <CostumerService />
+      </footer>
+    );
   }
 }
 
