@@ -1,8 +1,12 @@
 /* @flow */
 
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
+import React, { PureComponent } from "react";
+import { Link } from "react-router-dom";
+import { hot } from "react-hot-loader";
+import { Icon } from "antd";
+import SearchBox from "../SearchBox/SearchBox";
+import { Woman, Men, Kids, Sport } from "../ContainerMenu";
+import logo from "../../theme/pic.png";
 
 type State = {
   data: String
@@ -10,30 +14,46 @@ type State = {
 
 class TopMenuBar extends PureComponent<State> {
   state = {
-    data: 'Home'
+    data: "Home"
   };
 
   render() {
     const { data } = this.state;
+
     return (
-      <header>
-        <div className="CategorySection">
-          <ul>
+      <div className="container">
+        <div className="headerTop">
+          <div className="logoMeno">
+            <img src={logo} className="imageLogo" />
+          </div>
+          <SearchBox />
+          <div className="regesteri">
             <li>
-              <Link to="/">{data}</Link>
+              <span>ثبت نام</span>
+              <span>/</span>
+              <span>ورود</span>{" "}
             </li>
             <li>
-              <Link to="/storegallery">Woman</Link>
+              <span>سبد خرید</span>
+              <span>
+                <Icon type="shopping" />
+              </span>
             </li>
-            <li>
-              <Link to="/storegallery">Men</Link>
-            </li>
-            <li>
-              <Link to="/storegallery">Childs</Link>
-            </li>
-          </ul>
+          </div>
         </div>
-      </header>
+        <div className="main">
+          <nav className="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
+            <div className="cbp-hsinner">
+              <ul className="cbp-hsmenu">
+                <Woman />
+                <Men />
+                <Kids />
+                <Sport />
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
     );
   }
 }

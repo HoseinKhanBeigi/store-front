@@ -1,0 +1,63 @@
+.formSearch {
+  background-color: white;
+  height: 33px;
+  width: 320px;
+  line-height: 26px;
+  margin: auto 0;
+  border: 1px solid #e6e6e6;
+}
+
+.InputSearch {
+  width: 300px;
+  border: 0;
+  outline: 0;
+  font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+  text-align: right;
+}
+::-moz-placeholder {
+  color: pink;
+}
+:-ms-input-placeholder {
+  color: pink;
+}
+:-moz-placeholder {
+  text-align: right;
+}
+
+.imageLogo {
+  width: 50px;
+}
+
+.headerTop {
+  text-align: center;
+  list-style: none;
+  background-color: white;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: center;
+  height: auto;
+  line-height: 40px;
+  font-size: 12px;
+  padding: 17px 0 17px 0px;
+}
+
+.logoMeno {
+  margin-right: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0;
+}
+.regesteri {
+  margin-right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 100px;
+  display: inline-flex;
+}
+.regesteri > li {
+  margin-left: 20px;
+}

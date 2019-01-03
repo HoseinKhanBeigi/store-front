@@ -1,22 +1,20 @@
-const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { ReactLoadablePlugin } = require('react-loadable/webpack');
-const fs = require('fs');
-
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+import path from 'path';
+import webpack from 'webpack';
+import ManifestPlugin from 'webpack-manifest-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
+import ImageminPlugin from 'imagemin-webpack-plugin';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import { ReactLoadablePlugin } from 'react-loadable/webpack';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
+
+// Enable/disable css modules here
+const USE_CSS_MODULES = true;
 
 // Setup the plugins for development/prodcution
 const getPlugins = () => {
@@ -82,14 +80,10 @@ const getPlugins = () => {
 // Setup the entry for development/prodcution
 const getEntry = () => {
   // Development
-
-  let entry = [
-    'webpack-hot-middleware/client?reload=true',
-    resolveApp('src/client.js')
-  ];
+  let entry = ['webpack-hot-middleware/client?reload=true', './src/client.js'];
 
   // Prodcution
-  if (!isDev) entry = [resolveApp('src/client.js')];
+  if (!isDev) entry = ['./src/client.js'];
 
   return entry;
 };
@@ -100,9 +94,6 @@ module.exports = {
   devtool: isDev ? 'eval' : 'hidden-source-map',
   context: path.resolve(process.cwd()),
   entry: getEntry(),
-  devServer: {
-    hot: true
-  },
   optimization: {
     splitChunks: {
       // Auto split vendor modules in production only
@@ -117,58 +108,56 @@ module.exports = {
     chunkFilename: isDev ? '[id].chunk.js' : '[id].[chunkhash:8].chunk.js',
     pathinfo: isDev
   },
-  watch: true,
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: require.resolve('babel-loader'),
+        loader: 'babel',
         options: { cacheDirectory: isDev }
       },
       {
         test: /\.css$/,
         use: [
-          require.resolve('style-loader'),
+          'css-hot',
+          MiniCssExtractPlugin.loader,
           {
-            loader: require.resolve('css-loader'),
+            loader: 'css',
             options: {
-              importLoaders: 1
+              importLoaders: 1,
+              // modules: USE_CSS_MODULES,
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+              context: path.resolve(process.cwd(), 'src'),
+              sourceMap: true
             }
           },
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              // Necessary for external CSS imports to work
-              // https://github.com/facebookincubator/create-react-app/issues/2677
-              ident: 'postcss',
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9' // React doesn't support IE8 anyway
-                  ],
-                  flexbox: 'no-2009'
-                })
-              ]
-            }
-          }
+          { loader: 'postcss', options: { sourceMap: true } }
         ]
       },
       {
-        test: [/\.scss$/, /\.sass$/],
+        test: /\.(scss|sass)$/,
         use: [
-          require.resolve('style-loader'),
+          'css-hot',
+          MiniCssExtractPlugin.loader,
           {
-            loader: require.resolve('css-loader'),
+            loader: 'css',
             options: {
-              importLoaders: 1
+              importLoaders: 2,
+              // modules: USE_CSS_MODULES,
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+              context: path.resolve(process.cwd(), 'src'),
+              sourceMap: true
             }
           },
-          require.resolve('sass-loader')
+          { loader: 'postcss', options: { sourceMap: true } },
+          {
+            loader: 'sass',
+            options: {
+              outputStyle: 'expanded',
+              sourceMap: true,
+              sourceMapContents: !isDev
+            }
+          }
         ]
       },
       {
