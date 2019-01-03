@@ -6,9 +6,9 @@ import { hot } from 'react-hot-loader';
 
 type Props = { route: Object };
 
-const Woman = ({ route }: Props) => (
+const Men = ({ route }: Props) => (
   <li>
-    <Link to="">زنانه</Link>
+    <Link to="">مردانه</Link>
     <ul className="cbp-hssubmenu">
       <div>
         <div className="first-childDiv">
@@ -19,33 +19,23 @@ const Woman = ({ route }: Props) => (
           </li>
         </div>
         <li>
-          <Link to="">
-            <span>ژاکت و پلیور</span>
-          </Link>
+          <Link to="">ژاکت و پلیور</Link>
         </li>
         <li>
-          <Link to="">
-            <span>Heavenly Ale</span>
-          </Link>
+          <Link to="">Heavenly Ale</Link>
         </li>
         <li>
-          <Link to="">
-            <span>Juicy Lemonade</span>
-          </Link>
+          <Link to="">Juicy Lemonade</Link>
         </li>
         <li>
-          <Link to="">
-            <span>Wise Whiskey</span>
-          </Link>
+          <Link to="">Wise Whiskey</Link>
         </li>
         <li>
-          <Link to="">
-            <span>Sweet Rum</span>
-          </Link>
+          <Link to="">Sweet Rum</Link>
         </li>
       </div>
     </ul>
   </li>
 );
 
-export default hot(module)(Woman);
+export default hot(module)(Men);
