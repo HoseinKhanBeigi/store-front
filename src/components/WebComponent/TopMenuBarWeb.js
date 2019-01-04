@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-
+import Slideoutmenu from '../../controller/MenuController';
 import SearchBox from '../SearchBox/SearchBox';
 import { Woman, Men, Kids, Sport, Regesteri } from '../ContainerMenu';
 import logo from '../../theme/pic.png';
@@ -14,12 +14,17 @@ type State = {
 
 class TopMenuBarWeb extends PureComponent<State> {
   state = {
-    data: 'Home'
+    data: ''
   };
+
+  componentDidMount() {
+    const menu = new Slideoutmenu(
+      document.getElementById('cbp-hsmenu-wrapper')
+    );
+  }
 
   render() {
     const { data } = this.state;
-    console.log(data);
 
     return (
       <div className="container">

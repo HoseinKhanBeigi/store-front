@@ -11,10 +11,8 @@ import { renderRoutes } from 'react-router-config';
 import Loadable from 'react-loadable';
 import configureStore from './utils/configureStore';
 import routes from './routes';
-import Slideoutmenu from './controller/MenuController';
-import './theme/Themes.scss';
 
-const menu = new Slideoutmenu(document.getElementById('cbp-hsmenu-wrapper'));
+import './theme/Themes.scss';
 
 const history = createBrowserHistory();
 // Get the initial state from server-side rendering

@@ -1,8 +1,8 @@
 /* @flow */
 
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
+import React, { PureComponent } from "react";
+import { Link } from "react-router-dom";
+import { hot } from "react-hot-loader";
 
 type State = {
   data: String
@@ -10,7 +10,7 @@ type State = {
 
 class TopMenuBarMobile extends PureComponent<State> {
   state = {
-    data: 'TopMenuBarMobile'
+    data: "TopMenuBarMobile"
   };
 
   render() {
