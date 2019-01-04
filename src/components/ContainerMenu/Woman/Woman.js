@@ -1,8 +1,8 @@
 /* @flow */
 
-import React from "react";
-import { Link } from "react-router-dom";
-import { hot } from "react-hot-loader";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
 type Props = { route: Object };
 
