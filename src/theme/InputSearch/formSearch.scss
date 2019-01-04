@@ -1,13 +1,21 @@
 .formSearch {
   background-color: white;
-  height: 33px;
+  height: 40px;
   width: 320px;
+  display: flex;
+  align-items: center;
   line-height: 26px;
   margin: auto 0;
   border: 1px solid #e6e6e6;
 }
 
+.formSearch > i {
+  margin-left: 6px;
+  font-size: 20px;
+}
+
 .InputSearch {
+  text-align: right;
   width: 300px;
   border: 0;
   outline: 0;
@@ -39,6 +47,7 @@
 
   -webkit-flex-flow: row wrap;
   justify-content: center;
+  align-items: center;
   height: auto;
   line-height: 40px;
   font-size: 12px;
@@ -47,14 +56,8 @@
 
 .logoMeno {
   margin-right: 100px;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 0;
 }
 .regesteri {
-  margin-right: 0;
-  margin-top: auto;
-  margin-bottom: auto;
   margin-left: 100px;
   display: inline-flex;
 }

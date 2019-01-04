@@ -14,8 +14,21 @@ class Home extends PureComponent<State> {
     data: "Home"
   };
 
+  componentDidMount() {
+    window.addEventListener("resize", () => {
+      const width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      if (width < 960) {
+        console.log("hi");
+      }
+    });
+  }
+
   render() {
     const { data } = this.state;
+
     return (
       <div>
         <h1>{data}</h1>
