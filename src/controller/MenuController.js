@@ -1,41 +1,41 @@
 export default class Slideoutmenu {
   constructor(el) {
     this.Dom = { el };
-    this.Dom.menuItems = this.Dom.el.querySelectorAll('.cbp-hsmenu > li');
+    this.Dom.menuItems = this.Dom.el.querySelectorAll(".cbp-hsmenu > li");
     this.initEvents();
   }
 
   openMenu(el, ev) {
-    document.body.style.backgroundColor = '#383838';
+    document.body.style.backgroundColor = "#383838";
     ev.preventDefault();
     const item = el.parentNode;
     const items = Array.prototype.slice.call(this.Dom.menuItems);
     this.Dom.current = items.indexOf(item);
-    item.className = 'cbp-hsitem-open';
+    item.className = "cbp-hsitem-open";
   }
 
   // Method
   initEvents() {
     Array.prototype.slice.call(this.Dom.menuItems).forEach(el => {
-      const trigger = el.querySelector('a');
+      const trigger = el.querySelector("a");
       const item = trigger.parentNode;
 
-      const submenu = item.querySelector('.cbp-hssubmenu');
-      trigger.addEventListener('mouseover', ev => {
+      const submenu = item.querySelector(".cbp-hssubmenu");
+      trigger.addEventListener("mouseover", ev => {
         this.openMenu(trigger, ev);
       });
 
-      submenu.addEventListener('mouseover', ev => {
+      submenu.addEventListener("mouseover", ev => {
         this.openMenu(trigger, ev);
       });
 
-      document.body.addEventListener('mouseout', () => {
-        item.className = '';
-        document.body.style.backgroundColor = '#fff';
+      document.body.addEventListener("mouseout", () => {
+        item.className = "";
+        document.body.style.backgroundColor = "#fff";
       });
     });
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       this.resizeHandler();
     });
   }
@@ -59,3 +59,20 @@ export default class Slideoutmenu {
     // }px`;
   }
 }
+// const REQUEST_POSTS = 'SIZELESS';
+
+// export function getSize(subreddit = 12) {
+//   return {
+//     type: REQUEST_POSTS,
+//     subreddit
+//   };
+// }
+
+// export function visibilityFilter(state, action) {
+//   switch (action.type) {
+//     case REQUEST_POSTS:
+//       return action.type;
+//     default:
+//       return state;
+//   }
+// }

@@ -1,12 +1,13 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
-import { hot } from "react-hot-loader";
-import { Icon } from "antd";
-import SearchBox from "../SearchBox/SearchBox";
-import { Woman, Men, Kids, Sport } from "../ContainerMenu";
-import logo from "../../theme/pic.png";
+import React, { PureComponent } from 'react';
+import { slide as Menu } from 'react-burger-menu';
+import { Link } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
+import { Icon } from 'antd';
+import SearchBox from '../SearchBox/SearchBox';
+import { Woman, Men, Kids, Sport } from '../ContainerMenu';
+import logo from '../../theme/pic.png';
 
 type State = {
   data: String
@@ -14,7 +15,7 @@ type State = {
 
 class TopMenuBar extends PureComponent<State> {
   state = {
-    data: "Home"
+    data: 'Home'
   };
 
   render() {
@@ -31,7 +32,7 @@ class TopMenuBar extends PureComponent<State> {
             <li>
               <span>ثبت نام</span>
               <span>/</span>
-              <span>ورود</span>{" "}
+              <span>ورود</span>{' '}
             </li>
             <li>
               <span>سبد خرید</span>

@@ -9,7 +9,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import Loadable from 'react-loadable';
-
 import configureStore from './utils/configureStore';
 import routes from './routes';
 import Slideoutmenu from './controller/MenuController';
