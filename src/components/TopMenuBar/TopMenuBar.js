@@ -1,13 +1,9 @@
 /* @flow */
 
 import React, { PureComponent } from 'react';
-import { slide as Menu } from 'react-burger-menu';
-import { Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import { Icon } from 'antd';
-import SearchBox from '../SearchBox/SearchBox';
-import { Woman, Men, Kids, Sport } from '../ContainerMenu';
-import logo from '../../theme/pic.png';
+import TopMenuBarMobile from '../mobileComponent/TopMenuBarMobile';
+import TopMenuBarWeb from '../WebComponent/TopMenuBarWeb';
 
 type State = {
   data: String
@@ -15,47 +11,28 @@ type State = {
 
 class TopMenuBar extends PureComponent<State> {
   state = {
-    data: 'Home'
+    data: 'WEB'
   };
+
+  componentDidMount() {
+    window.addEventListener('resize', () => {
+      const width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      if (width < 970) {
+        this.setState({ data: 'MOBILE' });
+      } else {
+        this.setState({ data: 'WEB' });
+      }
+    });
+  }
 
   render() {
     const { data } = this.state;
+    console.log(data);
 
-    return (
-      <div className="container">
-        <div className="headerTop">
-          <div className="logoMeno">
-            <img src={logo} className="imageLogo" />
-          </div>
-          <SearchBox />
-          <div className="regesteri">
-            <li>
-              <span>ثبت نام</span>
-              <span>/</span>
-              <span>ورود</span>{' '}
-            </li>
-            <li>
-              <span>سبد خرید</span>
-              <span>
-                <Icon type="shopping" />
-              </span>
-            </li>
-          </div>
-        </div>
-        <div className="main">
-          <nav className="cbp-hsmenu-wrapper" id="cbp-hsmenu-wrapper">
-            <div className="cbp-hsinner">
-              <ul className="cbp-hsmenu">
-                <Woman />
-                <Men />
-                <Kids />
-                <Sport />
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
-    );
+    return data === 'WEB' ? <TopMenuBarWeb /> : <TopMenuBarMobile />;
   }
 }
 
