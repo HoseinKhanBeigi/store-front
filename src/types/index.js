@@ -32,6 +32,7 @@ export type ReduxState = $ObjMap<Reducers, $ExtractFunctionReturn>; // eslint-di
 // Action
 export type Action =
   | { type: 'USERS_REQUESTING' }
+  | { type: 'SIZE_POSTS' }
   | { type: 'USERS_SUCCESS', data: Array<Object> }
   | { type: 'USERS_FAILURE', err: any }
   | { type: 'USER_REQUESTING', userId: string }

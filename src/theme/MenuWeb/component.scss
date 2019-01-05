@@ -49,7 +49,7 @@ body {
   margin-left: 0em;
   display: inline-block;
   text-align: center;
-  width: calc(100% - 90%);
+  width: calc(100% - 95%);
   height: 50px;
 }
 
@@ -100,6 +100,7 @@ body {
   box-shadow: 1px -0.8px 0px 0px #e6e6e6;
   text-align: center; /* for aligning the sub items */
   visibility: hidden;
+  opacity: 0;
 }
 
 /* Let's allow 6 item in a row */
@@ -132,21 +133,6 @@ body {
   color: rgb(0, 0, 0);
 }
 
-.cbp-hssubmenu > li a img {
-  border: none;
-  outline: none;
-  display: inline-block;
-  margin: 0;
-  max-width: 100%;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-
-.no-touch .cbp-hssubmenu > li {
-  opacity: 0.5;
-}
-
 .cbp-hssubmenu > li a span {
   display: block;
   min-height: 3em;
@@ -154,19 +140,9 @@ body {
 }
 
 .cbp-hsmenu > li.cbp-hsitem-open .cbp-hssubmenu {
-  z-index: 1000;
-  visibility: visible;
-}
-
-.cbp-hsmenu > li.cbp-hsitem-open .cbp-hssubmenu > li {
   opacity: 1;
-  -webkit-transition: opacity 0.5s 0.1s;
-  -moz-transition: opacity 0.5s 0.1s;
-  transition: opacity 0.5s 0.1s;
-}
-
-/* Helper div for animating the background */
-.cbp-hsmenubg {
-  background: #383838;
-  width: calc(100% - 800px);
+  visibility: visible;
+  -webkit-transition: opacity 0.9s 0.1s;
+  -moz-transition: opacity 0.9s 0.1s;
+  transition: opacity 0.9s 0.1s;
 }

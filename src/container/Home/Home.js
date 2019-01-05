@@ -16,6 +16,7 @@ class Home extends PureComponent<State> {
 
   render() {
     const { data } = this.state;
+
     return (
       <div>
         <h1>{data}</h1>

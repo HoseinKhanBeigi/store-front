@@ -22,6 +22,7 @@ export default class Slideoutmenu {
 
       const submenu = item.querySelector('.cbp-hssubmenu');
       trigger.addEventListener('mouseover', ev => {
+        console.log('hii');
         this.openMenu(trigger, ev);
       });
 
@@ -59,3 +60,20 @@ export default class Slideoutmenu {
     // }px`;
   }
 }
+// const REQUEST_POSTS = 'SIZELESS';
+
+// export function getSize(subreddit = 12) {
+//   return {
+//     type: REQUEST_POSTS,
+//     subreddit
+//   };
+// }
+
+// export function visibilityFilter(state, action) {
+//   switch (action.type) {
+//     case REQUEST_POSTS:
+//       return action.type;
+//     default:
+//       return state;
+//   }
+// }
