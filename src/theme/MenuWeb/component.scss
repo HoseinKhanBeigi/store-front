@@ -1,16 +1,13 @@
 @font-face {
-  font-family: "bpmenu";
-  //   src: url("../fonts/bpmenu/bpmenu.eot");
-  //   src: url("../fonts/bpmenu/bpmenu.eot?#iefix") format("embedded-opentype"),
-  //     url("../fonts/bpmenu/bpmenu.woff") format("woff"),
-  //     url("../fonts/bpmenu/bpmenu.ttf") format("truetype"),
-  //     url("../fonts/bpmenu/bpmenu.svg#bpmenu") format("svg");
+  font-family: Vazir;
+  src: url("./vazir/Vazir-Bold.eot");
+  src: url("./vazir/Vazir-Bold.eot?#iefix") format("embedded-opentype"),
+    url("./vazir/Vazir.woff") format("woff"),
+    url("./vazir/Vazir.ttf") format("truetype");
   font-weight: normal;
-  font-style: normal;
 }
-
 body {
-  font-family: sans-serif;
+  font-family: Vazir;
   margin: 0;
   padding: 0;
 }
