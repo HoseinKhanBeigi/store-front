@@ -8,32 +8,32 @@ export default [
       {
         path: '/',
         exact: true,
-        component: Home // Add your route here
+        component: Home
       },
       {
         path: '/men',
         exact: true,
-        component: StoreGallery // Add your route here
+        component: StoreGallery
       },
       {
         path: '/woman',
         exact: true,
-        component: StoreGallery // Add your route here
+        component: StoreGallery
       },
       {
         path: '/sport',
         exact: true,
-        component: StoreGallery // Add your route here
+        component: StoreGallery
       },
       {
         path: '/kids',
         exact: true,
-        component: StoreGallery // Add your route here
+        component: StoreGallery
       },
       {
         path: '/:string-:string',
         exact: true,
-        component: StoreGallery // Add your route here
+        component: StoreGallery
       },
       {
         component: NotFound
