@@ -10,9 +10,9 @@ type Props = { route: Object };
 const Regesteri = ({ route }: Props) => (
   <div className="regesteri">
     <li>
-      <span>ثبت نام</span>
+      <span className="span-left">ثبت نام</span>
       <span>/</span>
-      <span>ورود</span>{' '}
+      <span className="span-right">ورود</span>{' '}
     </li>
     <li>
       <span>سبد خرید</span>

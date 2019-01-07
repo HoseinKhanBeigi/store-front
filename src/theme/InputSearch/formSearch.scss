@@ -10,8 +10,8 @@
 }
 
 .formSearch > i {
-  margin-left: 6px;
-  font-size: 20px;
+  margin-left: 10px;
+  font-size: 22px;
 }
 
 .InputSearch {
@@ -19,6 +19,7 @@
   width: 300px;
   border: 0;
   outline: 0;
+  margin: 10px;
   font-size: 14px;
 }
 
@@ -51,16 +52,23 @@
   height: auto;
   line-height: 40px;
   font-size: 15px;
-  padding: 17px 0 17px 0px;
+  padding: 25px 0 25px 0px;
 }
 
 .logoMeno {
-  margin-right: 100px;
+  margin-right: 150px;
 }
 .regesteri {
-  margin-left: 100px;
   display: inline-flex;
 }
 .regesteri > li {
   margin-left: 20px;
+}
+
+.span-left {
+  margin-left: 3px;
+}
+
+.span-right {
+  margin-right: 6px;
 }
