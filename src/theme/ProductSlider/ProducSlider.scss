@@ -1,0 +1,35 @@
+.u-centred {
+  position: relative;
+  padding-bottom: 0;
+}
+
+.swiper-wrapper {
+  position: relative;
+  opacity: 1;
+  width: 100%;
+  padding-left: 0;
+  list-style: none;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  box-sizing: content-box;
+  transition: 0.3s ease-in-out;
+}
+
+.swiper-slide {
+  background: transparent;
+  font-size: 18px;
+  overflow: hidden;
+  text-align: center;
+  flex-shrink: 0;
+  height: 100%;
+  line-height: 0;
+  margin-bottom: 0;
+  width: 426px;
+  position: relative;
+}
+.swiper-slide img {
+  display: block;
+  transform-origin: 100% 100%;
+  width: 100%;
+}

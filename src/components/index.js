@@ -6,7 +6,8 @@ import TopMenuBar from './TopMenuBar/TopMenuBar';
 import InputCheckBox from './CheckBox/InputCheckBox';
 import Paginations from './Pagination/Paginations';
 import SearchBox from './SearchBox/SearchBox';
-import SliderComponent from './Slider/SliderComponent';
+import SliderComponent from './Sliders/SliderComponent';
+import ProductSlider from './Sliders/ProductSlider';
 import Footer from './Footer/Footer';
 
 export {
@@ -17,5 +18,6 @@ export {
   InputCheckBox,
   Paginations,
   SearchBox,
-  SliderComponent
+  SliderComponent,
+  ProductSlider
 };

@@ -9,20 +9,18 @@ export default class Slideoutmenu {
     document.body.style.backgroundColor = '#383838';
     ev.preventDefault();
     const item = el.parentNode;
-    const items = Array.prototype.slice.call(this.Dom.menuItems);
+    const items = Array.from(this.Dom.menuItems);
     this.Dom.current = items.indexOf(item);
     item.className = 'cbp-hsitem-open';
   }
 
   // Method
   initEvents() {
-    Array.prototype.slice.call(this.Dom.menuItems).forEach(el => {
+    Array.from(this.Dom.menuItems).forEach(el => {
       const trigger = el.querySelector('a');
       const item = trigger.parentNode;
-
       const submenu = item.querySelector('.cbp-hssubmenu');
       trigger.addEventListener('mouseover', ev => {
-        console.log('hii');
         this.openMenu(trigger, ev);
       });
 
@@ -37,43 +35,22 @@ export default class Slideoutmenu {
     });
 
     window.addEventListener('resize', () => {
-      this.resizeHandler();
+      const width =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      if (width < 970) {
+        this.resizeHandler();
+      }
     });
   }
 
   resizeHandler() {
-    const delayed = () => {
-      this.resize();
-      this._resizeTimeout = null;
-    };
-
-    if (this._resizeTimeout) {
-      clearTimeout(this._resizeTimeout);
-    }
-
-    this._resizeTimeout = setTimeout(delayed(), 50);
-  }
-
-  resize() {
-    // this.Dom.menuItems.style.height = `${
-    //   document.querySelector('.cbp-hssubmenu').offsetHeight
-    // }px`;
+    Array.from(this.Dom.menuItems).forEach(el => {
+      const trigger = el.querySelector('a');
+      const item = trigger.parentNode;
+      item.className = '';
+      document.body.style.backgroundColor = '#fff';
+    });
   }
 }
-// const REQUEST_POSTS = 'SIZELESS';
-
-// export function getSize(subreddit = 12) {
-//   return {
-//     type: REQUEST_POSTS,
-//     subreddit
-//   };
-// }
-
-// export function visibilityFilter(state, action) {
-//   switch (action.type) {
-//     case REQUEST_POSTS:
-//       return action.type;
-//     default:
-//       return state;
-//   }
-// }
