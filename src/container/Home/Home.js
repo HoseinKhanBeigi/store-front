@@ -3,7 +3,6 @@
 import React, { PureComponent } from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { ProductSlider } from '../../components';
 
 type State = {
   data: Array<String>,
@@ -18,11 +17,7 @@ class Home extends PureComponent<State> {
   render() {
     const { data } = this.state;
 
-    return (
-      <div>
-        <ProductSlider />
-      </div>
-    );
+    return <div>home</div>;
   }
 }
 
