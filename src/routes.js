@@ -1,5 +1,5 @@
 /* @flow */
-import { BaseRouter, Home, StoreGallery, NotFound } from './container';
+import { BaseRouter, Home, StoreGallery, NotFound, Product } from './container';
 
 export default [
   {
@@ -34,6 +34,11 @@ export default [
         path: '/:string-:string',
         exact: true,
         component: StoreGallery
+      },
+      {
+        path: '/product',
+        exact: true,
+        component: Product
       },
       {
         component: NotFound

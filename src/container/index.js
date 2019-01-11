@@ -6,6 +6,17 @@ import Kids from './Kids';
 import Men from './Men';
 import Woman from './Woman';
 import Sport from './Sport';
+import Product from './Product';
 import NotFound from './NotFound';
 
-export { BaseRouter, Home, StoreGallery, Kids, Men, Woman, Sport, NotFound };
+export {
+  BaseRouter,
+  Home,
+  StoreGallery,
+  Kids,
+  Men,
+  Woman,
+  Sport,
+  NotFound,
+  Product
+};

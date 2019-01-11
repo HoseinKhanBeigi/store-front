@@ -1,8 +1,8 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 type State = {
   data: Array<String>,
@@ -11,17 +11,13 @@ type State = {
 
 class Home extends PureComponent<State> {
   state = {
-    data: "Home"
+    data: 'Home'
   };
 
   render() {
     const { data } = this.state;
 
-    return (
-      <div>
-        <h1>{data}</h1>
-      </div>
-    );
+    return <div>home</div>;
   }
 }
 
