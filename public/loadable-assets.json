@@ -1865,20 +1865,8 @@
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/core-js/library/modules/_core.js",
-      "name": "./node_modules/core-js/library/modules/_core.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
       "id": "./node_modules/core-js/modules/_core.js",
       "name": "./node_modules/core-js/modules/_core.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_core.js",
-      "name": "./node_modules/core-js/library/modules/_core.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -5177,7 +5165,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "!../../../node_modules/css-hot-loader/hotModuleReplacement.js": [
+  "!../../node_modules/css-hot-loader/hotModuleReplacement.js": [
     {
       "id": "./node_modules/css-hot-loader/hotModuleReplacement.js",
       "name": "./node_modules/css-hot-loader/hotModuleReplacement.js",
@@ -6311,6 +6299,20 @@
     {
       "id": "./node_modules/core-js/library/modules/es6.object.define-property.js",
       "name": "./node_modules/core-js/library/modules/es6.object.define-property.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    }
+  ],
+  "../../modules/_core": [
+    {
+      "id": "./node_modules/core-js/library/modules/_core.js",
+      "name": "./node_modules/core-js/library/modules/_core.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
+      "id": "./node_modules/core-js/library/modules/_core.js",
+      "name": "./node_modules/core-js/library/modules/_core.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -14559,7 +14561,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./locale": [
+  "../modal/locale": [
     {
       "id": "./node_modules/antd/es/modal/locale.js",
       "name": "./node_modules/antd/es/modal/locale.js",
@@ -16669,7 +16671,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../../SearchInput": [
+  "../SearchInput": [
     {
       "id": "./node_modules/rc-tree-select/es/SearchInput.js",
       "name": "./node_modules/rc-tree-select/es/SearchInput.js",
