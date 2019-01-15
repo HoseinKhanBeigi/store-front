@@ -1,9 +1,9 @@
 /* @flow */
 
-import React, { PureComponent } from 'react';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import { ProductSlider, DetialProduct } from '../../components';
+import React, { PureComponent } from "react";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import { ProductSlider, DetialProduct } from "../../components";
 
 type State = {};
 
