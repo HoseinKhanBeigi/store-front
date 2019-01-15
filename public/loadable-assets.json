@@ -5761,20 +5761,8 @@
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
       "id": "./node_modules/core-js/modules/_wks-ext.js",
       "name": "./node_modules/core-js/modules/_wks-ext.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -6485,7 +6473,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../modules/web.dom.iterable": [
+  "../../modules/web.dom.iterable": [
     {
       "id": "./node_modules/core-js/library/modules/web.dom.iterable.js",
       "name": "./node_modules/core-js/library/modules/web.dom.iterable.js",
@@ -6509,6 +6497,20 @@
     {
       "id": "./node_modules/core-js/library/modules/es6.array.iterator.js",
       "name": "./node_modules/core-js/library/modules/es6.array.iterator.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    }
+  ],
+  "../../modules/_wks-ext": [
+    {
+      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
+      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -8269,7 +8271,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../calendar/locale/en_US": [
+  "./locale/en_US": [
     {
       "id": "./node_modules/antd/es/calendar/locale/en_US.js",
       "name": "./node_modules/antd/es/calendar/locale/en_US.js",
@@ -16629,7 +16631,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./Base/BasePopup": [
+  "../Base/BasePopup": [
     {
       "id": "./node_modules/rc-tree-select/es/Base/BasePopup.js",
       "name": "./node_modules/rc-tree-select/es/Base/BasePopup.js",
@@ -17761,7 +17763,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./DraftOffsetKey": [
+  "draft-js/lib/DraftOffsetKey": [
     {
       "id": "./node_modules/draft-js/lib/DraftOffsetKey.js",
       "name": "./node_modules/draft-js/lib/DraftOffsetKey.js",

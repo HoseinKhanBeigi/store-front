@@ -50,26 +50,22 @@ class ProductSlider extends PureComponent<Props, State> {
     const { numberOfThumpImage, sizeOfTranslate_x } = this.state;
     const thumbnailSlide = el.target.parentNode.getBoundingClientRect();
     const thumbnailWrapper = el.target.parentNode.parentNode.getBoundingClientRect();
-    const lastChildOfThumbnail = document.querySelector(".thumbnail-slide");
-    const ul = document.querySelector(".thumbnail-wrapper");
-    // console.log(ul.getBoundingClientRect().left);
-    // console.log(lastChildOfThumbnail.getBoundingClientRect().left);
 
     const positionDetectedRight = thumbnailSlide.left - thumbnailWrapper.left;
     const positionDetectedLeft = thumbnailSlide.x;
-    console.log(thumbnailSlide.left - thumbnailWrapper.left);
-    // console.log(thumbnailWrapper.left);
-    console.log(thumbnailSlide.width * 5);
-
+    // console.log(thumbnailSlide.left);
+    console.log(positionDetectedRight, "ul");
+    console.log(thumbnailSlide.width * 5 + 8 * 5);
+    const GETSIZE = thumbnailSlide.width + 8;
     if (positionDetectedRight > thumbnailSlide.width * 5) {
       this.setState({
-        sizeOfTranslate_x: sizeOfTranslate_x - 78,
+        sizeOfTranslate_x: sizeOfTranslate_x - GETSIZE,
         numberOfThumpImage: numberOfThumpImage + 1
       });
     }
     if (positionDetectedLeft < thumbnailSlide.width * 5) {
       this.setState({
-        sizeOfTranslate_x: sizeOfTranslate_x + 78,
+        sizeOfTranslate_x: sizeOfTranslate_x + GETSIZE,
         numberOfThumpImage: numberOfThumpImage - 1
       });
     }
