@@ -1,11 +1,11 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
-import logo from "../../theme/pic.png";
-import logo1 from "../../theme/pic1.jpeg";
-import logo2 from "../../theme/pic2.jpeg";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import logo from '../../theme/pic.png';
+import logo1 from '../../theme/pic1.jpeg';
+import logo2 from '../../theme/pic2.jpeg';
 
 type State = {
   images: Array,
@@ -25,8 +25,8 @@ class ProductSlider extends PureComponent<Props, State> {
   };
 
   componentDidMount() {
-    window.addEventListener("resize", () => {
-      const withAli = document.querySelector(".standard-product-column-left");
+    window.addEventListener('resize', () => {
+      const withAli = document.querySelector('.standard-product-column-left');
       const rect = withAli.getBoundingClientRect();
       this.setState({ newSize: rect.width });
     });
@@ -49,21 +49,16 @@ class ProductSlider extends PureComponent<Props, State> {
   CalculateTransform_X = (el, index) => {
     const { numberOfThumpImage, sizeOfTranslate_x } = this.state;
     const thumbnailSlide = el.target.parentNode.getBoundingClientRect();
-    const thumbnailWrapper = el.target.parentNode.parentNode.getBoundingClientRect();
-
-    const positionDetectedRight = thumbnailSlide.left - thumbnailWrapper.left;
-    const positionDetectedLeft = thumbnailSlide.x;
-    // console.log(thumbnailSlide.left);
-    console.log(positionDetectedRight, "ul");
-    console.log(thumbnailSlide.width * 5 + 8 * 5);
+    const positionDetected = thumbnailSlide.x;
     const GETSIZE = thumbnailSlide.width + 8;
-    if (positionDetectedRight > thumbnailSlide.width * 5) {
+
+    if (positionDetected > thumbnailSlide.width * 9 + 8 * 5) {
       this.setState({
         sizeOfTranslate_x: sizeOfTranslate_x - GETSIZE,
         numberOfThumpImage: numberOfThumpImage + 1
       });
     }
-    if (positionDetectedLeft < thumbnailSlide.width * 5) {
+    if (positionDetected < thumbnailSlide.width * 5) {
       this.setState({
         sizeOfTranslate_x: sizeOfTranslate_x + GETSIZE,
         numberOfThumpImage: numberOfThumpImage - 1
@@ -78,7 +73,7 @@ class ProductSlider extends PureComponent<Props, State> {
 
   render() {
     const { images, index, newSize, sizeOfTranslate_x } = this.state;
-    const range = newSize === 100 ? "%" : "px";
+    const range = newSize === 100 ? '%' : 'px';
 
     const imageTump = [
       logo1,
@@ -120,8 +115,8 @@ class ProductSlider extends PureComponent<Props, State> {
                   width: `${newSize}${range}`,
                   opacity: 1,
                   transform: `translate3d(${i * -newSize}${range}, 0, 0)`,
-                  visibility: i === index ? "visible" : "hidden",
-                  transitionDuration: "300ms"
+                  visibility: i === index ? 'visible' : 'hidden',
+                  transitionDuration: '300ms'
                 }}
               >
                 <img src={el} />
@@ -143,8 +138,8 @@ class ProductSlider extends PureComponent<Props, State> {
                 key={i}
                 className="thumbnail-slide"
                 style={{
-                  marginRight: "8px",
-                  width: "calc((100% - 40px) / 5.5)"
+                  marginRight: '8px',
+                  width: 'calc((100% - 40px) / 5.5)'
                 }}
                 onClick={e => {
                   this.CalculateTransform_X(e, i);
