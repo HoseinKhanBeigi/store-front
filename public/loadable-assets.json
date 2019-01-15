@@ -5165,7 +5165,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "!../../node_modules/css-hot-loader/hotModuleReplacement.js": [
+  "!../../../node_modules/css-hot-loader/hotModuleReplacement.js": [
     {
       "id": "./node_modules/css-hot-loader/hotModuleReplacement.js",
       "name": "./node_modules/css-hot-loader/hotModuleReplacement.js",
@@ -5761,8 +5761,20 @@
       "publicPath": "/assets/main.css"
     },
     {
+      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
       "id": "./node_modules/core-js/modules/_wks-ext.js",
       "name": "./node_modules/core-js/modules/_wks-ext.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    },
+    {
+      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -6473,7 +6485,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../../modules/web.dom.iterable": [
+  "../modules/web.dom.iterable": [
     {
       "id": "./node_modules/core-js/library/modules/web.dom.iterable.js",
       "name": "./node_modules/core-js/library/modules/web.dom.iterable.js",
@@ -6497,20 +6509,6 @@
     {
       "id": "./node_modules/core-js/library/modules/es6.array.iterator.js",
       "name": "./node_modules/core-js/library/modules/es6.array.iterator.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    }
-  ],
-  "../../modules/_wks-ext": [
-    {
-      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -8271,7 +8269,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./locale/en_US": [
+  "../calendar/locale/en_US": [
     {
       "id": "./node_modules/antd/es/calendar/locale/en_US.js",
       "name": "./node_modules/antd/es/calendar/locale/en_US.js",
@@ -14563,7 +14561,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../modal/locale": [
+  "./locale": [
     {
       "id": "./node_modules/antd/es/modal/locale.js",
       "name": "./node_modules/antd/es/modal/locale.js",
@@ -16631,7 +16629,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../Base/BasePopup": [
+  "./Base/BasePopup": [
     {
       "id": "./node_modules/rc-tree-select/es/Base/BasePopup.js",
       "name": "./node_modules/rc-tree-select/es/Base/BasePopup.js",
@@ -17329,7 +17327,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "fbjs/lib/UnicodeBidi": [
+  "./UnicodeBidi": [
     {
       "id": "./node_modules/fbjs/lib/UnicodeBidi.js",
       "name": "./node_modules/fbjs/lib/UnicodeBidi.js",
@@ -17343,7 +17341,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "fbjs/lib/UnicodeBidiDirection": [
+  "./UnicodeBidiDirection": [
     {
       "id": "./node_modules/fbjs/lib/UnicodeBidiDirection.js",
       "name": "./node_modules/fbjs/lib/UnicodeBidiDirection.js",
@@ -17763,7 +17761,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "draft-js/lib/DraftOffsetKey": [
+  "./DraftOffsetKey": [
     {
       "id": "./node_modules/draft-js/lib/DraftOffsetKey.js",
       "name": "./node_modules/draft-js/lib/DraftOffsetKey.js",
