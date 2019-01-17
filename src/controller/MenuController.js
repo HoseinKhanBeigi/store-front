@@ -35,6 +35,9 @@ export default class Slideoutmenu {
     });
 
     window.addEventListener('resize', () => {
+      // const withAli = document.querySelector(".standard-product-column-left");
+      // const rect = withAli.getBoundingClientRect();
+      // console.log(rect.width, "yahoo");
       const width =
         window.innerWidth ||
         document.documentElement.clientWidth ||
