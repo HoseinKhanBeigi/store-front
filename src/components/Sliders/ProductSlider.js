@@ -25,10 +25,18 @@ class ProductSlider extends PureComponent<Props, State> {
   };
 
   componentDidMount() {
+    const withAli = document
+      .querySelector('.standard-product-column-left')
+      .getBoundingClientRect();
+    this.setState({ newSize: withAli.width });
     window.addEventListener('resize', () => {
-      const withAli = document.querySelector('.standard-product-column-left');
-      const rect = withAli.getBoundingClientRect();
-      this.setState({ newSize: rect.width });
+      const withAli2 = document.querySelector('.standard-product-column-left');
+      const rect2 = withAli2.getBoundingClientRect();
+      this.setState({
+        newSize: rect2.width,
+        numberOfThumpImage: 5,
+        sizeOfTranslate_x: 0
+      });
     });
   }
 
@@ -49,24 +57,34 @@ class ProductSlider extends PureComponent<Props, State> {
   CalculateTransform_X = (el, index) => {
     const { numberOfThumpImage, sizeOfTranslate_x } = this.state;
     const thumbnailSlide = el.target.parentNode.getBoundingClientRect();
+    const thumbnailWrapper = document
+      .querySelector('.thumbnail-slide')
+      .getBoundingClientRect();
     const positionDetected = thumbnailSlide.x;
     const GETSIZE = thumbnailSlide.width + 8;
+    const firstPointDistanceClick = thumbnailWrapper.left;
+    const secondPoinDistanceClick =
+      thumbnailSlide.width * numberOfThumpImage +
+      8 * numberOfThumpImage +
+      thumbnailWrapper.left;
 
-    if (positionDetected > thumbnailSlide.width * 9 + 8 * 5) {
+    if (positionDetected === secondPoinDistanceClick) {
       this.setState({
-        sizeOfTranslate_x: sizeOfTranslate_x - GETSIZE,
-        numberOfThumpImage: numberOfThumpImage + 1
-      });
-    }
-    if (positionDetected < thumbnailSlide.width * 5) {
-      this.setState({
-        sizeOfTranslate_x: sizeOfTranslate_x + GETSIZE,
-        numberOfThumpImage: numberOfThumpImage - 1
+        numberOfThumpImage: numberOfThumpImage + 1,
+        sizeOfTranslate_x: sizeOfTranslate_x - GETSIZE
       });
     }
     if (index === 0) {
       this.setState({
         sizeOfTranslate_x: 0
+      });
+    } else if (
+      firstPointDistanceClick ===
+      thumbnailSlide.x + sizeOfTranslate_x
+    ) {
+      this.setState({
+        sizeOfTranslate_x: sizeOfTranslate_x + GETSIZE,
+        numberOfThumpImage: numberOfThumpImage - 1
       });
     }
   };
