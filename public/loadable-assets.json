@@ -5165,7 +5165,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "!../../../node_modules/css-hot-loader/hotModuleReplacement.js": [
+  "!../../node_modules/css-hot-loader/hotModuleReplacement.js": [
     {
       "id": "./node_modules/css-hot-loader/hotModuleReplacement.js",
       "name": "./node_modules/css-hot-loader/hotModuleReplacement.js",
@@ -8241,7 +8241,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../locale/en_US": [
+  "rc-calendar/es/locale/en_US": [
     {
       "id": "./node_modules/rc-calendar/es/locale/en_US.js",
       "name": "./node_modules/rc-calendar/es/locale/en_US.js",
@@ -8269,7 +8269,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./locale/en_US": [
+  "../calendar/locale/en_US": [
     {
       "id": "./node_modules/antd/es/calendar/locale/en_US.js",
       "name": "./node_modules/antd/es/calendar/locale/en_US.js",
@@ -10729,7 +10729,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../util/index": [
+  "../util": [
     {
       "id": "./node_modules/rc-calendar/es/util/index.js",
       "name": "./node_modules/rc-calendar/es/util/index.js",
@@ -12011,7 +12011,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./calendar/TodayButton": [
+  "../calendar/TodayButton": [
     {
       "id": "./node_modules/rc-calendar/es/calendar/TodayButton.js",
       "name": "./node_modules/rc-calendar/es/calendar/TodayButton.js",
@@ -12025,7 +12025,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./calendar/OkButton": [
+  "../calendar/OkButton": [
     {
       "id": "./node_modules/rc-calendar/es/calendar/OkButton.js",
       "name": "./node_modules/rc-calendar/es/calendar/OkButton.js",
@@ -12039,7 +12039,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./calendar/TimePickerButton": [
+  "../calendar/TimePickerButton": [
     {
       "id": "./node_modules/rc-calendar/es/calendar/TimePickerButton.js",
       "name": "./node_modules/rc-calendar/es/calendar/TimePickerButton.js",
@@ -14561,7 +14561,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../modal/locale": [
+  "./locale": [
     {
       "id": "./node_modules/antd/es/modal/locale.js",
       "name": "./node_modules/antd/es/modal/locale.js",

@@ -16,7 +16,6 @@ class Product extends PureComponent<Props, State> {
         <div className="standard-product-page-main product-page">
           <div className="standard-product-container">
             <ProductSlider />
-            <DetialProduct />
           </div>
         </div>
       </main>
