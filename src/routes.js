@@ -1,5 +1,12 @@
 /* @flow */
-import { BaseRouter, Home, StoreGallery, NotFound, Product } from './container';
+import {
+  BaseRouter,
+  Home,
+  StoreGallery,
+  NotFound,
+  Product,
+  Men
+} from './container';
 
 export default [
   {
@@ -13,7 +20,7 @@ export default [
       {
         path: '/men',
         exact: true,
-        component: StoreGallery
+        component: Men
       },
       {
         path: '/woman',

@@ -1,0 +1,92 @@
+.section {
+  position: relative;
+  background: #101010;
+}
+
+.sticky-wrapper {
+  position: relative;
+  z-index: 2;
+  background: #1a1a1a;
+}
+
+.image-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 113px auto 0;
+}
+
+.image-wrapper img {
+  position: absolute;
+  max-width: 100%;
+  z-index: 1;
+}
+
+.section-content {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 6;
+  padding: 165px 0 0 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  padding-top: 158px;
+}
+
+.image-wrapper .wipe {
+  background: #101010;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.section-graphics .section-content.pad-bottom {
+  pointer-events: none;
+}
+.spec {
+  list-style: none;
+  margin-bottom: 90px;
+  position: relative;
+  font-size: 80px;
+  line-height: 1.0625;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.bg-processor {
+  background-size: 868px 696px;
+  background-repeat: no-repeat;
+  background-color: red;
+  background-size: 100% auto;
+}
+
+.bg-image-overview-processor-break {
+  background-size: 868px 696px;
+  background-repeat: no-repeat;
+  background-color: blue;
+  background-size: 100% auto;
+}
+
+.image-wrapper.section-visible figure {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.progressive-image-animated[data-progressive-image-loaded] {
+  opacity: 1;
+}
+
+.section-content.pad-bottom {
+  padding-bottom: 100vh;
+}
+
+@media only screen and (min-width: 1442px) {
+  .section-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
+  }
+}
