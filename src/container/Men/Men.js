@@ -1,12 +1,12 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
-import logo1 from "../../theme/pic1.jpeg";
-import logo2 from "../../theme/pic2.jpeg";
-import logo3 from "../../theme/pic3.jpg";
-import logo4 from "../../theme/pic4.jpg";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import logo1 from '../../theme/pic1.jpeg';
+import logo2 from '../../theme/pic2.jpeg';
+import logo3 from '../../theme/pic3.jpg';
+import logo4 from '../../theme/pic4.jpg';
 
 type State = {
   data: Array<String>,
@@ -18,23 +18,20 @@ type State = {
 class Men extends PureComponent<State> {
   state = {
     pageYOffset: 571,
-    position: ""
+    position: ''
   };
 
   componentDidMount() {
-    document.addEventListener("scroll", ev => {
+    document.addEventListener('scroll', ev => {
       const sectionContent = document
-        .querySelector(".image-wrapper")
+        .querySelector('.image-wrapper')
         .getBoundingClientRect();
       const sectionContent2 = document
-        .querySelector(".wipe")
+        .querySelector('.wipe')
         .getBoundingClientRect();
       const sectionContent3 = document
-        .querySelector(".pad-bottom")
+        .querySelector('.pad-bottom')
         .getBoundingClientRect();
-
-      // console.log(Math.round(sectionContent.height) / 2);
-      console.log();
 
       if (
         Math.round(sectionContent2.bottom) ===
@@ -68,39 +65,39 @@ class Men extends PureComponent<State> {
             <div
               className="image-wrapper"
               style={{
-                height: "421px",
-                top: "96px"
+                height: '421px',
+                top: '96px'
               }}
             >
               <img
                 src={logo4}
                 style={{
-                  height: "421.6px",
-                  left: "50%",
-                  transform: "translate3d(-261px, 0px, 0px)",
-                  top: "0px"
+                  height: '421.6px',
+                  left: '50%',
+                  transform: 'translate3d(-261px, 0px, 0px)',
+                  top: '0px'
                 }}
               />
 
               <div
                 className="wipe"
                 style={{
-                  height: "571px",
-                  position: "absolute",
-                  width: "1920px",
-                  top: "50%",
-                  transform: "translateY(-307px)",
-                  paddingBottom: "302.3px",
+                  height: '571px',
+                  position: 'absolute',
+                  width: '1920px',
+                  top: '50%',
+                  transform: 'translateY(-307px)',
+                  paddingBottom: '302.3px',
                   clipPath: `inset(${pageYOffset}px 0px 0px)`
                 }}
               >
                 <img
                   src={logo3}
                   style={{
-                    height: "421.6px",
-                    left: "50%",
-                    transform: "translate3d(-261px, 0px, 0px)",
-                    top: "96px"
+                    height: '421.6px',
+                    left: '50%',
+                    transform: 'translate3d(-261px, 0px, 0px)',
+                    top: '96px'
                   }}
                 />
               </div>
