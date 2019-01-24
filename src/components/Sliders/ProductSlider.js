@@ -1,99 +1,22 @@
 /* @flow */
 
-import React, { PureComponent } from 'react';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import logo from '../../theme/pic.png';
-import logo1 from '../../theme/pic1.jpeg';
-import logo2 from '../../theme/pic2.jpeg';
+import React, { PureComponent } from "react";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import logo1 from "../../theme/pic1.jpeg";
+import logo2 from "../../theme/pic2.jpeg";
 
 type State = {
   images: Array,
   index: number,
-  newSize: number,
+  sizeWidth: number,
   sizeOfTranslate_x: number,
   numberOfThumpImage: number
 };
 
 class ProductSlider extends PureComponent<Props, State> {
   state = {
-    images: [logo, logo1, logo2],
-    index: 0,
-    newSize: 486,
-    sizeOfTranslate_x: 0,
-    numberOfThumpImage: 5
-  };
-
-  componentDidMount() {
-    const withAli = document
-      .querySelector('.standard-product-column-left')
-      .getBoundingClientRect();
-    this.setState({ newSize: withAli.width });
-    window.addEventListener('resize', () => {
-      const withAli2 = document.querySelector('.standard-product-column-left');
-      const rect2 = withAli2.getBoundingClientRect();
-      this.setState({
-        newSize: rect2.width,
-        numberOfThumpImage: 5,
-        sizeOfTranslate_x: 0
-      });
-    });
-  }
-
-  handlePrevious = () => {
-    const { index } = this.state;
-    if (index > 0) {
-      this.setState({ index: index - 1 });
-    }
-  };
-
-  handleNext = () => {
-    const { images, index } = this.state;
-    if (index + 1 <= images.length - 1) {
-      this.setState({ index: index + 1 });
-    }
-  };
-
-  CalculateTransform_X = (el, index) => {
-    const { numberOfThumpImage, sizeOfTranslate_x } = this.state;
-    const thumbnailSlide = el.target.parentNode.getBoundingClientRect();
-    const thumbnailWrapper = document
-      .querySelector('.thumbnail-slide')
-      .getBoundingClientRect();
-    const positionDetected = thumbnailSlide.x;
-    const GETSIZE = thumbnailSlide.width + 8;
-    const firstPointDistanceClick = thumbnailWrapper.left;
-    const secondPoinDistanceClick =
-      thumbnailSlide.width * numberOfThumpImage +
-      8 * numberOfThumpImage +
-      thumbnailWrapper.left;
-
-    if (positionDetected === secondPoinDistanceClick) {
-      this.setState({
-        numberOfThumpImage: numberOfThumpImage + 1,
-        sizeOfTranslate_x: sizeOfTranslate_x - GETSIZE
-      });
-    }
-    if (index === 0) {
-      this.setState({
-        sizeOfTranslate_x: 0
-      });
-    } else if (
-      firstPointDistanceClick ===
-      thumbnailSlide.x + sizeOfTranslate_x
-    ) {
-      this.setState({
-        sizeOfTranslate_x: sizeOfTranslate_x + GETSIZE,
-        numberOfThumpImage: numberOfThumpImage - 1
-      });
-    }
-  };
-
-  render() {
-    const { images, index, newSize, sizeOfTranslate_x } = this.state;
-    const range = newSize === 100 ? '%' : 'px';
-
-    const imageTump = [
+    images: [
       logo1,
       logo2,
       logo1,
@@ -107,7 +30,122 @@ class ProductSlider extends PureComponent<Props, State> {
       logo2,
       logo1,
       logo2
-    ];
+    ],
+    index: 0,
+    sizeWidth: 486,
+    sizeOfTranslate_x: 0,
+    numberOfThumpImage: 5,
+    allIndex: []
+  };
+
+  componentDidMount() {
+    const thumbnailSlideList = document.querySelectorAll(".thumbnail-slide");
+    thumbnailSlideList[0].classList.add("thumbnail-slide-active");
+    const initialSizeOfSwiper = document
+      .querySelector(".standard-product-column-left")
+      .getBoundingClientRect();
+    const thumbnailWrapper = document
+      .querySelector(".thumbnail-wrapper")
+      .getBoundingClientRect();
+    const thumbnailSlide = document
+      .querySelector(".thumbnail-slide")
+      .getBoundingClientRect();
+    this.setState({
+      sizeWidth: initialSizeOfSwiper.width,
+      numberOfThumpImage: Math.round(
+        thumbnailWrapper.width / (thumbnailSlide.width + 8)
+      )
+    });
+
+    window.addEventListener("resize", () => {
+      const SizeOfSwiper = document
+        .querySelector(".standard-product-column-left")
+        .getBoundingClientRect();
+
+      this.setState({
+        sizeWidth: SizeOfSwiper.width,
+        numberOfThumpImage: Math.round(
+          thumbnailWrapper.width / (thumbnailSlide.width + 8)
+        ),
+        sizeOfTranslate_x: 0
+      });
+    });
+  }
+
+  handlePrevious = () => {
+    const { index } = this.state;
+    const thumbnailSlideList = document.querySelectorAll(".thumbnail-slide");
+    if (index > 0) {
+      this.setState({ index: index - 1 });
+      this.calculateTransform(thumbnailSlideList[index - 1], index - 1);
+    }
+  };
+
+  handleNext = () => {
+    const { images, index } = this.state;
+    const thumbnailSlideList = document.querySelectorAll(".thumbnail-slide");
+    if (index + 1 <= images.length - 1) {
+      this.setState({
+        index: index + 1
+      });
+      this.calculateTransform(thumbnailSlideList[index + 1], index + 1);
+    }
+  };
+
+  calculateTransform = (el, index) => {
+    const { numberOfThumpImage, sizeOfTranslate_x } = this.state;
+    const thumbnailWrapper = document
+      .querySelector(".thumbnail-wrapper")
+      .getBoundingClientRect();
+    const thumbnailSlideList = document.querySelectorAll(".thumbnail-slide");
+    const ElEMENT = el.target ? el.target.parentNode : el;
+    const thumbnailSlide = ElEMENT.getBoundingClientRect();
+
+    const positionDetected = thumbnailSlide.x;
+    const GETSIZE = thumbnailSlide.width + 8;
+    const firstPointClick = thumbnailWrapper.left;
+    const secondPoinClick =
+      thumbnailSlide.width * numberOfThumpImage +
+      8 * numberOfThumpImage +
+      thumbnailWrapper.left;
+
+    thumbnailSlideList.forEach((element, i) => {
+      element.classList.remove("thumbnail-slide-active");
+    });
+    ElEMENT.classList.add("thumbnail-slide-active");
+
+    if (Math.round(positionDetected) === Math.round(secondPoinClick)) {
+      this.setState({
+        numberOfThumpImage: numberOfThumpImage + 1,
+        sizeOfTranslate_x: sizeOfTranslate_x - GETSIZE
+      });
+    }
+    if (index === 0) {
+      this.setState({
+        sizeOfTranslate_x: 0
+      });
+    } else if (
+      Math.round(firstPointClick) ===
+      Math.round(thumbnailSlide.x + sizeOfTranslate_x)
+    ) {
+      this.setState({
+        sizeOfTranslate_x: sizeOfTranslate_x + GETSIZE,
+        numberOfThumpImage: numberOfThumpImage - 1
+      });
+    }
+  };
+
+  handleChangeTransform = (el, index) => {
+    this.calculateTransform(el, index);
+  };
+
+  handleChangeThumbnail = i => {
+    this.setState({ index: i });
+  };
+
+  render() {
+    const { images, index, sizeWidth, sizeOfTranslate_x } = this.state;
+    const range = sizeWidth === 100 ? "%" : "px";
 
     return (
       <div className="standard-product-column-left">
@@ -130,11 +168,11 @@ class ProductSlider extends PureComponent<Props, State> {
                 key={i}
                 className="swiper-slide"
                 style={{
-                  width: `${newSize}${range}`,
+                  width: `${sizeWidth}${range}`,
                   opacity: 1,
-                  transform: `translate3d(${i * -newSize}${range}, 0, 0)`,
-                  visibility: i === index ? 'visible' : 'hidden',
-                  transitionDuration: '300ms'
+                  transform: `translate3d(${i * -sizeWidth}${range}, 0, 0)`,
+                  visibility: i === index ? "visible" : "hidden",
+                  transitionDuration: "300ms"
                 }}
               >
                 <img src={el} />
@@ -151,16 +189,17 @@ class ProductSlider extends PureComponent<Props, State> {
             className="thumbnail-wrapper"
             style={{ transform: `translateX(${sizeOfTranslate_x}px)` }}
           >
-            {imageTump.map((el, i) => (
+            {images.map((el, i) => (
               <li
                 key={i}
                 className="thumbnail-slide"
                 style={{
-                  marginRight: '8px',
-                  width: 'calc((100% - 40px) / 5.5)'
+                  marginRight: "8px",
+                  width: "calc((100% - 40px) / 5.5)"
                 }}
                 onClick={e => {
-                  this.CalculateTransform_X(e, i);
+                  this.handleChangeTransform(e, i);
+                  this.handleChangeThumbnail(i);
                 }}
               >
                 <img src={el} width="100vm" />
