@@ -15,7 +15,7 @@ type State = {
   widthImages: number | string
 };
 
-class Men extends PureComponent<State> {
+class ClipPath extends PureComponent<State> {
   state = {
     pageYOffset: 571,
     imgHeight: 'auto',
@@ -169,4 +169,4 @@ class Men extends PureComponent<State> {
   }
 }
 
-export default compose(withRouter)(Men);
+export default compose(withRouter)(ClipPath);

@@ -3,7 +3,7 @@ import BaseRouter from './BaseRouter';
 import Home from './Home';
 import StoreGallery from './StoreGallery';
 import Kids from './Kids';
-import Men from './Men';
+import ClipPath from './ClipPath';
 import Woman from './Woman';
 import Sport from './Sport';
 import Product from './Product';
@@ -14,7 +14,7 @@ export {
   Home,
   StoreGallery,
   Kids,
-  Men,
+  ClipPath,
   Woman,
   Sport,
   NotFound,

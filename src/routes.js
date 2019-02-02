@@ -5,7 +5,7 @@ import {
   StoreGallery,
   NotFound,
   Product,
-  Men
+  ClipPath
 } from './container';
 
 export default [
@@ -18,9 +18,9 @@ export default [
         component: Home
       },
       {
-        path: '/men',
+        path: '/ClipPath',
         exact: true,
-        component: Men
+        component: ClipPath
       },
       {
         path: '/woman',
