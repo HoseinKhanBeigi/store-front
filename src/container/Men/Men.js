@@ -3,8 +3,6 @@
 import React, { PureComponent } from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import logo1 from '../../theme/pic1.jpeg';
-import logo2 from '../../theme/pic2.jpeg';
 import logo3 from '../../theme/pic3.jpg';
 import logo4 from '../../theme/pic4.jpg';
 
@@ -12,51 +10,79 @@ type State = {
   data: Array<String>,
   onMous: Boolean,
   pageYOffset: number,
-  position: string
+  position: string,
+  imgHeight: number | string,
+  widthImages: number | string
 };
 
 class Men extends PureComponent<State> {
   state = {
     pageYOffset: 571,
-    position: ''
+    imgHeight: 'auto',
+    newHeightForcenter: null,
+    heightForParent: null,
+    heightBody: null,
+    heightCaption: null
   };
 
   componentDidMount() {
-    document.addEventListener('scroll', ev => {
-      const sectionContent = document
-        .querySelector('.image-wrapper')
+    const initSizeHeightCaption = document
+      .querySelector('.sizeH')
+      .getBoundingClientRect();
+
+    const initImg = document.querySelector('.img').getBoundingClientRect();
+    const initHeight = document.body.clientHeight;
+    const newHeightForCenterinit =
+      (initHeight - Math.round(initImg.height)) / 2;
+
+    this.setState({
+      newHeightForcenter: newHeightForCenterinit,
+      heightForParent: initImg.height,
+      heightBody: initHeight,
+      heightCaption: initHeight - initSizeHeightCaption.height - 10
+    });
+
+    window.addEventListener('resize', () => {
+      const sizeHeightCaption = document
+        .querySelector('.sizeH')
         .getBoundingClientRect();
-      const sectionContent2 = document
-        .querySelector('.wipe')
-        .getBoundingClientRect();
+      const Img = document.querySelector('.img').getBoundingClientRect();
+      const height = document.body.clientHeight;
+      const newHeightForCenter = (height - Img.height) / 2;
+
+      this.setState({
+        newHeightForcenter: newHeightForCenter,
+        heightForParent: Img.height,
+        heightBody: height,
+        heightCaption: height - sizeHeightCaption.height - 10
+      });
+    });
+
+    document.addEventListener('scroll', () => {
       const sectionContent3 = document
         .querySelector('.pad-bottom')
         .getBoundingClientRect();
 
-      if (
-        Math.round(sectionContent2.bottom) ===
-        Math.round(sectionContent2.height)
-      ) {
-        const res = Math.round(
-          (window.scrollY -
-            sectionContent3.height -
-            sectionContent2.height / 2) *
-            -1
-        );
-        if (res < 572) {
-          const persist = res < 0 ? 0 : res;
-          this.setState({ pageYOffset: persist });
-
-          console.log(persist);
-        }
-
-        // console.log(sectionContent3.height);
-      }
+      this.setState({
+        pageYOffset: sectionContent3.bottom - sectionContent3.height / 2.3
+      });
     });
   }
 
   render() {
-    const { data, pageYOffset, position } = this.state;
+    const {
+      pageYOffset,
+      imgHeight,
+      newHeightForcenter,
+      heightForParent,
+      heightBody,
+      heightCaption
+    } = this.state;
+
+    const translateY = heightBody / 2;
+
+    const range = imgHeight === 'auto' ? '' : 'px';
+
     return (
       <div>
         <section className="section">
@@ -65,16 +91,17 @@ class Men extends PureComponent<State> {
             <div
               className="image-wrapper"
               style={{
-                height: '421px',
-                top: '96px'
+                height: `${heightForParent}px`,
+                top: `${newHeightForcenter}px`
               }}
             >
               <img
                 src={logo4}
+                className="img img1 bg-image-overview-processor"
                 style={{
-                  height: '421.6px',
+                  height: `${imgHeight}${range}`,
                   left: '50%',
-                  transform: 'translate3d(-261px, 0px, 0px)',
+                  transform: `translate3d(-50%, 0px, 0px)`,
                   top: '0px'
                 }}
               />
@@ -82,24 +109,39 @@ class Men extends PureComponent<State> {
               <div
                 className="wipe"
                 style={{
-                  height: '571px',
+                  height: `${heightBody}px`,
                   position: 'absolute',
-                  width: '1920px',
+                  width: '100%',
                   top: '50%',
-                  transform: 'translateY(-307px)',
-                  paddingBottom: '302.3px',
+                  transform: `translateY(-${translateY}px)`,
+                  paddingBottom: '240px',
                   clipPath: `inset(${pageYOffset}px 0px 0px)`
                 }}
               >
                 <img
                   src={logo3}
+                  className="img img2 bg-image-overview-processor"
                   style={{
-                    height: '421.6px',
+                    height: `${imgHeight}${range}`,
                     left: '50%',
-                    transform: 'translate3d(-261px, 0px, 0px)',
-                    top: '96px'
+                    transform: `translate3d(-50%, 0px, 0px)`,
+                    top: `${newHeightForcenter}px`
                   }}
                 />
+                <div
+                  className="caption section-content show sizeH"
+                  style={{ top: `${heightCaption}px` }}
+                >
+                  <h4 className="caption-heading">
+                    Particle simulation? Elementary.
+                  </h4>
+                  <p className="copy large-6 medium-9 small-12">
+                    Billowing smoke. Torrential rain. A wheat field in the wind.
+                    With up to 18 cores and Hyper-Threading, iMac Pro lets you
+                    build and render particle systems of all kinds — static or
+                    animated, 2D or 3D — with ease.
+                  </p>
+                </div>
               </div>
             </div>
             <div className="section-content pad-bottom no-pad-top">
@@ -112,8 +154,8 @@ class Men extends PureComponent<State> {
               </ul>
             </div>
           </div>
+          <div style={{ height: 966 }} />
         </section>
-        <div style={{ height: 600 }} />
       </div>
     );
   }
