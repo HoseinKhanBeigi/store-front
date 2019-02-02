@@ -32,6 +32,7 @@ class Men extends PureComponent<State> {
 
     const initImg = document.querySelector('.img').getBoundingClientRect();
     const initHeight = document.body.clientHeight;
+
     const newHeightForCenterinit =
       (initHeight - Math.round(initImg.height)) / 2;
 
@@ -59,6 +60,7 @@ class Men extends PureComponent<State> {
     });
 
     document.addEventListener('scroll', () => {
+      const heightScroll = document.body.clientHeight / 4;
       const sectionContent3 = document
         .querySelector('.pad-bottom')
         .getBoundingClientRect();
@@ -66,6 +68,12 @@ class Men extends PureComponent<State> {
       this.setState({
         pageYOffset: sectionContent3.bottom - sectionContent3.height / 2.3
       });
+
+      if (Math.round(this.state.pageYOffset) < Math.round(heightScroll)) {
+        document.querySelector('.caption').classList.add('show');
+      } else {
+        document.querySelector('.caption').classList.remove('show');
+      }
     });
   }
 
@@ -107,7 +115,7 @@ class Men extends PureComponent<State> {
               />
 
               <div
-                className="wipe"
+                className="wipe wipe2"
                 style={{
                   height: `${heightBody}px`,
                   position: 'absolute',
@@ -129,7 +137,7 @@ class Men extends PureComponent<State> {
                   }}
                 />
                 <div
-                  className="caption section-content show sizeH"
+                  className="caption section-content sizeH"
                   style={{ top: `${heightCaption}px` }}
                 >
                   <h4 className="caption-heading">
