@@ -11,45 +11,38 @@ type State = {
 
 class TopMenuBar extends PureComponent<State> {
   state = {
-    data: "WEB"
+    data: undefined
   };
 
   componentDidMount() {
+    const initWidth = document.body.clientWidth;
+    if (initWidth <= 970) {
+      this.setState({ data: "MOBILE" });
+    }
+    if (initWidth > 970) {
+      this.setState({ data: "WEB" });
+    }
     window.addEventListener("resize", () => {
-      const width =
-        window.innerWidth ||
-        document.documentElement.clientWidth ||
-        document.body.clientWidth;
+      const width = document.body.clientWidth;
       if (width <= 970) {
         this.setState({ data: "MOBILE" }, () => {
           this.setState({ data: "MOBILE" });
         });
-      } else if (width > 970) {
+      }
+      if (width > 970) {
         this.setState({ data: "WEB" });
       }
     });
-
-    window.addEventListener("load", this.handleLoad);
   }
-
-  handleLoad = () => {
-    const width =
-      window.innerWidth ||
-      document.documentElement.clientWidth ||
-      document.body.clientWidth;
-    if (width <= 970) {
-      this.setState({ data: "MOBILE" }, () => {
-        this.setState({ data: "MOBILE" });
-      });
-    } else if (width > 970) {
-      this.setState({ data: "WEB" });
-    }
-  };
 
   render() {
     const { data } = this.state;
 
-    return data === "WEB" ? <TopMenuBarWeb /> : <TopMenuBarMobile />;
+    if (data === undefined) {
+      return null;
+    } else {
+      return data === "WEB" ? <TopMenuBarWeb /> : <TopMenuBarMobile />;
+    }
   }
 }
 
