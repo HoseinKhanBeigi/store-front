@@ -96,29 +96,6 @@
   width: 100%;
 }
 
-.standard-product-column-left {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  overflow: auto;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .standard-product-column-right {
   display: -webkit-box;
   display: -webkit-flex;
@@ -182,22 +159,6 @@
   width: calc(100% - 32px);
 }
 
-.thumbnail-container {
-  // border-left: 32px solid transparent;
-  width: 100%;
-  // margin-left: auto;
-  // margin-right: auto;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.thumbnail-containerVertical {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
 .zoomIn {
   font-size: 20px;
   margin-top: -10px;
@@ -208,19 +169,10 @@
   font-size: 26px;
 }
 
-.thumbnail-wrapper {
-  margin-bottom: 0;
-  padding-left: 0;
+.thumbnail-containerVertical {
   position: relative;
-  width: 100%;
-  list-style: none;
-  height: 100%;
+  overflow: hidden;
   z-index: 1;
-  display: flex;
-  transition-property: transform, -webkit-transform, -moz-transform,
-    -o-transform;
-  box-sizing: content-box;
-  transition: 0.3s ease-in-out;
 }
 
 .thumbnail-wrapperVertical {
@@ -254,6 +206,18 @@
   display: flex;
 }
 
+.thumbnail-slide:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: black;
+  opacity: 0;
+}
+
 .thumbnail-slideVer {
   background: #fff;
   flex-shrink: 0;
@@ -281,18 +245,6 @@
   opacity: 0;
 }
 
-.thumbnail-slide:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: black;
-  opacity: 0;
-}
-
 .thumbnail-slide-active:after {
   opacity: 1;
 }
@@ -302,10 +254,6 @@ img {
 }
 
 @media only screen and (min-width: 768px) {
-  .standard-product-column-left {
-    margin-bottom: 48px;
-    width: 50%;
-  }
   .standard-product-column-leftVertical {
     margin-bottom: 48px;
     width: 50%;
@@ -337,10 +285,6 @@ img {
 }
 
 @media (min-height: 801px) and (min-width: 1025px) {
-  .standard-product-column-left {
-    width: 40.5%;
-    margin-right: 10.5%;
-  }
   .standard-product-column-leftVertical {
     width: 40.5%;
     margin-right: 10.5%;
