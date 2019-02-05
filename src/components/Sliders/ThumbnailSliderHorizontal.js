@@ -40,33 +40,28 @@ class ThumbnailSliderHorizontal extends PureComponent<Props, State> {
     allIndex: [],
     swiperSlideWidth: 0,
     swiperSlideHeight: undefined,
-    direction: "horizontal"
+    direction: "vertical"
   };
 
   componentDidMount() {
     const { direction } = this.state;
-    const thumbnailSlideListVer =
-      direction === "vertical" &&
-      document.querySelectorAll(".thumbnail-slideVer");
+
     const thumbnailSlideList =
-      direction === "horizontal" &&
-      document.querySelectorAll(".thumbnail-slide");
-    if (direction === "horizontal") {
-      thumbnailSlideList[0].classList.add("thumbnail-slide-active");
-    } else {
-      thumbnailSlideListVer[0].classList.add("thumbnail-slide-active");
-    }
+      direction === "horizontal"
+        ? document.querySelectorAll(".thumbnail-slide")
+        : document.querySelectorAll(".thumbnail-slideVer");
+
+    thumbnailSlideList[0].classList.add("thumbnail-slide-active");
 
     const initialSizeOfSwiper =
-      direction === "horizontal" &&
-      document
-        .querySelector(".standard-product-column-left")
-        .getBoundingClientRect();
-    const initialSizeOfSwiperVer =
-      direction === "vertical" &&
-      document
-        .querySelector(".standard-product-column-leftVertical")
-        .getBoundingClientRect();
+      direction === "horizontal"
+        ? document
+            .querySelector(".standard-product-column-left")
+            .getBoundingClientRect()
+        : document
+            .querySelector(".standard-product-column-leftVertical")
+            .getBoundingClientRect();
+
     const thumbnailWrapper =
       direction === "horizontal" &&
       document.querySelector(".thumbnail-wrapper").getBoundingClientRect();
@@ -79,16 +74,22 @@ class ThumbnailSliderHorizontal extends PureComponent<Props, State> {
 
     this.setState({
       swiperSlideHeight: swiperSlide.height - 65,
-      sizeWidth: initialSizeOfSwiper.width || initialSizeOfSwiperVer.width,
+      sizeWidth: initialSizeOfSwiper.width,
       numberOfThumpImage: Math.round(
         thumbnailWrapper.width / (thumbnailSlide.width + 8)
       )
     });
 
     window.addEventListener("resize", () => {
-      const SizeOfSwiper = document
-        .querySelector(".standard-product-column-left")
-        .getBoundingClientRect();
+      const { direction } = this.state;
+      const SizeOfSwiper =
+        direction === "horizontal"
+          ? document
+              .querySelector(".standard-product-column-left")
+              .getBoundingClientRect()
+          : document
+              .querySelector(".standard-product-column-leftVertical")
+              .getBoundingClientRect();
 
       const swiperSlideResize = document
         .querySelector(".swiper-wrapper")
