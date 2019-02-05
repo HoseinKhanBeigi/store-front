@@ -1,38 +1,38 @@
 {
-  "./_hashHas": [
+  "./_hashClear": [
     {
-      "id": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
-      "name": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
+      "id": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
+      "name": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
       "file": "main.css",
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
-      "name": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
+      "id": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
+      "name": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
       "file": "main.css",
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/lodash/_hashHas.js",
-      "name": "./node_modules/lodash/_hashHas.js",
+      "id": "./node_modules/lodash/_hashClear.js",
+      "name": "./node_modules/lodash/_hashClear.js",
       "file": "main.css",
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
-      "name": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
+      "id": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
+      "name": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     },
     {
-      "id": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
-      "name": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
+      "id": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
+      "name": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     },
     {
-      "id": "./node_modules/lodash/_hashHas.js",
-      "name": "./node_modules/lodash/_hashHas.js",
+      "id": "./node_modules/lodash/_hashClear.js",
+      "name": "./node_modules/lodash/_hashClear.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -5203,7 +5203,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "!../../../node_modules/css-hot-loader/hotModuleReplacement.js": [
+  "!../../node_modules/css-hot-loader/hotModuleReplacement.js": [
     {
       "id": "./node_modules/css-hot-loader/hotModuleReplacement.js",
       "name": "./node_modules/css-hot-loader/hotModuleReplacement.js",
@@ -8307,7 +8307,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../calendar/locale/en_US": [
+  "./locale/en_US": [
     {
       "id": "./node_modules/antd/es/calendar/locale/en_US.js",
       "name": "./node_modules/antd/es/calendar/locale/en_US.js",
@@ -10767,7 +10767,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../util/index": [
+  "../util": [
     {
       "id": "./node_modules/rc-calendar/es/util/index.js",
       "name": "./node_modules/rc-calendar/es/util/index.js",
@@ -12853,40 +12853,16 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./_hashClear": [
+  "webpack-hot-middleware/client?reload=true": [
     {
-      "id": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
-      "name": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
+      "id": "./node_modules/webpack-hot-middleware/client.js?reload=true",
+      "name": "./node_modules/webpack-hot-middleware/client.js?reload=true",
       "file": "main.css",
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
-      "name": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
-      "id": "./node_modules/lodash/_hashClear.js",
-      "name": "./node_modules/lodash/_hashClear.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
-      "id": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
-      "name": "./node_modules/rc-form/node_modules/lodash/_hashClear.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    },
-    {
-      "id": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
-      "name": "./node_modules/rc-table/node_modules/lodash/_hashClear.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    },
-    {
-      "id": "./node_modules/lodash/_hashClear.js",
-      "name": "./node_modules/lodash/_hashClear.js",
+      "id": "./node_modules/webpack-hot-middleware/client.js?reload=true",
+      "name": "./node_modules/webpack-hot-middleware/client.js?reload=true",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -13005,16 +12981,40 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "webpack-hot-middleware/client?reload=true": [
+  "./_hashHas": [
     {
-      "id": "./node_modules/webpack-hot-middleware/client.js?reload=true",
-      "name": "./node_modules/webpack-hot-middleware/client.js?reload=true",
+      "id": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
+      "name": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
       "file": "main.css",
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/webpack-hot-middleware/client.js?reload=true",
-      "name": "./node_modules/webpack-hot-middleware/client.js?reload=true",
+      "id": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
+      "name": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
+      "id": "./node_modules/lodash/_hashHas.js",
+      "name": "./node_modules/lodash/_hashHas.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
+      "id": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
+      "name": "./node_modules/rc-form/node_modules/lodash/_hashHas.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    },
+    {
+      "id": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
+      "name": "./node_modules/rc-table/node_modules/lodash/_hashHas.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    },
+    {
+      "id": "./node_modules/lodash/_hashHas.js",
+      "name": "./node_modules/lodash/_hashHas.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -17327,7 +17327,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./UnicodeBidi": [
+  "fbjs/lib/UnicodeBidi": [
     {
       "id": "./node_modules/fbjs/lib/UnicodeBidi.js",
       "name": "./node_modules/fbjs/lib/UnicodeBidi.js",
@@ -17341,7 +17341,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./UnicodeBidiDirection": [
+  "fbjs/lib/UnicodeBidiDirection": [
     {
       "id": "./node_modules/fbjs/lib/UnicodeBidiDirection.js",
       "name": "./node_modules/fbjs/lib/UnicodeBidiDirection.js",
@@ -17761,7 +17761,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "draft-js/lib/DraftOffsetKey": [
+  "./DraftOffsetKey": [
     {
       "id": "./node_modules/draft-js/lib/DraftOffsetKey.js",
       "name": "./node_modules/draft-js/lib/DraftOffsetKey.js",
@@ -20293,20 +20293,6 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../../theme/pic.png": [
-    {
-      "id": "./src/theme/pic.png",
-      "name": "./src/theme/pic.png",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
-      "id": "./src/theme/pic.png",
-      "name": "./src/theme/pic.png",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    }
-  ],
   "./CheckBox/InputCheckBox": [
     {
       "id": "./src/components/CheckBox/InputCheckBox.js",
@@ -20349,30 +20335,16 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./Sliders/ThumbnailSlider": [
+  "./ThumbnailSlider/ThumbnailSlider": [
     {
-      "id": "./src/components/Sliders/ThumbnailSlider.js",
-      "name": "./src/components/Sliders/ThumbnailSlider.js",
+      "id": "./src/components/ThumbnailSlider/ThumbnailSlider.js",
+      "name": "./src/components/ThumbnailSlider/ThumbnailSlider.js",
       "file": "main.css",
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./src/components/Sliders/ThumbnailSlider.js",
-      "name": "./src/components/Sliders/ThumbnailSlider.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    }
-  ],
-  "./Sliders/ThumbnailSliderHorizontal": [
-    {
-      "id": "./src/components/Sliders/ThumbnailSliderHorizontal.js",
-      "name": "./src/components/Sliders/ThumbnailSliderHorizontal.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
-      "id": "./src/components/Sliders/ThumbnailSliderHorizontal.js",
-      "name": "./src/components/Sliders/ThumbnailSliderHorizontal.js",
+      "id": "./src/components/ThumbnailSlider/ThumbnailSlider.js",
+      "name": "./src/components/ThumbnailSlider/ThumbnailSlider.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -20401,20 +20373,6 @@
     {
       "id": "./src/theme/pic2.jpeg",
       "name": "./src/theme/pic2.jpeg",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    }
-  ],
-  "./Sliders/ThumbnailSliderVertical": [
-    {
-      "id": "./src/components/Sliders/ThumbnailSliderVertical.js",
-      "name": "./src/components/Sliders/ThumbnailSliderVertical.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
-      "id": "./src/components/Sliders/ThumbnailSliderVertical.js",
-      "name": "./src/components/Sliders/ThumbnailSliderVertical.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
