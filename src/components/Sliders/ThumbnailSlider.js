@@ -1,24 +1,17 @@
 /* @flow */
 
-import React, { PureComponent } from 'react';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
-import Slider from 'react-slick';
+import React, { PureComponent } from "react";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import Slider from "react-slick";
+import ThumbnailSliderHorizontal from "./ThumbnailSliderHorizontal";
 
 type State = {};
 
-class SliderComponent extends PureComponent<Props, State> {
+class ThumbnailSlider extends PureComponent<Props, State> {
   state = {};
 
   render() {
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      arrows: true,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
     return (
       <Slider {...settings}>
         <div>
@@ -46,4 +39,4 @@ class SliderComponent extends PureComponent<Props, State> {
   }
 }
 
-export default compose(withRouter)(SliderComponent);
+export default compose(withRouter)(ThumbnailSlider);

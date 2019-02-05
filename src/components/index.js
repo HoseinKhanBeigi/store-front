@@ -1,15 +1,16 @@
 /* @flow */
 
-import ErrorDisplay from './ErrorDisplay';
-import Loading from './Loading';
-import TopMenuBar from './TopMenuBar/TopMenuBar';
-import InputCheckBox from './CheckBox/InputCheckBox';
-import Paginations from './Pagination/Paginations';
-import SearchBox from './SearchBox/SearchBox';
-import SliderComponent from './Sliders/SliderComponent';
-import ProductSlider from './Sliders/ProductSlider';
-import DetialProduct from './Product/DetialProduct';
-import Footer from './Footer/Footer';
+import ErrorDisplay from "./ErrorDisplay";
+import Loading from "./Loading";
+import TopMenuBar from "./TopMenuBar/TopMenuBar";
+import InputCheckBox from "./CheckBox/InputCheckBox";
+import Paginations from "./Pagination/Paginations";
+import SearchBox from "./SearchBox/SearchBox";
+import ThumbnailSlider from "./Sliders/ThumbnailSlider";
+import ThumbnailSliderHorizontal from "./Sliders/ThumbnailSliderHorizontal";
+import ThumbnailSliderVertical from "./Sliders/ThumbnailSliderVertical";
+import DetialProduct from "./Product/DetialProduct";
+import Footer from "./Footer/Footer";
 
 export {
   ErrorDisplay,
@@ -19,7 +20,8 @@ export {
   InputCheckBox,
   Paginations,
   SearchBox,
-  SliderComponent,
+  ThumbnailSlider,
   DetialProduct,
-  ProductSlider
+  ThumbnailSliderHorizontal,
+  ThumbnailSliderVertical
 };

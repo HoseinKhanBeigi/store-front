@@ -6,44 +6,24 @@ import {
   NotFound,
   Product,
   ClipPath
-} from './container';
+} from "./container";
 
 export default [
   {
     component: BaseRouter,
     routes: [
       {
-        path: '/',
+        path: "/",
         exact: true,
         component: Home
       },
       {
-        path: '/ClipPath',
+        path: "/ClipPath",
         exact: true,
         component: ClipPath
       },
       {
-        path: '/woman',
-        exact: true,
-        component: StoreGallery
-      },
-      {
-        path: '/sport',
-        exact: true,
-        component: StoreGallery
-      },
-      {
-        path: '/kids',
-        exact: true,
-        component: StoreGallery
-      },
-      {
-        path: '/:string-:string',
-        exact: true,
-        component: StoreGallery
-      },
-      {
-        path: '/product',
+        path: "/product",
         exact: true,
         component: Product
       },

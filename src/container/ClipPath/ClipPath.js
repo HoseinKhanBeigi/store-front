@@ -31,7 +31,12 @@ class ClipPath extends PureComponent<State> {
       .getBoundingClientRect();
 
     const initImg = document.querySelector('.img').getBoundingClientRect();
+
+    console.log(initImg.height, 'initImg');
+    // get the height of the body. if it doesn't work or does wrong work you should used window.innerHeight
     const initHeight = document.body.clientHeight;
+
+    console.log(initHeight, 'initHeight');
 
     const newHeightForCenterinit =
       (initHeight - Math.round(initImg.height)) / 2;
