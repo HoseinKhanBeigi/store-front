@@ -1,13 +1,13 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 import {
-  ThumbnailSliderHorizontal,
+  ThumbnailSlider,
   DetialProduct,
   ProductSliderVertical
-} from "../../components";
+} from '../../components';
 
 type State = {};
 
@@ -19,7 +19,7 @@ class Product extends PureComponent<Props, State> {
       <main className="mainOne">
         <div className="standard-product-page-main product-page">
           <div className="standard-product-container">
-            <ThumbnailSliderHorizontal />
+            <ThumbnailSlider />
           </div>
         </div>
       </main>

@@ -6,7 +6,6 @@ import { hot } from 'react-hot-loader';
 import Slideoutmenu from '../../controller/MenuController';
 import SearchBox from '../SearchBox/SearchBox';
 import { Woman, Men, Kids, Sport, Regesteri } from '../ContainerMenu';
-import logo from '../../theme/pic.png';
 
 type State = {
   data: String
@@ -30,7 +29,7 @@ class TopMenuBarWeb extends PureComponent<State> {
       <div className="container">
         <div className="headerTop">
           <div className="logoMeno">
-            <img src={logo} className="imageLogo" />
+            <img className="imageLogo" />
           </div>
           <SearchBox />
           <Regesteri />
