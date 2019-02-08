@@ -4,8 +4,12 @@ import React, { PureComponent } from "react";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { Icon } from "antd";
-import logo1 from "../../theme/pic1.jpeg";
-import logo2 from "../../theme/pic2.jpeg";
+
+type Props = {
+  images: Array,
+  direction: String,
+  isTouch: String
+};
 
 type State = {
   images: Array,
@@ -18,33 +22,17 @@ type State = {
 
 class ThumbnailSlider extends PureComponent<Props, State> {
   state = {
-    images: [
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo2,
-      logo1,
-      logo2
-    ],
     index: 0,
     sizeWidth: 486,
     sizeOfTranslate: 0,
     numberOfThumpImage: 5,
     allIndex: [],
     swiperSlideWidth: 0,
-    swiperSlideHeight: undefined,
-    direction: "horizontal"
+    swiperSlideHeight: undefined
   };
 
   componentDidMount() {
-    const { direction } = this.state;
+    const { direction, isTouch } = this.props;
 
     const thumbnailSlideList =
       direction === "horizontal"
@@ -80,25 +68,13 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       )
     });
 
-    const allImages = document.querySelectorAll(".Img");
-    allImages.forEach(elemet => {
-      let start;
-      let dragenter;
-      elemet.addEventListener("touchstart", ev => {
-        start = ev.changedTouches[0].pageX;
-      });
-      elemet.addEventListener("touchend", ev => {
-        dragenter = ev.changedTouches[0].pageX;
-        if (start > dragenter) {
-          this.handleNext();
-        } else {
-          this.handlePrevious();
-        }
-      });
-    });
+    // handleTouch method for screen mobile and tablet
+    if (isTouch !== "false") {
+      this.handleTouch();
+    }
 
     window.addEventListener("resize", () => {
-      const { direction } = this.state;
+      const { direction } = this.props;
       const SizeOfSwiper =
         direction === "horizontal"
           ? document
@@ -124,40 +100,29 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     });
   }
 
-  getMousePos = e => {
-    let posx = 0;
-    let posy = 0;
-    if (!e) {
-      const e = window.event;
-    }
-    if (e.pageX || e.pageY) {
-      posx = e.pageX;
-      posy = e.pageY;
-    } else if (e.clientX || e.clientY) {
-      posx =
-        e.clientX +
-        document.body.scrollLeft +
-        document.documentElement.scrollLeft;
-      posy =
-        e.clientY +
-        document.body.scrollTop +
-        document.documentElement.scrollTop;
-    }
-    return {
-      x: posx,
-      y: posy
-    };
+  handleTouch = () => {
+    const allImages = document.querySelectorAll(".Img");
+    allImages.forEach(elemet => {
+      let start;
+      let end;
+      elemet.addEventListener("touchstart", ev => {
+        start = Math.round(ev.changedTouches[0].pageX);
+      });
+      elemet.addEventListener("touchend", ev => {
+        end = Math.round(ev.changedTouches[0].pageX);
+        if (start > end) {
+          this.handleNext();
+        }
+        if (start < end) {
+          this.handlePrevious();
+        }
+      });
+    });
   };
 
-  onmousemove(ev) {
-    requestAnimationFrame(() => {
-      const mousepos = this.getMousePos(ev);
-      console.log(mousepos.x, "xx");
-    });
-  }
-
   handlePrevious = () => {
-    const { index, direction } = this.state;
+    const { direction } = this.props;
+    const { index } = this.state;
     const thumbnailSlideList =
       direction === "horizontal"
         ? document.querySelectorAll(".thumbnail-slide")
@@ -177,7 +142,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   };
 
   handleNext = () => {
-    const { images, index, direction } = this.state;
+    const { direction, images } = this.props;
+    const { index } = this.state;
     const thumbnailSlideList =
       direction === "horizontal"
         ? document.querySelectorAll(".thumbnail-slide")
@@ -238,7 +204,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   };
 
   calculateTransform = (el, index) => {
-    const { numberOfThumpImage, sizeOfTranslate, direction } = this.state;
+    const { direction } = this.props;
+    const { numberOfThumpImage, sizeOfTranslate } = this.state;
     const thumbnailWrapper =
       direction === "horizontal" &&
       document.querySelector(".thumbnail-wrapper").getBoundingClientRect();
@@ -320,7 +287,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   };
 
   handleChangeTransform = (el, index) => {
-    const { direction } = this.state;
+    const { direction } = this.props;
     this.calculateTransform(el, index);
     const swiperSlide =
       direction === "horizontal"
@@ -342,14 +309,14 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
   render() {
     const {
-      images,
       index,
       sizeWidth,
       sizeOfTranslate,
       swiperSlideWidth,
-      direction,
       swiperSlideHeight
     } = this.state;
+
+    const { direction, images } = this.props;
 
     const range = sizeWidth === 100 ? "%" : "px";
 
