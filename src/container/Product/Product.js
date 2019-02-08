@@ -3,23 +3,42 @@
 import React, { PureComponent } from 'react';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
-import {
-  ThumbnailSlider,
-  DetialProduct,
-  ProductSliderVertical
-} from '../../components';
+import { ThumbnailSlider } from '../../components';
+
+import logo1 from '../../theme/pic1.jpeg';
+import logo2 from '../../theme/pic2.jpeg';
 
 type State = {};
 
 class Product extends PureComponent<Props, State> {
-  state = {};
+  state = {
+    images: [
+      logo1,
+      logo2,
+      logo1,
+      logo2,
+      logo1,
+      logo2,
+      logo1,
+      logo2,
+      logo1,
+      logo2,
+      logo1,
+      logo2
+    ]
+  };
 
   render() {
+    const { images } = this.state;
     return (
       <main className="mainOne">
         <div className="standard-product-page-main product-page">
           <div className="standard-product-container">
-            <ThumbnailSlider />
+            <ThumbnailSlider
+              images={images}
+              direction="horizontal"
+              isTouch="true"
+            />
           </div>
         </div>
       </main>
