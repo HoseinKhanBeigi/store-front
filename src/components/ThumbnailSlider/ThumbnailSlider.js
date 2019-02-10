@@ -17,7 +17,9 @@ type State = {
   sizeWidth: number,
   sizeOfTranslate: number,
   numberOfThumpImage: number,
-  swiperSlideWidth: number
+  swiperSlideWidth: number,
+  clientX: number,
+  clientY: number
 };
 
 class ThumbnailSlider extends PureComponent<Props, State> {
@@ -28,7 +30,9 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     numberOfThumpImage: 5,
     allIndex: [],
     swiperSlideWidth: 0,
-    swiperSlideHeight: undefined
+    swiperSlideHeight: undefined,
+    clientX: 0,
+    clientY: 0
   };
 
   componentDidMount() {
@@ -60,8 +64,13 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       .querySelector(".swiper-wrapper")
       .getBoundingClientRect();
 
+    const rightResultForHeight =
+      swiperSlide.height === 0
+        ? initialSizeOfSwiper.height
+        : swiperSlide.height;
+
     this.setState({
-      swiperSlideHeight: swiperSlide.height - 65,
+      swiperSlideHeight: rightResultForHeight,
       sizeWidth: initialSizeOfSwiper.width,
       numberOfThumpImage: Math.round(
         thumbnailWrapper.width / (thumbnailSlide.width + 8)
@@ -72,6 +81,35 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     if (isTouch !== "false") {
       this.handleTouch();
     }
+
+    // (3) move the ball on mousemove
+
+    document.querySelector(".Img").addEventListener("mousedown", () => {
+      document
+        .querySelector(".Img")
+        .addEventListener("mousemove", calculateTransformZoom);
+    });
+
+    document.querySelector(".Img").addEventListener("mouseup", () => {
+      document
+        .querySelector(".Img")
+        .removeEventListener("mousemove", calculateTransformZoom);
+    });
+
+    function calculateTransformZoom(e) {
+      const img = document.querySelector(".Img");
+      const shiftX = e.clientX - img.getBoundingClientRect().left;
+      const shiftY = e.clientY - img.getBoundingClientRect().y;
+      console.log(e.pageX);
+      // this.setState({
+      //   clientX: Math.round(e.pageX - shiftX)
+      //   // clientY: e.pageY - shiftY
+      // });
+    }
+
+    document.querySelector(".Img").ondragstart = function() {
+      return false;
+    };
 
     window.addEventListener("resize", () => {
       const { direction } = this.props;
@@ -89,7 +127,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         .getBoundingClientRect();
 
       this.setState({
-        swiperSlideHeight: swiperSlideResize.height - 65,
+        swiperSlideHeight: SizeOfSwiper.height,
         swiperSlideWidth: SizeOfSwiper.width,
         sizeWidth: SizeOfSwiper.width,
         numberOfThumpImage: Math.round(
@@ -313,7 +351,9 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       sizeWidth,
       sizeOfTranslate,
       swiperSlideWidth,
-      swiperSlideHeight
+      swiperSlideHeight,
+      clientX,
+      clientY
     } = this.state;
 
     const { direction, images } = this.props;
@@ -365,7 +405,14 @@ class ThumbnailSlider extends PureComponent<Props, State> {
           >
             <Icon type="right" className="arrow" />
           </button>
-          <ul className="swiper-wrapper">
+          <ul
+            className="swiper-wrapper"
+            style={{
+              transform: `scale(2.5) translate(-${0}px, ${clientY}px)`,
+              left: `${clientX}px`
+              // transform: `translate(-${clientX}px, ${clientY}px)`
+            }}
+          >
             {images.map((el, i) => (
               <li
                 key={i}

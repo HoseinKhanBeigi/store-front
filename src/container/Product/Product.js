@@ -36,7 +36,7 @@ class Product extends PureComponent<Props, State> {
           <div className="standard-product-container">
             <ThumbnailSlider
               images={images}
-              direction="horizontal"
+              direction="vertical"
               isTouch="true"
             />
           </div>
