@@ -1,12 +1,12 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
-import { ThumbnailSlider } from "../../components";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { ThumbnailSlider } from '../../components';
 
-import logo1 from "../../theme/pic1.jpeg";
-import logo2 from "../../theme/pic2.jpeg";
+import logo1 from '../../theme/pic1.jpeg';
+import logo2 from '../../theme/pic2.jpeg';
 
 type State = {};
 
@@ -18,7 +18,12 @@ class Product extends PureComponent<Props, State> {
   render() {
     const { images } = this.state;
     return (
-      <ThumbnailSlider images={images} direction="horizontal" isTouch="true" />
+      <ThumbnailSlider
+        images={images}
+        direction="vertical"
+        isTouch="true"
+        numberOfThumpImage={5}
+      />
     );
   }
 }
