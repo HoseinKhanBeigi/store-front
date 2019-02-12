@@ -1829,20 +1829,8 @@
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/core-js/library/modules/_core.js",
-      "name": "./node_modules/core-js/library/modules/_core.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
       "id": "./node_modules/core-js/modules/_core.js",
       "name": "./node_modules/core-js/modules/_core.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_core.js",
-      "name": "./node_modules/core-js/library/modules/_core.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -6353,6 +6341,20 @@
       "publicPath": "/assets/main.js"
     }
   ],
+  "../../modules/_core": [
+    {
+      "id": "./node_modules/core-js/library/modules/_core.js",
+      "name": "./node_modules/core-js/library/modules/_core.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
+      "id": "./node_modules/core-js/library/modules/_core.js",
+      "name": "./node_modules/core-js/library/modules/_core.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    }
+  ],
   "babel-runtime/helpers/extends": [
     {
       "id": "./node_modules/babel-runtime/helpers/extends.js",
@@ -10765,7 +10767,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../util/index": [
+  "../util": [
     {
       "id": "./node_modules/rc-calendar/es/util/index.js",
       "name": "./node_modules/rc-calendar/es/util/index.js",
@@ -16613,7 +16615,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../Base/BaseSelector": [
+  "./Base/BaseSelector": [
     {
       "id": "./node_modules/rc-tree-select/es/Base/BaseSelector.js",
       "name": "./node_modules/rc-tree-select/es/Base/BaseSelector.js",
@@ -16669,7 +16671,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../../SearchInput": [
+  "../SearchInput": [
     {
       "id": "./node_modules/rc-tree-select/es/SearchInput.js",
       "name": "./node_modules/rc-tree-select/es/SearchInput.js",
