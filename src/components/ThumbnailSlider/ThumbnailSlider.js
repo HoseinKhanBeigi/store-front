@@ -8,7 +8,8 @@ import { Icon } from "antd";
 type Props = {
   images: Array,
   direction: String,
-  isTouch: String
+  isTouch: String,
+  numberOfThumpImage: number
 };
 
 type State = {
@@ -27,7 +28,6 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     index: 0,
     sizeWidth: 486,
     sizeOfTranslate: 0,
-    numberOfThumpImage: 5,
     allIndex: [],
     swiperSlideWidth: 0,
     swiperSlideHeight: undefined,
@@ -44,8 +44,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   };
 
   componentDidMount() {
-    const { direction, isTouch } = this.props;
-    const { numberOfThumpImage } = this.state;
+    const { direction, isTouch, numberOfThumpImage } = this.props;
 
     if (numberOfThumpImage) {
       this.setState({
@@ -85,10 +84,10 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
     this.setState({
       swiperSlideHeight: rightResultForHeight,
-      sizeWidth: initialSizeOfSwiper.width,
-      numberOfThumpImage: Math.round(
-        thumbnailWrapper.width / (thumbnailSlide.width + 8)
-      )
+      sizeWidth: initialSizeOfSwiper.width
+      // numberOfThumpImage: Math.round(
+      //   thumbnailWrapper.width / (thumbnailSlide.width + 8)
+      // )
     });
 
     // handleTouch method for screen mobile and tablet
@@ -121,9 +120,9 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         swiperSlideHeight: rightResultForHeightresize,
         swiperSlideWidth: SizeOfSwiper.width,
         sizeWidth: SizeOfSwiper.width,
-        numberOfThumpImage: Math.round(
-          thumbnailWrapper.width / (thumbnailSlide.width + 8)
-        ),
+        // numberOfThumpImage: Math.round(
+        //   thumbnailWrapper.width / (thumbnailSlide.width + 8)
+        // ),
         sizeOfTranslate: 0
       });
     });
@@ -226,7 +225,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
             .getBoundingClientRect().width;
     if (index > 0) {
       this.setState({ index: index - 1, swiperSlideWidth: swiperSlide });
-      this.calculateTransform(thumbnailSlideList[index - 1], index - 1);
+      // this.calculateTransform(thumbnailSlideList[index - 1], index - 1);
     }
   };
 
@@ -252,126 +251,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         index: index + 1,
         swiperSlideWidth: swiperSlide
       });
-      this.calculateTransform(thumbnailSlideList[index + 1], index + 1);
-    }
-  };
-
-  calculateTransformX = (
-    thumbnailSlide,
-    thumbnailWrapper,
-    numberOfThumpImage
-  ) => {
-    const positionDetected = thumbnailSlide.x;
-    const GETSIZE = thumbnailSlide.width + 8;
-    const firstPointClick = thumbnailWrapper.left;
-    const secondPoinClick =
-      thumbnailSlide.width * numberOfThumpImage +
-      8 * numberOfThumpImage +
-      thumbnailWrapper.left;
-
-    return {
-      positionDetected,
-      GETSIZE,
-      firstPointClick,
-      secondPoinClick
-    };
-  };
-
-  calculateTransformY = (thumbnailSlide, thumbnailContainer) => {
-    const positionDetected = thumbnailSlide.y;
-    const GETSIZE = thumbnailSlide.height + 22;
-    const firstPointClick = thumbnailContainer.top;
-
-    const secondPoinClick = thumbnailSlide.height * 3 + 22 * 3;
-
-    return {
-      positionDetected,
-      GETSIZE,
-      firstPointClick,
-      secondPoinClick
-    };
-  };
-
-  calculateTransform = (el, index) => {
-    const { direction } = this.props;
-    const { numberOfThumpImage, sizeOfTranslate } = this.state;
-    const thumbnailWrapper =
-      direction === "horizontal" &&
-      document.querySelector(".thumbnail-wrapper").getBoundingClientRect();
-    const thumbnailContainer =
-      direction === "vertical" &&
-      document
-        .querySelector(".thumbnail-containerVertical")
-        .getBoundingClientRect();
-    const thumbnailSlideList =
-      direction === "horizontal"
-        ? document.querySelectorAll(".thumbnail-slide")
-        : document.querySelectorAll(".thumbnail-slideVer");
-    const ElEMENT = el.target ? el.target.parentNode : el;
-    const thumbnailSlide = ElEMENT.getBoundingClientRect();
-
-    const calculateX =
-      direction === "horizontal" &&
-      this.calculateTransformX(
-        thumbnailSlide,
-        thumbnailWrapper,
-        numberOfThumpImage
-      );
-
-    const calculateY =
-      direction === "vertical" &&
-      this.calculateTransformY(thumbnailSlide, thumbnailContainer);
-
-    thumbnailSlideList.forEach((element, i) => {
-      element.classList.remove("thumbnail-slide-active");
-    });
-    ElEMENT.classList.add("thumbnail-slide-active");
-    if (direction === "horizontal") {
-      if (
-        Math.round(calculateX.positionDetected) ===
-        Math.round(calculateX.secondPoinClick)
-      ) {
-        this.setState({
-          numberOfThumpImage: numberOfThumpImage + 1,
-          sizeOfTranslate: sizeOfTranslate - calculateX.GETSIZE
-        });
-      }
-      if (index === 0) {
-        this.setState({
-          sizeOfTranslate: 0
-        });
-      } else if (
-        Math.round(calculateX.firstPointClick) ===
-        Math.round(thumbnailSlide.x + sizeOfTranslate)
-      ) {
-        this.setState({
-          sizeOfTranslate: sizeOfTranslate + calculateX.GETSIZE,
-          numberOfThumpImage: numberOfThumpImage - 1
-        });
-      }
-    }
-
-    if (direction === "vertical") {
-      if (
-        Math.round(calculateY.positionDetected) ===
-        Math.round(calculateY.secondPoinClick)
-      ) {
-        this.setState({
-          sizeOfTranslate: sizeOfTranslate - calculateY.GETSIZE
-        });
-      }
-      if (index === 0) {
-        this.setState({
-          sizeOfTranslate: 0
-        });
-      } else if (
-        Math.round(calculateY.firstPointClick) ===
-        Math.round(calculateY.positionDetected)
-      ) {
-        this.setState({
-          sizeOfTranslate: sizeOfTranslate + calculateY.GETSIZE
-        });
-      }
+      // this.calculateTransform(thumbnailSlideList[index + 1], index + 1);
     }
   };
 
@@ -432,10 +312,11 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       sizeOfTranslate,
       swiperSlideWidth,
       swiperSlideHeight,
-      numberOfThumpImage,
       clientX,
       clientY
     } = this.state;
+
+    const { numberOfThumpImage } = this.props;
 
     const newclientX = clientX;
     const newclientY = clientY;
@@ -544,7 +425,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
                 }
                 style={style}
                 onClick={e => {
-                  this.handleChangeTransform(e, i, images);
+                  this.handleChangeTransform(e, i);
                   this.handleChangeThumbnail(i);
                 }}
               >
