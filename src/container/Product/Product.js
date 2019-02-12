@@ -12,36 +12,13 @@ type State = {};
 
 class Product extends PureComponent<Props, State> {
   state = {
-    images: [
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo1,
-      logo2,
-      logo1,
-      logo2
-    ]
+    images: [logo1, logo2, logo1, logo2, logo1, logo2, logo1]
   };
 
   render() {
     const { images } = this.state;
     return (
-      <main className="mainOne">
-        <div className="standard-product-page-main product-page">
-          <div className="standard-product-container">
-            <ThumbnailSlider
-              images={images}
-              direction="vertical"
-              isTouch="true"
-            />
-          </div>
-        </div>
-      </main>
+      <ThumbnailSlider images={images} direction="vertical" isTouch="true" />
     );
   }
 }
