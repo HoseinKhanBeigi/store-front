@@ -40,7 +40,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     valueX: 0,
     objheY: undefined,
     secondIndex: 2,
-    firstIndex: 0
+    firstIndex: 0,
+    zoom: false
   };
 
   componentDidMount() {
@@ -68,26 +69,22 @@ class ThumbnailSlider extends PureComponent<Props, State> {
             .querySelector(".standard-product-column-leftVertical")
             .getBoundingClientRect();
 
-    const thumbnailWrapper =
-      direction === "horizontal" &&
-      document.querySelector(".thumbnail-wrapper").getBoundingClientRect();
-    const thumbnailSlide =
-      direction === "horizontal" &&
-      document.querySelector(".thumbnail-slide").getBoundingClientRect();
     const swiperSlide =
       direction === "horizontal"
         ? document.querySelector(".thumbnail-slide").getBoundingClientRect()
         : document.querySelector(".thumbnail-slideVer").getBoundingClientRect();
 
+    const newswiperSlide =
+      swiperSlide.height === 0 || swiperSlide.height === undefined
+        ? 133
+        : swiperSlide.height;
+
     const rightResultForHeight =
-      numberOfThumpImage * swiperSlide.height + numberOfThumpImage * 22;
+      numberOfThumpImage * newswiperSlide + numberOfThumpImage * 22;
 
     this.setState({
       swiperSlideHeight: rightResultForHeight,
       sizeWidth: initialSizeOfSwiper.width
-      // numberOfThumpImage: Math.round(
-      //   thumbnailWrapper.width / (thumbnailSlide.width + 8)
-      // )
     });
 
     // handleTouch method for screen mobile and tablet
@@ -120,13 +117,12 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         swiperSlideHeight: rightResultForHeightresize,
         swiperSlideWidth: SizeOfSwiper.width,
         sizeWidth: SizeOfSwiper.width,
-        // numberOfThumpImage: Math.round(
-        //   thumbnailWrapper.width / (thumbnailSlide.width + 8)
-        // ),
         sizeOfTranslate: 0
       });
     });
+  }
 
+  handleZoomer = () => {
     const ball = document.querySelector(".swiper-wrapper");
     const ballOrginal = document
       .querySelector(".swiper-wrapper")
@@ -150,17 +146,21 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     ball.addEventListener("mouseenter", exma);
 
     ball.addEventListener("mousedown", event => {
-      console.log(this.state.objheY, "objheY");
       const shiftX =
-        event.clientX - ball.getBoundingClientRect().x + ballOrginal.x;
+        event.clientX - ball.getBoundingClientRect().x + this.state.objheY.x;
       const shiftY =
         event.clientY - ball.getBoundingClientRect().y + this.state.objheY.y;
 
+      console.log(ball.getBoundingClientRect().y);
+      console.log(this.state.objheY);
+      console.log(event);
+
       const handleSetState = {
         getCalculate: e => {
+          console.log(e);
           this.setState({
             clientX: e.pageX - shiftX,
-            clientY: e.pageY - shiftY
+            clientY: e.clientY - shiftY
           });
         }
       };
@@ -175,18 +175,18 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
       ball.addEventListener("mouseup", e => {
         ball.removeEventListener("mousemove", calculateTransformZoom);
-        ball.removeEventListener("mouseenter", exma);
       });
 
       ball.addEventListener("mouseleave", () => {
         ball.removeEventListener("mousemove", calculateTransformZoom);
+        ball.removeEventListener("mouseenter", exma);
       });
     });
 
     document.querySelector(".swiper-wrapper").ondragstart = function() {
       return false;
     };
-  }
+  };
 
   handleTouch = () => {
     const allImages = document.querySelectorAll(".Img");
@@ -256,7 +256,6 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   };
 
   handleChangeTransform = (el, index) => {
-    console.log(el.target);
     const { secondIndex, sizeOfTranslate, firstIndex } = this.state;
     const { direction } = this.props;
 
@@ -305,6 +304,19 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     this.setState({ index: i });
   };
 
+  handleZoom = () => {
+    const clickBall = document
+      .querySelector(".swiper-wrapper")
+      .getBoundingClientRect();
+    this.setState({
+      zoom: true,
+      objheY: clickBall,
+      clientX: 0,
+      clientY: 0
+    });
+    this.handleZoomer();
+  };
+
   render() {
     const {
       index,
@@ -313,7 +325,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       swiperSlideWidth,
       swiperSlideHeight,
       clientX,
-      clientY
+      clientY,
+      zoom
     } = this.state;
 
     const { numberOfThumpImage } = this.props;
@@ -345,6 +358,17 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       transform: `translateX(${sizeOfTranslate}px)`
     };
 
+    const scale = zoom === false ? 1 : 2;
+
+    const zoomStyle = {
+      transform: `scale(${scale})`,
+      left: `${newclientX}px`,
+      top: `${newclientY}px`,
+      transition: "none 0s ease 0s"
+    };
+
+    const zoomer = zoom === true ? zoomStyle : {};
+
     const style = direction === "horizontal" ? styleHori : styleVer;
     const styleVER = direction === "vertical" ? styleVerContainer : {};
     const styleTransform = direction === "horizontal" ? transformX : transformY;
@@ -370,15 +394,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
           >
             <Icon type="right" className="arrow" />
           </button>
-          <ul
-            className="swiper-wrapper"
-            style={{
-              transform: `scale(2)`,
-              left: `${newclientX}px`,
-              top: `${newclientY}px`,
-              transition: "none 0s ease 0s"
-            }}
-          >
+          <ul className="swiper-wrapper" style={zoomer}>
             {images.map((el, i) => (
               <li
                 key={i}
@@ -394,7 +410,11 @@ class ThumbnailSlider extends PureComponent<Props, State> {
               </li>
             ))}
           </ul>
-          <button className="slider-trigger-zoom" type="button">
+          <button
+            className="slider-trigger-zoom"
+            type="button"
+            onClick={() => this.handleZoom()}
+          >
             <Icon type="zoom-in" className="zoomIn" />
           </button>
         </div>
