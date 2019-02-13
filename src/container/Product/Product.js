@@ -22,7 +22,8 @@ class Product extends PureComponent<Props, State> {
         images={images}
         direction="horizontal"
         isTouch="true"
-        numberOfThumpImage={5}
+        gapBetweenThumbnail={30}
+        numberOfThumpImage={6}
         previousIcon={<Icon type="left" className="arrow" />}
         nextIcon={<Icon type="right" className="arrow" />}
         zoomInIcon={<Icon type="zoom-in" className="arrow" />}
