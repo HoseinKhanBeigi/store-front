@@ -1,12 +1,12 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
-import { ThumbnailSlider } from "../../components";
-
-import logo1 from "../../theme/pic1.jpeg";
-import logo2 from "../../theme/pic2.jpeg";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { Icon } from 'antd';
+import { ThumbnailSlider } from '../../components';
+import logo1 from '../../theme/pic1.jpeg';
+import logo2 from '../../theme/pic2.jpeg';
 
 type State = {};
 
@@ -23,6 +23,10 @@ class Product extends PureComponent<Props, State> {
         direction="horizontal"
         isTouch="true"
         numberOfThumpImage={5}
+        previousIcon={<Icon type="left" className="arrow" />}
+        nextIcon={<Icon type="right" className="arrow" />}
+        zoomInIcon={<Icon type="zoom-in" className="arrow" />}
+        zoomOutIcon={<Icon type="zoom-out" className="arrow" />}
       />
     );
   }

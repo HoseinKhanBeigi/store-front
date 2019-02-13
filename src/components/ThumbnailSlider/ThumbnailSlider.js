@@ -9,7 +9,11 @@ type Props = {
   images: Array,
   direction: String,
   isTouch: String,
-  numberOfThumpImage: number
+  numberOfThumpImage: number,
+  zoomInIcon: Element,
+  zoomOutIcon: Element,
+  nextIcon: Element,
+  previousIcon: Element
 };
 
 type State = {
@@ -150,7 +154,6 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
       const handleSetState = {
         getCalculate: e => {
-          console.log(e);
           this.setState({
             clientX: e.pageX - shiftX,
             clientY: e.clientY - shiftY
@@ -333,7 +336,13 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       zoom
     } = this.state;
 
-    const { numberOfThumpImage } = this.props;
+    const {
+      numberOfThumpImage,
+      zoomInIcon,
+      nextIcon,
+      zoomOutIcon,
+      previousIcon
+    } = this.props;
 
     const newclientX = clientX;
     const newclientY = clientY;
@@ -390,13 +399,13 @@ class ThumbnailSlider extends PureComponent<Props, State> {
             className="swiper-button-prev"
             onClick={() => this.handlePrevious()}
           >
-            <Icon type="left" className="arrow" />
+            {previousIcon}
           </button>
           <button
             className="swiper-button-next"
             onClick={() => this.handleNext()}
           >
-            <Icon type="right" className="arrow" />
+            {nextIcon}
           </button>
           <ul className="swiper-wrapper" style={zoomer}>
             {images.map((el, i) => (
@@ -423,7 +432,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
                 : () => this.handleZoomOut()
             }
           >
-            <Icon type="zoom-in" className="zoomIn" />
+            {this.state.zoom === false ? zoomInIcon : zoomOutIcon}
           </button>
         </div>
 
