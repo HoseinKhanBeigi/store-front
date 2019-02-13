@@ -20,7 +20,7 @@ class Product extends PureComponent<Props, State> {
     return (
       <ThumbnailSlider
         images={images}
-        direction="vertical"
+        direction="horizontal"
         isTouch="true"
         numberOfThumpImage={5}
       />

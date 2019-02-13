@@ -124,9 +124,6 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
   handleZoomer = () => {
     const ball = document.querySelector(".swiper-wrapper");
-    const ballOrginal = document
-      .querySelector(".swiper-wrapper")
-      .getBoundingClientRect();
 
     const objeHeight = {
       objeHeightY: () => {
@@ -150,10 +147,6 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         event.clientX - ball.getBoundingClientRect().x + this.state.objheY.x;
       const shiftY =
         event.clientY - ball.getBoundingClientRect().y + this.state.objheY.y;
-
-      console.log(ball.getBoundingClientRect().y);
-      console.log(this.state.objheY);
-      console.log(event);
 
       const handleSetState = {
         getCalculate: e => {
@@ -227,6 +220,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       this.setState({ index: index - 1, swiperSlideWidth: swiperSlide });
       // this.calculateTransform(thumbnailSlideList[index - 1], index - 1);
     }
+    this.handleZoomOut();
   };
 
   handleNext = () => {
@@ -253,6 +247,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       });
       // this.calculateTransform(thumbnailSlideList[index + 1], index + 1);
     }
+
+    this.handleZoomOut();
   };
 
   handleChangeTransform = (el, index) => {
@@ -286,6 +282,8 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       });
     }
 
+    this.handleZoomOut();
+
     const swiperSlide =
       direction === "horizontal"
         ? document
@@ -304,7 +302,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     this.setState({ index: i });
   };
 
-  handleZoom = () => {
+  handleZoomin = () => {
     const clickBall = document
       .querySelector(".swiper-wrapper")
       .getBoundingClientRect();
@@ -315,6 +313,12 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       clientY: 0
     });
     this.handleZoomer();
+  };
+
+  handleZoomOut = () => {
+    this.setState({
+      zoom: false
+    });
   };
 
   render() {
@@ -413,7 +417,11 @@ class ThumbnailSlider extends PureComponent<Props, State> {
           <button
             className="slider-trigger-zoom"
             type="button"
-            onClick={() => this.handleZoom()}
+            onClick={
+              this.state.zoom === false
+                ? () => this.handleZoomin()
+                : () => this.handleZoomOut()
+            }
           >
             <Icon type="zoom-in" className="zoomIn" />
           </button>
