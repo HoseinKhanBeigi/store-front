@@ -5291,6 +5291,12 @@
       "publicPath": "/assets/main.css"
     },
     {
+      "id": "./node_modules/async-validator/es/util.js",
+      "name": "./node_modules/async-validator/es/util.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
       "id": "./node_modules/rc-rate/es/util.js",
       "name": "./node_modules/rc-rate/es/util.js",
       "file": "main.css",
@@ -5353,6 +5359,12 @@
     {
       "id": "./node_modules/rc-select/es/util.js",
       "name": "./node_modules/rc-select/es/util.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    },
+    {
+      "id": "./node_modules/async-validator/es/util.js",
+      "name": "./node_modules/async-validator/es/util.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     },
@@ -5787,20 +5799,8 @@
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
       "id": "./node_modules/core-js/modules/_wks-ext.js",
       "name": "./node_modules/core-js/modules/_wks-ext.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
-      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -6511,7 +6511,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../modules/web.dom.iterable": [
+  "../../modules/web.dom.iterable": [
     {
       "id": "./node_modules/core-js/library/modules/web.dom.iterable.js",
       "name": "./node_modules/core-js/library/modules/web.dom.iterable.js",
@@ -6535,6 +6535,20 @@
     {
       "id": "./node_modules/core-js/library/modules/es6.array.iterator.js",
       "name": "./node_modules/core-js/library/modules/es6.array.iterator.js",
+      "file": "main.js",
+      "publicPath": "/assets/main.js"
+    }
+  ],
+  "../../modules/_wks-ext": [
+    {
+      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "file": "main.css",
+      "publicPath": "/assets/main.css"
+    },
+    {
+      "id": "./node_modules/core-js/library/modules/_wks-ext.js",
+      "name": "./node_modules/core-js/library/modules/_wks-ext.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -10763,20 +10777,8 @@
       "publicPath": "/assets/main.css"
     },
     {
-      "id": "./node_modules/async-validator/es/util.js",
-      "name": "./node_modules/async-validator/es/util.js",
-      "file": "main.css",
-      "publicPath": "/assets/main.css"
-    },
-    {
       "id": "./node_modules/rc-calendar/es/util/index.js",
       "name": "./node_modules/rc-calendar/es/util/index.js",
-      "file": "main.js",
-      "publicPath": "/assets/main.js"
-    },
-    {
-      "id": "./node_modules/async-validator/es/util.js",
-      "name": "./node_modules/async-validator/es/util.js",
       "file": "main.js",
       "publicPath": "/assets/main.js"
     }
@@ -14575,7 +14577,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "../modal/locale": [
+  "./locale": [
     {
       "id": "./node_modules/antd/es/modal/locale.js",
       "name": "./node_modules/antd/es/modal/locale.js",
@@ -17327,7 +17329,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./UnicodeBidi": [
+  "fbjs/lib/UnicodeBidi": [
     {
       "id": "./node_modules/fbjs/lib/UnicodeBidi.js",
       "name": "./node_modules/fbjs/lib/UnicodeBidi.js",
@@ -17341,7 +17343,7 @@
       "publicPath": "/assets/main.js"
     }
   ],
-  "./UnicodeBidiDirection": [
+  "fbjs/lib/UnicodeBidiDirection": [
     {
       "id": "./node_modules/fbjs/lib/UnicodeBidiDirection.js",
       "name": "./node_modules/fbjs/lib/UnicodeBidiDirection.js",
