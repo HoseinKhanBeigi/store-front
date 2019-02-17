@@ -1,29 +1,29 @@
 /* @flow */
 
-import path from 'path';
-import logger from 'morgan';
-import express from 'express';
-import compression from 'compression';
-import helmet from 'helmet';
-import hpp from 'hpp';
-import favicon from 'serve-favicon';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
-import { renderRoutes, matchRoutes } from 'react-router-config';
-import { Provider } from 'react-redux';
-import Loadable from 'react-loadable';
-import { getBundles } from 'react-loadable/webpack';
+import path from "path";
+import logger from "morgan";
+import express from "express";
+import compression from "compression";
+import helmet from "helmet";
+import hpp from "hpp";
+import favicon from "serve-favicon";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+import { renderRoutes, matchRoutes } from "react-router-config";
+import { Provider } from "react-redux";
+import Loadable from "react-loadable";
+import { getBundles } from "react-loadable/webpack";
 
-import Helmet from 'react-helmet';
-import chalk from 'chalk';
-import openBrowser from 'react-dev-utils/openBrowser';
-import { createMemoryHistory } from 'history';
+import Helmet from "react-helmet";
+import chalk from "chalk";
+import openBrowser from "react-dev-utils/openBrowser";
+import { createMemoryHistory } from "history";
 
-import configureStore from './utils/configureStore';
-import renderHtml from './utils/renderHtml';
-import routes from './routes';
-import { port, host } from './config';
+import configureStore from "./utils/configureStore";
+import renderHtml from "./utils/renderHtml";
+import routes from "./routes";
+import { port, host } from "./config";
 
 const app = express();
 
@@ -35,41 +35,41 @@ app.use(hpp());
 app.use(compression());
 
 // Use for http request debug (show errors only)
-app.use(logger('dev', { skip: (req, res) => res.statusCode < 400 }));
-app.use(favicon(path.resolve(process.cwd(), 'public/favicon.ico')));
+app.use(logger("dev", { skip: (req, res) => res.statusCode < 400 }));
+// app.use(favicon(path.resolve(process.cwd(), 'public/favicon.ico')));
 
 if (!__DEV__) {
-  app.use(express.static(path.resolve(process.cwd(), 'public')));
+  app.use(express.static(path.resolve(process.cwd(), "public")));
 } else {
   /* Run express as webpack dev server */
 
-  const webpack = require('webpack');
-  const webpackConfig = require('../tools/webpack/config.babel');
+  const webpack = require("webpack");
+  const webpackConfig = require("../tools/webpack/config.babel");
   const compiler = webpack(webpackConfig);
 
   compiler.apply(new webpack.ProgressPlugin());
 
   app.use(
-    require('webpack-dev-middleware')(compiler, {
+    require("webpack-dev-middleware")(compiler, {
       publicPath: webpackConfig.output.publicPath,
-      headers: { 'Access-Control-Allow-Origin': '*' },
+      headers: { "Access-Control-Allow-Origin": "*" },
       hot: true,
       quiet: true, // Turn it on for friendly-errors-webpack-plugin
       noInfo: true,
-      stats: 'minimal',
+      stats: "minimal",
       serverSideRender: true
     })
   );
 
   app.use(
-    require('webpack-hot-middleware')(compiler, {
+    require("webpack-hot-middleware")(compiler, {
       log: false // Turn it off for friendly-errors-webpack-plugin
     })
   );
 }
 
 // Register server-side rendering middleware
-app.get('*', (req, res) => {
+app.get("*", (req, res) => {
   const history = createMemoryHistory();
   const store = configureStore(history);
 
@@ -113,33 +113,33 @@ app.get('*', (req, res) => {
       // Check if the render result contains a redirect, if so we need to set
       // the specific status and redirect header and end the response
       if (staticContext.url) {
-        res.status(301).setHeader('Location', staticContext.url);
+        res.status(301).setHeader("Location", staticContext.url);
         res.end();
 
         return;
       }
 
       // Check page status
-      const status = staticContext.status === '404' ? 404 : 200;
+      const status = staticContext.status === "404" ? 404 : 200;
 
       const head = Helmet.renderStatic();
       const initialState = store.getState();
       const htmlContent = renderToString(AppComponent);
 
       // $FlowFixMe: isn't an issue
-      const loadableManifest = require('../public/loadable-assets.json');
+      const loadableManifest = require("../public/loadable-assets.json");
       const bundles = getBundles(loadableManifest, modules);
       let assets = bundles
         .map(({ publicPath }) =>
-          !publicPath.includes('main') ? publicPath : ''
+          !publicPath.includes("main") ? publicPath : ""
         )
         // In development, main.css and main.js are webpack default file bundling name
         // we put these files into assets with publicPath
-        .concat(['/assets/main.css', '/assets/main.js']);
+        .concat(["/assets/main.css", "/assets/main.js"]);
 
       if (!__DEV__) {
         // $FlowFixMe: isn't an issue
-        const webpackManifest = require('../public/webpack-assets.json');
+        const webpackManifest = require("../public/webpack-assets.json");
         assets = bundles
           .map(({ publicPath }) => publicPath)
           .concat(
@@ -154,7 +154,7 @@ app.get('*', (req, res) => {
         .status(status)
         .send(renderHtml(head, assets, htmlContent, initialState));
     } catch (err) {
-      res.status(404).send('Not Found :(');
+      res.status(404).send("Not Found :(");
 
       console.error(chalk.red(`==> 😭  Rendering routes error: ${err}`));
     }
@@ -177,6 +177,6 @@ if (port) {
   });
 } else {
   console.error(
-    chalk.red('==> 😭  OMG!!! No PORT environment variable has been specified')
+    chalk.red("==> 😭  OMG!!! No PORT environment variable has been specified")
   );
 }
