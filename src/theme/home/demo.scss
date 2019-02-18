@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  min-width: 1000px;
+}
+
 body {
   /* Grid gap */
   --gap: 10px;
@@ -157,6 +161,16 @@ a:focus {
   margin: 0 0 0 auto;
 }
 
+.grim__item-inner {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  position: relative;
+  opacity: 0;
+}
+
 /* Top Navigation Style */
 .codrops-links {
   position: relative;
@@ -196,6 +210,7 @@ a:focus {
 .grid {
   display: grid;
   width: calc(100% - 6em);
+  min-width: calc(100% - 6em);
   height: calc(100vh - 6em);
   grid-auto-rows: calc((calc(100vh - 6em) / 30) - var(--gap));
   grid-auto-columns: calc((calc(100% - 6em) / 30) - var(--gap));
@@ -224,6 +239,14 @@ a:focus {
 .grid__item {
   position: relative;
   padding: 1em;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: transform 0.2s ease-out;
+}
+.grid__item1 {
+  position: relative;
+  padding: 4px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -338,7 +361,7 @@ a:focus {
   background-color: #6d6d6d;
 }
 .grid--layout-1 .grid__item:nth-child(4) {
-  grid-area: 22 / 10 / 29 / 15;
+  grid-area: 22 / 10 / 45 / 15;
   background-color: rgb(78, 77, 77);
 }
 .grid--layout-1 .grid__item:nth-child(5) {
@@ -396,6 +419,11 @@ a:focus {
 .grid--layout-1 .grid__item--nav-next {
   grid-area: 24 / 15 / 29 / 20;
   background-color: #964b34;
+}
+
+.grid--layout-1 .grid__item1 {
+  // grid-area: 12 / 11 / 8 / 13;
+  background-color: white;
 }
 
 /* Demo themes */
@@ -456,72 +484,4 @@ a:focus {
   .grid:not(.grid--animating)
   div.grid__item:not(.grid__item--nav):hover::after {
   opacity: 1;
-}
-
-@media screen and (max-width: 60em) {
-  .message {
-    display: block;
-  }
-  .frame {
-    display: block;
-    height: auto;
-    position: relative;
-    text-align: center;
-  }
-  .codrops-header {
-    flex-direction: column;
-  }
-  .codrops-header__title {
-    padding: 1em 0;
-  }
-  .github {
-    margin: 0 auto;
-  }
-  .demos {
-    padding: 1em 0 0;
-  }
-  .demo {
-    margin: 0 0.5em;
-  }
-  main .grid {
-    height: auto;
-    top: auto !important;
-    width: 100%;
-    left: auto !important;
-    padding: 0 2em;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-    grid-auto-rows: auto !important;
-    grid-auto-columns: auto !important;
-    grid-gap: 1vw;
-    margin: 0 0 5em;
-  }
-
-  .grid__item {
-    min-height: 50px;
-    grid-area: auto !important;
-  }
-
-  .grid__item br {
-    content: "";
-    display: none;
-  }
-
-  .grid__item--name,
-  .grid__item--title,
-  .grid__item--text {
-    grid-column: 1 / -1 !important;
-    justify-content: flex-start;
-    min-height: 0;
-    padding: 1vh 0;
-    text-align: left !important;
-  }
-
-  .grid__item--name {
-    grid-row: 1 / -1 !important;
-  }
-
-  .grid .grid__item--title {
-    -webkit-writing-mode: horizontal-tb;
-    writing-mode: horizontal-tb;
-  }
 }
