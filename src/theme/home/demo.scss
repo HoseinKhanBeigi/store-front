@@ -7,7 +7,7 @@
 body {
   /* Grid gap */
   --gap: 10px;
-
+  min-width: 1000px;
   background-color: rgb(37, 37, 37);
 }
 
@@ -157,6 +157,16 @@ a:focus {
   margin: 0 0 0 auto;
 }
 
+.grim__item-inner {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  position: relative;
+  opacity: 0;
+}
+
 /* Top Navigation Style */
 .codrops-links {
   position: relative;
@@ -192,17 +202,22 @@ a:focus {
   color: var(--link-text-hover);
 }
 
+
+
 /* Grid */
 .grid {
   display: grid;
-  width: calc(100% - 6em);
-  height: calc(100vh - 6em);
-  grid-auto-rows: calc((calc(100vh - 6em) / 30) - var(--gap));
-  grid-auto-columns: calc((calc(100% - 6em) / 30) - var(--gap));
+  width: calc(100% - 6px);
+  height: calc(100vh - 6px);
+  min-width: 1600px;
+  min-height: 970px;
+
+  // grid-auto-rows: calc((calc(100vh - 6em) / 30) - var(--gap));
+  grid-auto-columns: calc((calc(100%  / 30) - var(--gap));
   justify-content: center;
   align-content: center;
   grid-gap: var(--gap);
-  pointer-events: none;
+
 }
 
 .no-js .grid {
@@ -224,6 +239,23 @@ a:focus {
 .grid__item {
   position: relative;
   padding: 1em;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: transform 0.2s ease-out;
+}
+.grid__item1 {
+  position: relative;
+  padding: 4px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  transition: transform 0.2s ease-out;
+}
+
+.grid__item2 {
+  position: relative;
+  padding: 4px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -330,7 +362,7 @@ a:focus {
   background-color: #8f8f8f;
 }
 .grid--layout-1 .grid__item:nth-child(2) {
-  grid-area: 22 / 6 / 28 / 10;
+  grid-area: 22 / 5 / 28 / 10;
   background-color: #a5a5a5;
 }
 .grid--layout-1 .grid__item:nth-child(3) {
@@ -338,7 +370,7 @@ a:focus {
   background-color: #6d6d6d;
 }
 .grid--layout-1 .grid__item:nth-child(4) {
-  grid-area: 22 / 10 / 29 / 15;
+  grid-area: 22 / 10 / 36 / 15;
   background-color: rgb(78, 77, 77);
 }
 .grid--layout-1 .grid__item:nth-child(5) {
@@ -398,6 +430,16 @@ a:focus {
   background-color: #964b34;
 }
 
+.grid--layout-1 .grid__item1 {
+  // grid-area: 12 / 11 / 8 / 13;
+  background-color: white;
+}
+
+.grid--layout-1 .grid__item2 {
+  // grid-area: 12 / 11 / 8 / 13;
+  background-color: white;
+}
+
 /* Demo themes */
 .demo-2 {
   --gap: 10px;
@@ -442,6 +484,7 @@ a:focus {
   content: "";
   position: absolute;
   width: 100%;
+  min-width: 100%;
   height: 100%;
   top: 0;
   left: 0;
@@ -458,70 +501,40 @@ a:focus {
   opacity: 1;
 }
 
-@media screen and (max-width: 60em) {
-  .message {
-    display: block;
-  }
-  .frame {
-    display: block;
-    height: auto;
-    position: relative;
-    text-align: center;
-  }
-  .codrops-header {
-    flex-direction: column;
-  }
-  .codrops-header__title {
-    padding: 1em 0;
-  }
-  .github {
-    margin: 0 auto;
-  }
-  .demos {
-    padding: 1em 0 0;
-  }
-  .demo {
-    margin: 0 0.5em;
-  }
-  main .grid {
-    height: auto;
-    top: auto !important;
-    width: 100%;
-    left: auto !important;
-    padding: 0 2em;
-    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-    grid-auto-rows: auto !important;
-    grid-auto-columns: auto !important;
-    grid-gap: 1vw;
-    margin: 0 0 5em;
-  }
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
 
-  .grid__item {
-    min-height: 50px;
-    grid-area: auto !important;
-  }
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
-  .grid__item br {
-    content: "";
-    display: none;
-  }
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
 
-  .grid__item--name,
-  .grid__item--title,
-  .grid__item--text {
-    grid-column: 1 / -1 !important;
-    justify-content: flex-start;
-    min-height: 0;
-    padding: 1vh 0;
-    text-align: left !important;
-  }
-
-  .grid__item--name {
-    grid-row: 1 / -1 !important;
-  }
-
-  .grid .grid__item--title {
-    -webkit-writing-mode: horizontal-tb;
-    writing-mode: horizontal-tb;
-  }
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
