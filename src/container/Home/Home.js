@@ -49,7 +49,7 @@ class Home extends PureComponent<State> {
             el.classList.add("revealer--left"),
             el.classList.add("revealer--showX")
           ),
-        0
+        500
       );
     });
 
@@ -91,26 +91,7 @@ class Home extends PureComponent<State> {
 
     return (
       <div>
-        <button
-          onClick={() => {
-            this.handleOpen();
-          }}
-        >
-          open
-        </button>
-        <button
-          onClick={() => {
-            this.handleClose();
-          }}
-        >
-          close
-        </button>
-
         <main className="maino">
-          <div className="tooltip">
-            Hover over me
-            <span className="tooltiptext">Tooltip text</span>
-          </div>
           <div
             className="grid grid--layout-1"
             style={{ opacity: opacityValue }}
@@ -144,8 +125,10 @@ class Home extends PureComponent<State> {
                   className="grim__item-desc"
                   style={{
                     textAlign: "center",
-                    fontFamily: "monospace",
+                    fontFamily: "unset",
                     display: "flex",
+                    fontSize: "15px",
+                    lineHeight: "22px",
                     flexDirection: "column"
                   }}
                 >
@@ -165,19 +148,18 @@ class Home extends PureComponent<State> {
                 <span
                   className="grim__item-desc"
                   style={{
-                    fontFamily: "monospace"
+                    fontFamily: "unset",
+                    lineHeight: "28px",
+                    fontSize: "15px"
                   }}
                 >
                   javascript engineer specialist with 4+ experience at 2
                   company.profetional experience in developing compelex Element
                   in any web & webApp based on js-css-html with along tech like
                   react-redux Vue-VueX angular. seeking to further career by
-                  growing with passion for the learning new things.
-                  <span style={{ color: "black", fontSize: "22px" }}>
-                    in currently i fucusing in my homeWork implimenting and
-                    create any Component.with js/css/html based on react-redux
-                    or any SPA
-                  </span>
+                  growing with passion for the learning new things. in currently
+                  i fucusing in my homeWork implimenting and create any
+                  Component with js/css/html based on react-redux or any SPA
                 </span>
               </div>
             </div>
@@ -201,7 +183,7 @@ class Home extends PureComponent<State> {
                   javascript developer at datisParse datisPars.com develop
                   functionality for make features and improve bugs with using js
                   with along dependencies into app which developed with polymer
-                  and after time does turn change to react-redux
+                  and after time we decided to change it to react-redux
                 </span>
               </div>
             </div>

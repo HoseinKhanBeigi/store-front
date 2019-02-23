@@ -64,8 +64,7 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
-        "PORT": 8080,
-        "NODE_HOST": "https://portfolio-hoseinkhanbeigi.herokuapp.com/"
+        "PORT": 8080
       }
     },
     "build": {
