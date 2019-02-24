@@ -501,6 +501,8 @@ a:focus {
   opacity: 1;
 }
 
+button:focus {outline:0;}
+
 .tooltip {
   position: relative;
   display: inline-block;

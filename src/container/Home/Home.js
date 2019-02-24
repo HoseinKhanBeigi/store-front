@@ -15,7 +15,9 @@ class Home extends PureComponent<State> {
   state = {
     data: "Home",
     hidden: true,
-    opacityValue: 0,
+    opacityValue: 1,
+    valueOpacity: 0,
+    node: 0,
     skills: [
       { name: "javascript/html/css/sass", num: 95 },
       { name: "react/vue/angular", num: 90 },
@@ -23,20 +25,15 @@ class Home extends PureComponent<State> {
       { name: "webpack", num: 70 },
       { name: "mongoDB", num: 40 },
       { name: "python/ruby", num: 30 },
-      { name: "webSocket/RabbitMQ", num: 70 },
-      { name: "GraphQL/Apollo", num: 70 },
-      { name: "jest", num: 70 }
+      { name: "webSocket/RabbitMQ", num: 50 },
+      { name: "GraphQL/Apollo", num: 50 },
+      { name: "jest", num: 50 }
     ]
   };
 
   componentDidMount() {
-    this.handleOpen();
-
-    const portfoli1 = document.querySelector(".portfoli1");
-
-    portfoli1.addEventListener("mouseenter", () => {
-      console.log("hii");
-    });
+    // // this.handleOpen();
+    // console.log(this.handleOpen());
   }
 
   handlePicesOpen = el =>
@@ -54,7 +51,6 @@ class Home extends PureComponent<State> {
     });
 
   handleOpen = async () => {
-    this.setState({ opacityValue: 1 });
     const newElementAll = document.querySelectorAll(".revealer");
     for (let i = 0; i < newElementAll.length; i++) {
       await this.handlePicesOpen(newElementAll[i]);
@@ -82,8 +78,15 @@ class Home extends PureComponent<State> {
     }
   };
 
+  handleOpenSync = () => {
+    this.setState({ node: 1, opacityValue: 0 });
+    this.handleOpen().then(() => {
+      this.setState({ valueOpacity: 1 });
+    });
+  };
+
   render() {
-    const { data, opacityValue } = this.state;
+    const { data, valueOpacity, node, opacityValue } = this.state;
 
     const symbol = (
       <polygon points="14.1333333 2.61666667 18.9333333 7.41666667 0 7.41666667 0 10.0833333 18.9333333 10.0833333 14.1333333 14.8833333 16 16.75 24 8.75 16 0.75" />
@@ -91,11 +94,28 @@ class Home extends PureComponent<State> {
 
     return (
       <div>
-        <main className="maino">
-          <div
-            className="grid grid--layout-1"
-            style={{ opacity: opacityValue }}
-          >
+        <button
+          onClick={() => {
+            this.handleOpenSync();
+          }}
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "25%",
+            transform: "translateX(-50%)",
+            backgroundColor: "transparent",
+            border: "none",
+            fontSize: "300px",
+            zIndex: "99999",
+            fontFamily: "monospace",
+            opacity: `${opacityValue}`,
+            transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+          }}
+        >
+          open
+        </button>
+        <main className="maino" style={{ opacity: `${node}` }}>
+          <div className="grid grid--layout-1">
             <div className="grid__item" style={{ display: "none" }}>
               <div className="revealer revealer--right revealer--hideX" />
               <div
@@ -129,7 +149,9 @@ class Home extends PureComponent<State> {
                     display: "flex",
                     fontSize: "15px",
                     lineHeight: "22px",
-                    flexDirection: "column"
+                    flexDirection: "column",
+                    opacity: `${valueOpacity}`,
+                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
                   }}
                 >
                   <span> Address: tehran - iran</span>
@@ -150,7 +172,9 @@ class Home extends PureComponent<State> {
                   style={{
                     fontFamily: "unset",
                     lineHeight: "28px",
-                    fontSize: "15px"
+                    fontSize: "15px",
+                    opacity: `${valueOpacity}`,
+                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
                   }}
                 >
                   javascript engineer specialist with 4+ experience at 2
@@ -163,14 +187,22 @@ class Home extends PureComponent<State> {
                 </span>
               </div>
             </div>
-            <Skilll skills={this.state.skills} />
+            <Skilll skills={this.state.skills} valueOpacity={valueOpacity} />
             <div className="grid__item">
               <div className="revealer revealer--right revealer--hideX" />
               <div
                 className="grim__item-inner"
                 style={{ opacity: 1, transform: `translateY(${0}%)` }}
               >
-                <h3 className="grim__item-title"> hossein khan beigi</h3>
+                <h3
+                  className="grim__item-title"
+                  style={{
+                    opacity: `${valueOpacity}`,
+                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                  }}
+                >
+                  hossein khan beigi
+                </h3>
               </div>
             </div>
             <div className="grid__item">
@@ -179,7 +211,13 @@ class Home extends PureComponent<State> {
                 className="grim__item-inner"
                 style={{ opacity: 1, transform: `translateY(${0}%)` }}
               >
-                <span className="grim__item-desc">
+                <span
+                  className="grim__item-desc"
+                  style={{
+                    opacity: `${valueOpacity}`,
+                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                  }}
+                >
                   javascript developer at datisParse datisPars.com develop
                   functionality for make features and improve bugs with using js
                   with along dependencies into app which developed with polymer
@@ -193,7 +231,13 @@ class Home extends PureComponent<State> {
                 className="grim__item-inner"
                 style={{ opacity: 1, transform: `translateY(${0}%)` }}
               >
-                <span className="grim__item-desc">
+                <span
+                  className="grim__item-desc"
+                  style={{
+                    opacity: `${valueOpacity}`,
+                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                  }}
+                >
                   react developer at RoundTableApp roundtableapps.com develop
                   functionality for make features and improve bugs and convert
                   wireFrame to html/css with using js with along dependencies.
@@ -207,7 +251,15 @@ class Home extends PureComponent<State> {
                 className="grim__item-inner"
                 style={{ opacity: 1, transform: `translateY(${0}%)` }}
               >
-                <h3 className="grim__item-title">Experience</h3>
+                <h3
+                  className="grim__item-title"
+                  style={{
+                    opacity: `${valueOpacity}`,
+                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                  }}
+                >
+                  Experience
+                </h3>
                 <span className="grim__item-desc" />
               </div>
             </div>
@@ -217,7 +269,15 @@ class Home extends PureComponent<State> {
                 className="grim__item-inner"
                 style={{ opacity: 1, transform: `translateY(${0}%)` }}
               >
-                <h3 className="grim__item-title">portfolio</h3>
+                <h3
+                  className="grim__item-title"
+                  style={{
+                    opacity: `${valueOpacity}`,
+                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                  }}
+                >
+                  portfolio
+                </h3>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <div className="tooltip">
                     <div
