@@ -1,8 +1,8 @@
 /* @flow */
 
-import React, { PureComponent } from 'react';
-import { compose } from 'redux';
-import { withRouter } from 'react-router-dom';
+import React, { PureComponent } from "react";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
 
 type Props = {
   images: Array,
@@ -64,25 +64,25 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     }
 
     const thumbnailSlideList =
-      direction === 'horizontal'
-        ? document.querySelectorAll('.thumbnail-slide')
-        : document.querySelectorAll('.thumbnail-slideVer');
+      direction === "horizontal"
+        ? document.querySelectorAll(".thumbnail-slide")
+        : document.querySelectorAll(".thumbnail-slideVer");
 
-    thumbnailSlideList[0].classList.add('thumbnail-slide-active');
+    thumbnailSlideList[0].classList.add("thumbnail-slide-active");
 
     const initialSizeOfSwiper =
-      direction === 'horizontal'
+      direction === "horizontal"
         ? document
-            .querySelector('.standard-product-column-left')
+            .querySelector(".standard-product-column-left")
             .getBoundingClientRect()
         : document
-            .querySelector('.standard-product-column-leftVertical')
+            .querySelector(".standard-product-column-leftVertical")
             .getBoundingClientRect();
 
     const swiperSlide =
-      direction === 'horizontal'
-        ? document.querySelector('.thumbnail-slide').getBoundingClientRect()
-        : document.querySelector('.thumbnail-slideVer').getBoundingClientRect();
+      direction === "horizontal"
+        ? document.querySelector(".thumbnail-slide").getBoundingClientRect()
+        : document.querySelector(".thumbnail-slideVer").getBoundingClientRect();
 
     const newswiperSlide =
       swiperSlide.height === 0 || swiperSlide.height === undefined
@@ -99,26 +99,28 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     });
 
     // handleTouch method for screen mobile and tablet
-    if (isTouch !== 'false') {
+    if (isTouch !== "false") {
       this.handleTouch();
     }
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       const { direction } = this.props;
       const SizeOfSwiper =
-        direction === 'horizontal'
+        direction === "horizontal"
           ? document
-              .querySelector('.standard-product-column-left')
+              .querySelector(".standard-product-column-left")
               .getBoundingClientRect()
           : document
-              .querySelector('.standard-product-column-leftVertical')
+              .querySelector(".standard-product-column-leftVertical")
               .getBoundingClientRect();
 
+      console.log(SizeOfSwiper);
+
       const swiperSlideResize =
-        direction === 'horizontal'
-          ? document.querySelector('.thumbnail-slide').getBoundingClientRect()
+        direction === "horizontal"
+          ? document.querySelector(".thumbnail-slide").getBoundingClientRect()
           : document
-              .querySelector('.thumbnail-slideVer')
+              .querySelector(".thumbnail-slideVer")
               .getBoundingClientRect();
 
       const rightResultForHeightresize =
@@ -135,12 +137,12 @@ class ThumbnailSlider extends PureComponent<Props, State> {
   }
 
   handleZoomer = () => {
-    const ball = document.querySelector('.swiper-wrapper');
+    const ball = document.querySelector(".swiper-wrapper");
 
     const objeHeight = {
       objeHeightY: () => {
         const clickBall = document
-          .querySelector('.swiper-wrapper')
+          .querySelector(".swiper-wrapper")
           .getBoundingClientRect();
         this.setState({
           objheY: clickBall
@@ -152,9 +154,9 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       objeHeight.objeHeightY();
     }
 
-    ball.addEventListener('mouseenter', exma);
+    ball.addEventListener("mouseenter", exma);
 
-    ball.addEventListener('mousedown', event => {
+    ball.addEventListener("mousedown", event => {
       const shiftX =
         event.clientX - ball.getBoundingClientRect().x + this.state.objheY.x;
       const shiftY =
@@ -175,32 +177,32 @@ class ThumbnailSlider extends PureComponent<Props, State> {
         handleSetState.getCalculate(e);
       }
 
-      ball.addEventListener('mousemove', calculateTransformZoom);
+      ball.addEventListener("mousemove", calculateTransformZoom);
 
-      ball.addEventListener('mouseup', e => {
-        ball.removeEventListener('mousemove', calculateTransformZoom);
+      ball.addEventListener("mouseup", e => {
+        ball.removeEventListener("mousemove", calculateTransformZoom);
       });
 
-      ball.addEventListener('mouseleave', () => {
-        ball.removeEventListener('mousemove', calculateTransformZoom);
-        ball.removeEventListener('mouseenter', exma);
+      ball.addEventListener("mouseleave", () => {
+        ball.removeEventListener("mousemove", calculateTransformZoom);
+        ball.removeEventListener("mouseenter", exma);
       });
     });
 
-    document.querySelector('.swiper-wrapper').ondragstart = function() {
+    document.querySelector(".swiper-wrapper").ondragstart = function() {
       return false;
     };
   };
 
   handleTouch = () => {
-    const allImages = document.querySelectorAll('.Img');
+    const allImages = document.querySelectorAll(".Img");
     allImages.forEach(elemet => {
       let start;
       let end;
-      elemet.addEventListener('touchstart', ev => {
+      elemet.addEventListener("touchstart", ev => {
         start = Math.round(ev.changedTouches[0].pageX);
       });
-      elemet.addEventListener('touchend', ev => {
+      elemet.addEventListener("touchend", ev => {
         end = Math.round(ev.changedTouches[0].pageX);
         if (start > end) {
           this.handleNext();
@@ -216,16 +218,16 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     const { direction } = this.props;
     const { index } = this.state;
     const thumbnailSlideList =
-      direction === 'horizontal'
-        ? document.querySelectorAll('.thumbnail-slide')
-        : document.querySelectorAll('.thumbnail-slideVer');
+      direction === "horizontal"
+        ? document.querySelectorAll(".thumbnail-slide")
+        : document.querySelectorAll(".thumbnail-slideVer");
     const swiperSlide =
-      direction === 'horizontal'
+      direction === "horizontal"
         ? document
-            .querySelector('.standard-product-column-left')
+            .querySelector(".standard-product-column-left")
             .getBoundingClientRect().width
         : document
-            .querySelector('.standard-product-column-leftVertical')
+            .querySelector(".standard-product-column-leftVertical")
             .getBoundingClientRect().width;
     if (index > 0) {
       this.setState({ index: index - 1, swiperSlideWidth: swiperSlide });
@@ -238,17 +240,17 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     const { direction, images } = this.props;
     const { index } = this.state;
     const thumbnailSlideList =
-      direction === 'horizontal'
-        ? document.querySelectorAll('.thumbnail-slide')
-        : document.querySelectorAll('.thumbnail-slideVer');
+      direction === "horizontal"
+        ? document.querySelectorAll(".thumbnail-slide")
+        : document.querySelectorAll(".thumbnail-slideVer");
 
     const swiperSlide =
-      direction === 'horizontal'
+      direction === "horizontal"
         ? document
-            .querySelector('.standard-product-column-left')
+            .querySelector(".standard-product-column-left")
             .getBoundingClientRect().width
         : document
-            .querySelector('.standard-product-column-leftVertical')
+            .querySelector(".standard-product-column-leftVertical")
             .getBoundingClientRect().width;
 
     if (index + 1 <= images.length - 1) {
@@ -268,9 +270,9 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     const Element = el.target ? el.target : el;
 
     const imgheightAndWidth =
-      direction === 'vertical'
+      direction === "vertical"
         ? Element.getBoundingClientRect().height + gapBetweenThumbnail
-        : document.querySelector('.thumbnail-slide').getBoundingClientRect()
+        : document.querySelector(".thumbnail-slide").getBoundingClientRect()
             .width + 8;
     if (index === secondIndex) {
       this.setState({
@@ -295,25 +297,25 @@ class ThumbnailSlider extends PureComponent<Props, State> {
     }
 
     const thumbnailSlideList =
-      direction === 'horizontal'
-        ? document.querySelectorAll('.thumbnail-slide')
-        : document.querySelectorAll('.thumbnail-slideVer');
+      direction === "horizontal"
+        ? document.querySelectorAll(".thumbnail-slide")
+        : document.querySelectorAll(".thumbnail-slideVer");
 
     thumbnailSlideList.forEach(elemet => {
-      elemet.classList.remove('thumbnail-slide-active');
+      elemet.classList.remove("thumbnail-slide-active");
     });
 
-    thumbnailSlideList[index].classList.add('thumbnail-slide-active');
+    thumbnailSlideList[index].classList.add("thumbnail-slide-active");
 
     this.handleZoomOut();
 
     const swiperSlide =
-      direction === 'horizontal'
+      direction === "horizontal"
         ? document
-            .querySelector('.standard-product-column-left')
+            .querySelector(".standard-product-column-left")
             .getBoundingClientRect().width
         : document
-            .querySelector('.standard-product-column-leftVertical')
+            .querySelector(".standard-product-column-leftVertical")
             .getBoundingClientRect().width;
 
     this.setState({
@@ -327,7 +329,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
   handleZoomin = () => {
     const clickBall = document
-      .querySelector('.swiper-wrapper')
+      .querySelector(".swiper-wrapper")
       .getBoundingClientRect();
     this.setState({
       zoom: true,
@@ -371,10 +373,10 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
     const { direction, images } = this.props;
 
-    const range = sizeWidth === 100 ? '%' : 'px';
+    const range = sizeWidth === 100 ? "%" : "px";
 
     const styleHori = {
-      marginRight: '8px',
+      marginRight: "8px",
       width: `calc((100% - ${gapBetweenThumbnail}px) / ${numberOfThumpImage})`
     };
     const styleVer = {
@@ -399,21 +401,21 @@ class ThumbnailSlider extends PureComponent<Props, State> {
       transform: `scale(${scale})`,
       left: `${newclientX}px`,
       top: `${newclientY}px`,
-      transition: 'none 0s ease 0s'
+      transition: "none 0s ease 0s"
     };
 
     const zoomer = zoom === true ? zoomStyle : {};
 
-    const style = direction === 'horizontal' ? styleHori : styleVer;
-    const styleVER = direction === 'vertical' ? styleVerContainer : {};
-    const styleTransform = direction === 'horizontal' ? transformX : transformY;
+    const style = direction === "horizontal" ? styleHori : styleVer;
+    const styleVER = direction === "vertical" ? styleVerContainer : {};
+    const styleTransform = direction === "horizontal" ? transformX : transformY;
 
     return (
       <div
         className={
-          direction === 'horizontal'
-            ? 'standard-product-column-left'
-            : 'standard-product-column-leftVertical'
+          direction === "horizontal"
+            ? "standard-product-column-left"
+            : "standard-product-column-leftVertical"
         }
       >
         <div className="u-centred">
@@ -438,7 +440,7 @@ class ThumbnailSlider extends PureComponent<Props, State> {
                   width: `${sizeWidth}${range}`,
                   opacity: 1,
                   transform: ` translateX(-${swiperSlideWidth * index}px)`,
-                  visibility: i === index ? 'visible' : 'hidden'
+                  visibility: i === index ? "visible" : "hidden"
                 }}
               >
                 <img src={el} className="Img" />
@@ -460,17 +462,17 @@ class ThumbnailSlider extends PureComponent<Props, State> {
 
         <div
           className={
-            direction === 'horizontal'
-              ? 'thumbnail-container'
-              : 'thumbnail-containerVertical'
+            direction === "horizontal"
+              ? "thumbnail-container"
+              : "thumbnail-containerVertical"
           }
           style={styleVER}
         >
           <ul
             className={
-              direction === 'horizontal'
-                ? 'thumbnail-wrapper'
-                : 'thumbnail-wrapperVertical'
+              direction === "horizontal"
+                ? "thumbnail-wrapper"
+                : "thumbnail-wrapperVertical"
             }
             style={styleTransform}
           >
@@ -478,9 +480,9 @@ class ThumbnailSlider extends PureComponent<Props, State> {
               <li
                 key={i}
                 className={
-                  direction === 'horizontal'
-                    ? 'thumbnail-slide'
-                    : 'thumbnail-slideVer'
+                  direction === "horizontal"
+                    ? "thumbnail-slide"
+                    : "thumbnail-slideVer"
                 }
                 style={style}
                 onClick={e => {

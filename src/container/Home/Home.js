@@ -1,57 +1,65 @@
 /* @flow */
 
-import React, { PureComponent } from "react";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import React, { PureComponent } from 'react';
+import { compose } from 'redux';
 
-import Skilll from "./Skilll";
+import { withRouter } from 'react-router-dom';
+
+import Skilll from './Skilll';
 
 type State = {
   data: Array<String>,
-  onMous: Boolean
+  onMous: Boolean,
+  history: Object
 };
 
 class Home extends PureComponent<State> {
   state = {
-    data: "Home",
+    data: 'Home',
     hidden: true,
     opacityValue: 1,
     valueOpacity: 0,
     node: 0,
     skills: [
-      { name: "javascript/html/css/sass", num: 95 },
-      { name: "react/vue/angular", num: 90 },
-      { name: "nodejs", num: 50 },
-      { name: "webpack", num: 70 },
-      { name: "mongoDB", num: 40 },
-      { name: "python/ruby", num: 30 },
-      { name: "webSocket/RabbitMQ", num: 50 },
-      { name: "GraphQL/Apollo", num: 50 },
-      { name: "jest", num: 50 }
+      { name: 'javascript/html/css/sass', num: 95 },
+      { name: 'react/vue/angular', num: 90 },
+      { name: 'nodejs', num: 50 },
+      { name: 'webpack', num: 70 },
+      { name: 'mongoDB', num: 40 },
+      { name: 'python/ruby', num: 30 },
+      { name: 'webSocket/RabbitMQ', num: 50 },
+      { name: 'GraphQL/Apollo', num: 50 },
+      { name: 'jest', num: 50 }
     ]
   };
 
   componentDidMount() {
-    // // this.handleOpen();
-    // console.log(this.handleOpen());
+    const { history } = this.props;
+    console.log(history.location.state);
   }
+
+  handlePush = () => {
+    const { history } = this.props;
+
+    history.push('/product');
+  };
 
   handlePicesOpen = el =>
     new Promise((resolve, reject) => {
       setTimeout(
         () =>
           resolve(
-            el.classList.remove("revealer--right"),
-            el.classList.remove("revealer--hideX"),
-            el.classList.add("revealer--left"),
-            el.classList.add("revealer--showX")
+            el.classList.remove('revealer--right'),
+            el.classList.remove('revealer--hideX'),
+            el.classList.add('revealer--left'),
+            el.classList.add('revealer--showX')
           ),
-        500
+        0
       );
     });
 
   handleOpen = async () => {
-    const newElementAll = document.querySelectorAll(".revealer");
+    const newElementAll = document.querySelectorAll('.revealer');
     for (let i = 0; i < newElementAll.length; i++) {
       await this.handlePicesOpen(newElementAll[i]);
     }
@@ -62,17 +70,17 @@ class Home extends PureComponent<State> {
       setTimeout(
         () =>
           resolve(
-            el.classList.remove("revealer--left"),
-            el.classList.remove("revealer--showX"),
-            el.classList.add("revealer--right"),
-            el.classList.add("revealer--hideX")
+            el.classList.remove('revealer--left'),
+            el.classList.remove('revealer--showX'),
+            el.classList.add('revealer--right'),
+            el.classList.add('revealer--hideX')
           ),
         500
       );
     });
 
   handleClose = async () => {
-    const newElementAll = document.querySelectorAll(".revealer");
+    const newElementAll = document.querySelectorAll('.revealer');
     for (let i = 0; i < newElementAll.length; i++) {
       await this.handlePicesClose(newElementAll[i]);
     }
@@ -99,24 +107,24 @@ class Home extends PureComponent<State> {
             this.handleOpenSync();
           }}
           style={{
-            position: "absolute",
-            left: "50%",
-            top: "25%",
-            transform: "translateX(-50%)",
-            backgroundColor: "transparent",
-            border: "none",
-            fontSize: "300px",
-            zIndex: "99999",
-            fontFamily: "monospace",
+            position: 'absolute',
+            left: '50%',
+            top: '25%',
+            transform: 'translateX(-50%)',
+            backgroundColor: 'transparent',
+            border: 'none',
+            fontSize: '300px',
+            zIndex: '99999',
+            fontFamily: 'monospace',
             opacity: `${opacityValue}`,
-            transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+            transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
           }}
         >
           open
         </button>
         <main className="maino" style={{ opacity: `${node}` }}>
           <div className="grid grid--layout-1">
-            <div className="grid__item" style={{ display: "none" }}>
+            <div className="grid__item" style={{ display: 'none' }}>
               <div className="revealer revealer--right revealer--hideX" />
               <div
                 className="grim__item-inner"
@@ -125,10 +133,10 @@ class Home extends PureComponent<State> {
                 <h3
                   className="grim__item-title"
                   style={{
-                    textAlign: "center",
-                    fontFamily: "monospace",
-                    fontSize: "20px",
-                    lineHeight: "2em"
+                    textAlign: 'center',
+                    fontFamily: 'monospace',
+                    fontSize: '20px',
+                    lineHeight: '2em'
                   }}
                 >
                   hossein khan beigi
@@ -144,14 +152,14 @@ class Home extends PureComponent<State> {
                 <span
                   className="grim__item-desc"
                   style={{
-                    textAlign: "center",
-                    fontFamily: "unset",
-                    display: "flex",
-                    fontSize: "15px",
-                    lineHeight: "22px",
-                    flexDirection: "column",
+                    textAlign: 'center',
+                    fontFamily: 'unset',
+                    display: 'flex',
+                    fontSize: '15px',
+                    lineHeight: '22px',
+                    flexDirection: 'column',
                     opacity: `${valueOpacity}`,
-                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                    transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
                   }}
                 >
                   <span> Address: tehran - iran</span>
@@ -170,11 +178,11 @@ class Home extends PureComponent<State> {
                 <span
                   className="grim__item-desc"
                   style={{
-                    fontFamily: "unset",
-                    lineHeight: "28px",
-                    fontSize: "15px",
+                    fontFamily: 'unset',
+                    lineHeight: '28px',
+                    fontSize: '15px',
                     opacity: `${valueOpacity}`,
-                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                    transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
                   }}
                 >
                   javascript engineer specialist with 4+ experience at 2
@@ -198,7 +206,7 @@ class Home extends PureComponent<State> {
                   className="grim__item-title"
                   style={{
                     opacity: `${valueOpacity}`,
-                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                    transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
                   }}
                 >
                   hossein khan beigi
@@ -215,7 +223,7 @@ class Home extends PureComponent<State> {
                   className="grim__item-desc"
                   style={{
                     opacity: `${valueOpacity}`,
-                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                    transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
                   }}
                 >
                   javascript developer at datisParse datisPars.com develop
@@ -235,7 +243,7 @@ class Home extends PureComponent<State> {
                   className="grim__item-desc"
                   style={{
                     opacity: `${valueOpacity}`,
-                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                    transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
                   }}
                 >
                   react developer at RoundTableApp roundtableapps.com develop
@@ -255,7 +263,7 @@ class Home extends PureComponent<State> {
                   className="grim__item-title"
                   style={{
                     opacity: `${valueOpacity}`,
-                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                    transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
                   }}
                 >
                   Experience
@@ -273,21 +281,22 @@ class Home extends PureComponent<State> {
                   className="grim__item-title"
                   style={{
                     opacity: `${valueOpacity}`,
-                    transition: "opacity 0.6s, -webkit-transform 0.6s ease"
+                    transition: 'opacity 0.6s, -webkit-transform 0.6s ease'
                   }}
                 >
                   portfolio
                 </h3>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <div className="tooltip">
                     <div
                       style={{
                         width: `${10}%`,
-                        backgroundColor: "white",
-                        margin: "10px",
-                        padding: "20px"
+                        backgroundColor: 'white',
+                        margin: '10px',
+                        padding: '20px'
                       }}
                       className="grid__item2 portfoli1"
+                      onClick={() => this.handlePush()}
                     >
                       <div className="revealer revealer--right revealer--hideX" />
                     </div>
@@ -297,10 +306,10 @@ class Home extends PureComponent<State> {
                   <div
                     style={{
                       width: `${10}%`,
-                      backgroundColor: "white",
-                      height: "11px",
-                      margin: "10px",
-                      padding: "20px"
+                      backgroundColor: 'white',
+                      height: '11px',
+                      margin: '10px',
+                      padding: '20px'
                     }}
                     className="grid__item2"
                   >
@@ -309,10 +318,10 @@ class Home extends PureComponent<State> {
                   <div
                     style={{
                       width: `${10}%`,
-                      backgroundColor: "white",
-                      height: "11px",
-                      margin: "10px",
-                      padding: "20px"
+                      backgroundColor: 'white',
+                      height: '11px',
+                      margin: '10px',
+                      padding: '20px'
                     }}
                     className="grid__item2"
                   >
