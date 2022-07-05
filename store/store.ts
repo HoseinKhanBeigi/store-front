@@ -1,33 +1,24 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { HYDRATE, createWrapper } from "next-redux-wrapper";
-import users from "./usersSlice";
-import counter from "./counterSlice";
+import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 
-const combinedReducer = combineReducers({
-  counter,
-  users,
-});
-
-const masterReducer = (state: any, action: any) => {
-  if (action.type === HYDRATE) {
-    const nextState = {
-      ...state, // use previous state
-      counter: {
-        count: state.counter.count + action.payload.counter.count,
-      },
-      users: {
-        users: [...action.payload.users.users, ...state.users.users],
-      },
-    };
-    return nextState;
-  } else {
-    return combinedReducer(state, action);
-  }
-};
+import { createWrapper } from "next-redux-wrapper";
+import usersSlice from "../store/slices/userSlice";
 
 export const makeStore = () =>
   configureStore({
-    reducer: masterReducer,
+    reducer: {
+      user: usersSlice,
+    },
   });
 
-export const wrapper = createWrapper(makeStore, { debug: true });
+type Store = ReturnType<typeof makeStore>;
+
+export type AppDispatch = Store["dispatch"];
+export type RootState = ReturnType<Store["getState"]>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
+
+export const wrapper = createWrapper(makeStore);
