@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-import { fetchUsers } from "../actions/users";
+import { fetchPhotos } from "../actions/photos";
 
 const initialState = {
   entities: [] as any,
@@ -8,8 +8,8 @@ const initialState = {
   error: {},
 };
 
-const usersSlice = createSlice({
-  name: "users",
+const photosSlice = createSlice({
+  name: "photos",
   initialState,
   reducers: {
     setServerItems: (state, action) => {
@@ -18,25 +18,25 @@ const usersSlice = createSlice({
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      if (!action.payload.user.entities) {
+      if (!action.payload.photo.entities) {
         return state;
       }
-      state.entities = action.payload.user.entities;
+      state.entities = action.payload.photo.entities;
     },
-    [fetchUsers.pending.type]: (state) => {
+    [fetchPhotos.pending.type]: (state) => {
       state.status = "loading";
     },
-    [fetchUsers.fulfilled.type]: (state, action) => {
+    [fetchPhotos.fulfilled.type]: (state, action) => {
       state.status = "succeeded";
       state.entities = [...state.entities, ...action.payload];
     },
-    [fetchUsers.rejected.type]: (state, action) => {
+    [fetchPhotos.rejected.type]: (state, action) => {
       state.status = "failed";
       state.error = action.error;
     },
   },
 });
 
-export const { setServerItems } = usersSlice.actions;
+export const { setServerItems } = photosSlice.actions;
 
-export default usersSlice.reducer;
+export default photosSlice.reducer;

@@ -14,9 +14,6 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import styles from "../../styles/Navigation.module.scss";
 
-const drawerWidth = 240;
-
-
 const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
@@ -27,7 +24,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 interface Props {
     open: boolean;
-
     handleDrawerClose: () => void;
 }
 

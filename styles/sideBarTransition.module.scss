@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courgette&family=Righteous&display=swap");
+
+.menu {
+  font-family: "Roboto", sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background: rgb(21, 21, 21);
+  .menuWrap {
+    position: absolute;
+    top: 7.5em;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%;
+    .menuLevel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      visibility: hidden;
+      overflow: hidden;
+      overflow-y: scroll;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      .menuItem {
+        display: block;
+        border-top: 1px solid rgb(52, 52, 52);
+
+        &:last-child {
+          border-bottom: 1px solid rgb(52, 52, 52);
+        }
+        &:focus {
+          outline: none;
+        }
+        &:hover {
+          display: block;
+          background: #323232;
+          box-shadow: rgba(111, 111, 111, 0.25) 0px 54px 55px,
+            rgba(111, 111, 111, 0.25) 0px -12px 30px,
+            rgba(111, 111, 111, 0.25) 0px 4px 6px,
+            rgba(111, 111, 111, 0.25) 0px 12px 13px,
+            rgba(111, 111, 111, 0.25) 0px -3px 5px;
+
+          transition-property: box-shadow;
+          transition-duration: 350ms;
+          transition-timing-function: ease;
+        }
+        .menuLink {
+          text-decoration: none;
+          position: relative;
+          display: block;
+          padding: 1em 2.5em 1em 1.5em;
+          color: rgb(153, 153, 153);
+          transition: color 0.1s;
+          &:hover {
+            color: aliceblue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.currentMenu {
+  visibility: visible !important;
+}
+
+.animateOutToRight {
+  .menuItem {
+    animation: outToRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+  }
+}
+
+@keyframes outToRight {
+  to {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.animateOutToLeft {
+  .menuItem {
+    animation: outToLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+  }
+}
+
+@keyframes outToLeft {
+  to {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.animateInFromLeft {
+  .menuItem {
+    animation: inFromLeft 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+  }
+}
+
+@keyframes inFromLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animateInFromRight {
+  .menuItem {
+    animation: inFromRight 0.6s both cubic-bezier(0.7, 0, 0.3, 1);
+  }
+}
+
+@keyframes inFromRight {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

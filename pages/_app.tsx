@@ -1,6 +1,7 @@
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
+// import "../styles/about.module.scss";
 
 import { wrapper } from "../store/store";
 
@@ -15,6 +16,10 @@ type AppPropsWithLayout = AppProps & {
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return getLayout(<Component {...pageProps} />);
+  return getLayout(
+
+    <Component {...pageProps} />
+
+  );
 }
 export default wrapper.withRedux(MyApp);

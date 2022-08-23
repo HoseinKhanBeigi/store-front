@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
-
-module.exports = nextConfig
+const path = require("path");
+const withImages = require("next-images");
+module.exports = withImages({
+  exclude: path.resolve(__dirname, "src/public/svg"),
+  webpack(config, options) {
+    return config;
+  },
+});
