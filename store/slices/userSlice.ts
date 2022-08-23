@@ -2,9 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { fetchUsers } from "../actions/users";
 
-const initialState = {
+interface usersState {
+  entities: any[];
+  status: "idle" | "pending" | "succeeded" | "failed";
+  error: {};
+}
+
+const initialState: usersState = {
   entities: [] as any,
-  status: "loading",
+  status: "idle",
   error: {},
 };
 
@@ -24,7 +30,7 @@ const usersSlice = createSlice({
       state.entities = action.payload.user.entities;
     },
     [fetchUsers.pending.type]: (state) => {
-      state.status = "loading";
+      state.status = "pending";
     },
     [fetchUsers.fulfilled.type]: (state, action) => {
       state.status = "succeeded";

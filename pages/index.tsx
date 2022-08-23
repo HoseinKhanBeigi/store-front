@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { fetchPhotos } from "../store/actions/photos";
+import { fetchTestPhotos } from "../store/actions/photos";
 import { PrimaryLayout } from "../components/PrimaryLayout";
 import { NextPageContext } from "next";
 import { wrapper, AppDispatch, RootState } from "../store/store";
@@ -32,7 +32,7 @@ Home.getLayout = (page: ReactElement) => {
 };
 
 export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-  await store.dispatch(fetchPhotos(1));
+  await store.dispatch(fetchTestPhotos(1));
   return {
     props: {
       data: "",

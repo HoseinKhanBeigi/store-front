@@ -1,10 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-import { fetchPhotos } from "../actions/photos";
+import { fetchTestPhotos } from "../actions/photos";
 
-const initialState = {
+interface photosState {
+  entities: any[];
+  status: "idle" | "pending" | "succeeded" | "failed";
+  error: {};
+}
+
+const initialState: photosState = {
   entities: [] as any,
-  status: "loading",
+  status: "idle",
   error: {},
 };
 
@@ -23,14 +29,14 @@ const photosSlice = createSlice({
       }
       state.entities = action.payload.photo.entities;
     },
-    [fetchPhotos.pending.type]: (state) => {
-      state.status = "loading";
+    [fetchTestPhotos.pending.type]: (state) => {
+      state.status = "idle";
     },
-    [fetchPhotos.fulfilled.type]: (state, action) => {
+    [fetchTestPhotos.fulfilled.type]: (state, action) => {
       state.status = "succeeded";
       state.entities = [...state.entities, ...action.payload];
     },
-    [fetchPhotos.rejected.type]: (state, action) => {
+    [fetchTestPhotos.rejected.type]: (state, action) => {
       state.status = "failed";
       state.error = action.error;
     },

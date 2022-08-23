@@ -1,12 +1,13 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-
 import { createWrapper } from "next-redux-wrapper";
 import photoSlice from "../store/slices/photoSlice";
+import userSlice from "../store/slices/userSlice";
 
 export const makeStore = () =>
   configureStore({
     reducer: {
       photo: photoSlice,
+      user: userSlice,
     },
   });
 
