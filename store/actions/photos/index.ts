@@ -1,6 +1,7 @@
 import { http } from "../../../services/http";
 import axios, { AxiosResponse } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { setAllPhotos } from "../../slices/photoSlice";
 
 const controller = new AbortController();
 export const fetchPhotos = createAsyncThunk(
@@ -21,48 +22,34 @@ export const fetchPhotos = createAsyncThunk(
   }
 );
 
-const createAsyncAction = (type: string, payload: any) => {
-  return createAsyncThunk(type, async (page: number, { rejectWithValue }) => {
+const createAsyncAction = (type: string) => {
+  return createAsyncThunk(type, async (data: any, thunkAPI) => {
+    const { page } = data;
     try {
-      const listApiFields = {
-        pageIndex: 1,
-        pageSize: 10,
-        params: [],
-        hasPagination: null,
-        apiUrl: null,
-        ...payload,
-      };
-      let routeParamsPath = "";
-      for (const field of listApiFields.params) {
-        routeParamsPath += "/" + field;
-      }
-      console.log(routeParamsPath, " routeParamsPath");
-      delete listApiFields.params;
-      const { resultKey } = payload || {};
-      const url = listApiFields.apiUrl + routeParamsPath;
-      const { pageIndex, pageSize, hasPagination, ...param } = listApiFields;
-      if (param.resultKey) {
-        delete param.resultKey;
-      }
-      const params = { ...param };
-      if (hasPagination) {
-        params.page = pageIndex;
-        params.limit = pageSize;
-        params.skip = pageIndex * pageSize - pageSize;
-      }
-
-      const response: AxiosResponse<any, any> | void = await http.get(url, {
-        signal: controller.signal,
-        params,
-      });
+      const response: AxiosResponse<any, any> | void = await http.get(
+        "/photos",
+        {
+          params: {
+            page,
+            client_id: process.env.CLIENT_ID,
+          },
+        }
+      );
       const data = JSON.parse(JSON.stringify(response?.data));
       return data;
     } catch (err: any) {
-      return rejectWithValue(err.response.data);
+      return thunkAPI.rejectWithValue(err);
     }
   });
 };
 
-export const fetchTestPhotos = createAsyncAction("photos/fetchByIdStatus", {
-  params: [{ page: 1 }, { client_id: "" }, { apiUrl: "/photos" }],
-});
+export const fetchTestPhotos = createAsyncAction("photos/fetchByIdStatus");
+
+export const getAllPhotos = () => async (dispatch: any) => {
+  const ID = "9Wd121GARqUasOmKrVzLztGLpWYuB_fOdqskU0VcZ28";
+  const response: AxiosResponse<any, any> | void = await http.get(
+    `/photos?page=${1}&client_id=${ID}`
+  );
+  const data = JSON.parse(JSON.stringify(response?.data));
+  dispatch(setAllPhotos(data));
+};

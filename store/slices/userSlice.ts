@@ -6,12 +6,14 @@ interface usersState {
   entities: any[];
   status: "idle" | "pending" | "succeeded" | "failed";
   error: {};
+  currentRequestId: any;
 }
 
 const initialState: usersState = {
   entities: [] as any,
   status: "idle",
   error: {},
+  currentRequestId: "",
 };
 
 const usersSlice = createSlice({
@@ -20,6 +22,8 @@ const usersSlice = createSlice({
   reducers: {
     setServerItems: (state, action) => {
       state.entities = state.entities.concat(action.payload);
+      state.status = "succeeded";
+      state.currentRequestId = null;
     },
   },
   extraReducers: {
@@ -27,18 +31,33 @@ const usersSlice = createSlice({
       if (!action.payload.user.entities) {
         return state;
       }
-      state.entities = action.payload.user.entities;
+      const nextState = {
+        ...state, // use previous state
+        ...action.payload.user, // apply delta from hydration
+      };
+      return nextState;
     },
-    [fetchUsers.pending.type]: (state) => {
-      state.status = "pending";
+    [fetchUsers.pending.type]: (state, action) => {
+      if (state.status === "idle") {
+        state.status = "pending";
+        state.currentRequestId = action.meta.requestId;
+      }
     },
     [fetchUsers.fulfilled.type]: (state, action) => {
-      state.status = "succeeded";
-      state.entities = [...state.entities, ...action.payload];
+      const { requestId } = action.meta;
+      if (state.status === "pending" && state.currentRequestId === requestId) {
+        state.status = "succeeded";
+        state.entities = [...state.entities, ...action.payload];
+        state.currentRequestId = null;
+      }
     },
     [fetchUsers.rejected.type]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error;
+      const { requestId } = action.meta;
+      if (state.status === "pending" && state.currentRequestId === requestId) {
+        state.status = "failed";
+        state.error = action.error;
+        state.currentRequestId = null;
+      }
     },
   },
 });

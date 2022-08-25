@@ -5,21 +5,25 @@ import { fetchTestPhotos } from "../actions/photos";
 interface photosState {
   entities: any[];
   status: "idle" | "pending" | "succeeded" | "failed";
-  error: {};
+  error: any;
+  currentRequestId: any;
 }
 
 const initialState: photosState = {
   entities: [] as any,
   status: "idle",
-  error: {},
+  currentRequestId: "",
+  error: null,
 };
 
 const photosSlice = createSlice({
   name: "photos",
   initialState,
   reducers: {
-    setServerItems: (state, action) => {
+    setAllPhotos: (state, action) => {
       state.entities = state.entities.concat(action.payload);
+      state.status = "succeeded";
+      state.currentRequestId = null;
     },
   },
   extraReducers: {
@@ -27,22 +31,37 @@ const photosSlice = createSlice({
       if (!action.payload.photo.entities) {
         return state;
       }
-      state.entities = action.payload.photo.entities;
+      const nextState = {
+        ...state, // use previous state
+        ...action.payload.photo, // apply delta from hydration
+      };
+      return nextState;
     },
-    [fetchTestPhotos.pending.type]: (state) => {
-      state.status = "idle";
+    [fetchTestPhotos.pending.type]: (state, action) => {
+      if (state.status === "idle") {
+        state.status = "pending";
+        state.currentRequestId = action.meta.requestId;
+      }
     },
     [fetchTestPhotos.fulfilled.type]: (state, action) => {
-      state.status = "succeeded";
-      state.entities = [...state.entities, ...action.payload];
+      const { requestId } = action.meta;
+      if (state.status === "pending" && state.currentRequestId === requestId) {
+        state.status = "succeeded";
+        state.entities = [...state.entities, ...action.payload];
+        state.currentRequestId = null;
+      }
     },
     [fetchTestPhotos.rejected.type]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error;
+      const { requestId } = action.meta;
+      if (state.status === "pending" && state.currentRequestId === requestId) {
+        state.status = "failed";
+        state.error = action.error;
+        state.currentRequestId = null;
+      }
     },
   },
 });
 
-export const { setServerItems } = photosSlice.actions;
+export const { setAllPhotos } = photosSlice.actions;
 
 export default photosSlice.reducer;

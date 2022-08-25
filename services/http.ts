@@ -37,7 +37,7 @@ class Http {
     const http = axios.create({
       baseURL: "https://api.unsplash.com",
       headers,
-      withCredentials: true,
+      // withCredentials: true,
     });
 
     // http.interceptors.request.use(injectToken, (error) =>
@@ -96,6 +96,8 @@ class Http {
   // We can handle generic app errors depending on the status code
   private handleError(error: { status: any }) {
     const { status } = error;
+
+    // console.log(error, "errrrrrrrrrrrrr");
 
     switch (status) {
       case StatusCode.InternalServerError: {
