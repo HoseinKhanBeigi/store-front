@@ -5,7 +5,7 @@ import { setAllPhotos } from "../../slices/photoSlice";
 
 const controller = new AbortController();
 export const fetchPhotos = createAsyncThunk(
-  "photos/fetchByIdStatus",
+  "/photos",
   async (page: number, { rejectWithValue }) => {
     try {
       const response: AxiosResponse<any, any> | void = await http.get(

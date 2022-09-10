@@ -8,7 +8,7 @@ const Test = () => {
     return (
         <div>
             {entities.map((el: any, i) => {
-                return <img key={i} src={el.urls.regular} width={400} height="100%" />;
+                return <img key={i} src={el.urls.thumb} />;
             })}
         </div>
     );

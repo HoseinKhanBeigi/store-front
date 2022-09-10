@@ -36,7 +36,7 @@ Home.getLayout = (page: ReactElement) => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, res, ...etc }) => {
-  // console.log(etc.params);
+  console.log(etc.params);
 
   // await store.dispatch(fetchTestPhotos(1));
   return {
