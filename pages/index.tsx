@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { ReactElement } from "react";
-import { PrimaryLayout } from "../components/primaryLayout";
+import { PrimaryLayout } from "../components/new/primaryLayout";
 import type { NextPageWithLayout } from "./_app";
 import { GetStaticProps } from "next";
 
