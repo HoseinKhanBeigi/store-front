@@ -7,7 +7,7 @@ import React, {
     useCallback,
 } from "react";
 import styles from "../../styles/sideBarTransition.module.scss";
-import { ArrowForward } from "../Asset";
+import { ArrowForward } from "../asset";
 
 const SideBarTransition: React.FC = () => {
     const dataSubmenu: any = useRef(null);

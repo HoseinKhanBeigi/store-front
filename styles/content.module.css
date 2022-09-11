@@ -1,0 +1,5 @@
+
+.nav-sidebar-open .wrapper {
+  position: fixed;
+  transform: translateX(320px);
+}
