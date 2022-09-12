@@ -14,8 +14,8 @@ const Home: NextPageWithLayout = () => {
 
   return (
     <PrimaryLayout>
-      <button onClick={handleClick}>Menu</button>
-      <div>home</div>
+      home
+      {/* <button onClick={handleClick}>Menu</button> */}
     </PrimaryLayout>
   );
 };

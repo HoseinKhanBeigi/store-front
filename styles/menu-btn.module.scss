@@ -1,0 +1,75 @@
+.btMenu:hover {
+  color: #64686a;
+}
+.btMenu {
+  min-width: 115px;
+  height: 70px;
+  border-right: 1px solid #e6eaea;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.item {
+  padding: 0 21px;
+}
+
+.icoMenu {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 13px;
+}
+.btMenu .icoMenu {
+  top: -1px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.icoMenu .bar {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #202121;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.icoMenu .bar:nth-child(1) {
+  top: 0;
+}
+.icoMenu .bar:nth-child(2) {
+  top: 4px;
+}
+.icoMenu .bar:nth-child(3) {
+  top: 8px;
+}
+
+.icoMenu .bar:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #a6abab;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.icoMenu .bar:nth-child(1):after {
+  transition-delay: 0.1s;
+}
+
+.icoMenu .bar:nth-child(2):after {
+  transition-delay: 0.2s;
+}
+
+.icoMenu .bar:nth-child(3):after {
+  transition-delay: 0.3s;
+}
+
+.btMenu:hover .icoMenu .bar:after {
+  left: 0;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import SideBarTransition from "../sideBarTransition";
 import styled from "styled-components";
+import { Header } from "../header"
 
 interface WrapperProps {
     pos: string;
@@ -69,6 +70,7 @@ export const PrimaryLayout: React.FC<PropsType> = ({ children }) => {
     return (
         <Wrapper onClick={closeNavBar} className="wrapper" data-name="wrapper" pos={position} ref={wrapper}>
             <Nav className="navi" />
+            <Header />
             {children}
         </Wrapper>
     );
