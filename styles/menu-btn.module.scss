@@ -2,16 +2,16 @@
   color: #64686a;
 }
 .btMenu {
+  display: grid;
+  grid-template-columns: 20px 20px;
+  justify-content: center;
+  align-items: center;
   min-width: 115px;
   height: 70px;
   border-right: 1px solid #e6eaea;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-}
-
-.item {
-  padding: 0 21px;
 }
 
 .icoMenu {
@@ -21,8 +21,6 @@
   height: 13px;
 }
 .btMenu .icoMenu {
-  top: -1px;
-  margin-right: 10px;
   vertical-align: middle;
 }
 

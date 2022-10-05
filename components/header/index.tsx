@@ -1,44 +1,60 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
-import { Menu } from "../menu"
 
-const Wrapper = styled.header`
-  position: sticky;
-  top: 0;
-  height: 70px;
-  line-height: 73px;
-  font-size: 13px;
-  font-weight: 400;
-  background-color: #f4f7f6;
-  z-index: 9;
-  transition: background 0.3s;
-`;
+import { Menu } from "../menu";
+import { styled } from "@mui/material/styles";
 
-const MainHeader = styled.div`
-  display: flex;
-  height: 70px;
-  border-bottom: 1px solid #e6eaea;
-`;
+interface AppBarProps {
+  open?: boolean;
+}
 
-const BoxLeft = styled.div`
+const Wrapper = styled("div")<AppBarProps>(({ theme, open }) => ({
+  transition: theme.transitions.create(["margin-left", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${320}px)`,
+    marginLeft: `${320}px`,
+    transition: theme.transitions.create(["margin-left", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+  position: "fixed",
+  top: 0,
+  width: "100%",
+  height: "70px",
+  fontSize: "13px",
+  fontWeight: 400,
+  backgroundColor: "#f4f7f6",
+  zIndex: 9,
+}));
 
-`;
+const MainHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  height: "70px",
+  borderBottom: "1px solid #e6eaea",
+}));
 
-const BoxRight = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    flex: 1;
-`;
+const BoxRight = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "flex-end",
+  flex: 1,
+}));
 
-export const Header = () => {
+interface Props {
+  openMenu: () => void;
+  setPosition: (e: any) => void;
+  status: boolean;
+}
+
+export const Header: React.FC<Props> = ({ openMenu, setPosition, status }) => {
   return (
-    <Wrapper>
+    <Wrapper open={status}>
       <MainHeader>
-        <BoxLeft>
-          <Menu />
-        </BoxLeft>
+        <Menu openMenu={openMenu} setPosition={setPosition} status={status} />
         <BoxRight />
       </MainHeader>
     </Wrapper>
-  )
+  );
 };
