@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import SideBarTransition from "../sideBarTransition";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import Box from '@mui/material/Box';
 import { styled, useTheme } from '@mui/material/styles';
 import { Header } from "../header"
@@ -44,7 +46,6 @@ interface PropsType {
 
 export const PrimaryLayout: React.FC<PropsType> = ({ children }) => {
     const wrapper: React.MutableRefObject<HTMLDivElement | any> = React.useRef();
-
 
     const [position, setPosition] = React.useState<boolean>(false)
     const openNavBar = () => {

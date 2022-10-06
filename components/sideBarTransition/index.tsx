@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import styles from "../../styles/sideBarTransition.module.scss";
 import { ArrowForward } from "../asset";
+import { GroupOfMenuItems } from "./groupOfMenuItems";
 
 const SideBarTransition: React.FC = () => {
     const dataSubmenu: any = useRef(null);
@@ -110,13 +111,8 @@ const SideBarTransition: React.FC = () => {
                     data={{
                         name: "root",
                         items: [
-                            { name: "classA", value: "classA" },
-                            { name: "classB", value: "classB" },
-                            { name: "classC", value: "classC" },
-                            { name: "classE", value: "classE" },
-                            { name: "classF", value: "classF" },
-                            { name: "classG", value: "classG" },
-                            { name: "classH", value: "classH" },
+                            { name: "scrollTrigger", value: "scrollTrigger" },
+
                         ],
                     }}
                 />
@@ -124,130 +120,12 @@ const SideBarTransition: React.FC = () => {
                     onClick={menuIn}
                     handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
                     data={{
-                        name: "classA",
+                        name: "scrollTrigger",
                         items: [
                             { name: "math-A", value: "math-A" },
                             { name: "phsics-A", value: "phsics-A" },
                             { name: "chemestry-A", value: "chemestry-A" },
                             { name: "sport-A", value: "sport-A" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "math-A",
-                        items: [
-                            { name: "math-A-1", value: "math-A-1" },
-                            { name: "math-A-2", value: "math-A-2" },
-                            { name: "math-A-3", value: "math-A-3" },
-                            { name: "math-A-4", value: "math-A-4" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "math-A-1",
-                        items: [
-                            { name: "A-1-1", value: "A-1-1" },
-                            { name: "A-1-2", value: "A-1-2" },
-                            { name: "A-1-3", value: "A-1-3" },
-                            { name: "A-1-4", value: "A-1-4" },
-                        ],
-                    }}
-                />
-
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "classB",
-                        items: [
-                            { name: "math-B", value: "math-B" },
-                            { name: "phsics-B", value: "phsics-B" },
-                            { name: "chemestry-B", value: "chemestry-B" },
-                            { name: "sport-B", value: "sport-B" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "classC",
-                        items: [
-                            { name: "math-C", value: "math-C" },
-                            { name: "phsics-C", value: "phsics-C" },
-                            { name: "chemestry-C", value: "chemestry-C" },
-                            { name: "sport-C", value: "sport-C" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "classD",
-                        items: [
-                            { name: "math-D", value: "math-D" },
-                            { name: "phsics-D", value: "phsics-D" },
-                            { name: "chemestry-D", value: "chemestry-D" },
-                            { name: "sport-D", value: "sport-D" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "classE",
-                        items: [
-                            { name: "math-E", value: "math-E" },
-                            { name: "phsics-E", value: "phsics-E" },
-                            { name: "chemestry-E", value: "chemestry-E" },
-                            { name: "sport-E", value: "sport-E" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "classF",
-                        items: [
-                            { name: "math-F", value: "math-F" },
-                            { name: "phsics-F", value: "phsics-F" },
-                            { name: "chemestry-F", value: "chemestry-F" },
-                            { name: "sport-F", value: "sport-F" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "classG",
-                        items: [
-                            { name: "math-G", value: "math-G" },
-                            { name: "phsics-G", value: "phsics-G" },
-                            { name: "chemestry-F", value: "chemestry-G" },
-                            { name: "sport-G", value: "sport-G" },
-                        ],
-                    }}
-                />
-                <GroupOfMenuItems
-                    onClick={menuIn}
-                    handleOnAnimationEnd={(e) => handleOnAnimationEnd(e)}
-                    data={{
-                        name: "classH",
-                        items: [
-                            { name: "math-H", value: "math-H" },
-                            { name: "phsics-H", value: "phsics-H" },
-                            { name: "chemestry-F", value: "chemestry-H" },
-                            { name: "sport-H", value: "sport-H" },
                         ],
                     }}
                 />
@@ -257,56 +135,3 @@ const SideBarTransition: React.FC = () => {
 };
 
 export default memo(SideBarTransition);
-
-interface item {
-    name: string;
-    value: string;
-}
-
-interface TData {
-    name: string;
-    items: item[];
-}
-
-interface ItemsProps {
-    data: TData;
-    onClick: (name: string, dataName: string) => void;
-    handleOnAnimationEnd: (el: any) => void;
-}
-
-const GroupOfMenuItems = forwardRef<HTMLUListElement, ItemsProps>(
-    ({ data, onClick, handleOnAnimationEnd }, ref) => {
-        const handleClick = useCallback((name: string, dataName: string) => {
-            onClick(name, dataName);
-        }, []);
-
-        return (
-            <ul
-                data-name={data.name}
-                className={styles.menuLevel}
-                onAnimationEnd={handleOnAnimationEnd}
-                ref={ref}
-            >
-                {data.items.map((item: item, i: number) => {
-                    return (
-                        <li
-                            key={i}
-                            className={styles.menuItem}
-                            data-name={item.name}
-                            onClick={() => handleClick(item.name, data.name)}
-                        >
-                            <a
-                                className={styles.menuLink}
-                                data-submenu="submenu-1"
-                                aria-owns="submenu-1"
-                                href="#"
-                            >
-                                {item.value}
-                            </a>
-                        </li>
-                    );
-                })}
-            </ul>
-        );
-    }
-);
