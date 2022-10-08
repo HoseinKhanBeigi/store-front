@@ -36,6 +36,7 @@ const MainHeader = styled("div")(({ theme }) => ({
   borderBottom: "1px solid #e6eaea",
 }));
 
+
 const BoxRight = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-end",
@@ -46,14 +47,17 @@ interface Props {
   openMenu: () => void;
   setPosition: (e: any) => void;
   status: boolean;
+  children?: React.ReactNode
 }
 
-export const Header: React.FC<Props> = ({ openMenu, setPosition, status }) => {
+export const Header: React.FC<Props> = ({ openMenu, setPosition, status, children }) => {
   return (
     <Wrapper open={status}>
       <MainHeader>
         <Menu openMenu={openMenu} setPosition={setPosition} status={status} />
-        <BoxRight />
+        <BoxRight>
+          {children}
+        </BoxRight>
       </MainHeader>
     </Wrapper>
   );

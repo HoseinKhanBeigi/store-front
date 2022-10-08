@@ -4,5 +4,6 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-behavior: auto;
+  font-family: "apercu",sans-serif;
   /* height: 100%; */
 }

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, {
     forwardRef,
     memo,
@@ -12,6 +13,7 @@ import { GroupOfMenuItems } from "./groupOfMenuItems";
 
 const SideBarTransition: React.FC = () => {
     const dataSubmenu: any = useRef(null);
+    const router: any = useRouter()
     const root: any = useRef(null);
     const [BreadcrumbList, setBreadcrumb] = useState(["root"]);
     const [element, setElement] = useState("root");
@@ -39,8 +41,10 @@ const SideBarTransition: React.FC = () => {
         const hideMenu: any = findMenu(dataName);
         const visibleMenu: any = findMenu(name);
         if (!visibleMenu) {
+            router.push(name)
             return;
         }
+
 
         const clickPosition = [...hideMenu.children].findIndex(
             (item) => item.getAttribute("data-name") === name
@@ -122,7 +126,7 @@ const SideBarTransition: React.FC = () => {
                     data={{
                         name: "scrollTrigger",
                         items: [
-                            { name: "math-A", value: "math-A" },
+                            { name: "anchor", value: "anchor" },
                             { name: "phsics-A", value: "phsics-A" },
                             { name: "chemestry-A", value: "chemestry-A" },
                             { name: "sport-A", value: "sport-A" },
