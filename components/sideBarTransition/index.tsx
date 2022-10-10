@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import styles from "../../styles/sideBarTransition.module.scss";
 import { ArrowForward } from "../asset";
-import { GroupOfMenuItems } from "../groupOfMenuItems";
+import GroupOfMenuItems from "../groupOfMenuItems";
 
 const SideBarTransition: React.FC = () => {
     const dataSubmenu: any = useRef(null);

@@ -16,7 +16,7 @@ interface ItemsProps {
     handleOnAnimationEnd: (el: any) => void;
 }
 
-export const GroupOfMenuItems = forwardRef<HTMLUListElement, ItemsProps>(
+const GroupOfMenuItems = forwardRef<HTMLUListElement, ItemsProps>(
     ({ data, onClick, handleOnAnimationEnd }, ref) => {
         const handleClick = useCallback((name: string, dataName: string) => {
             onClick(name, dataName);
@@ -52,3 +52,7 @@ export const GroupOfMenuItems = forwardRef<HTMLUListElement, ItemsProps>(
         );
     }
 );
+
+GroupOfMenuItems.displayName = 'GroupOfMenuItems';
+
+export default GroupOfMenuItems;

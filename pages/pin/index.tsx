@@ -13,6 +13,7 @@ const PinSection = () => {
         scaleX: 0,
         translateY: 110
     });
+    const titleOne = "That's pretty neat."
     const classes = useStyles(makeStyleProps);
     const init = () => {
         gsap.utils.toArray('.hero').forEach((section: any) => {
@@ -76,14 +77,14 @@ const PinSection = () => {
                     <div className={clsx(classes.heroContent, 'hero__content')}>
                         <div className={clsx(classes.heroHeadLine, 'hero__headline')}>
                             <span className={classes.title}>
-                                How Neat is That?
+                                {titleOne}
                             </span>
                         </div>
                     </div>
                 </section>
                 <footer className={clsx(classes.container)}>
                     <ContainerHeadline className="container__headline">
-                        That's pretty neat.
+                        {titleOne}
                     </ContainerHeadline>
                 </footer>
                 <section className={clsx(classes.container, 'hero')}>
@@ -95,14 +96,14 @@ const PinSection = () => {
                     <div className={clsx(classes.heroContent, 'hero__content')}>
                         <div className={clsx(classes.heroHeadLine, 'hero__headline')}>
                             <span className={classes.title}>
-                                How Neat is That?
+                                {titleOne}
                             </span>
                         </div>
                     </div>
                 </section>
                 <footer className={clsx(classes.container)}>
                     <ContainerHeadline className="container__headline">
-                        That's pretty neat.
+                        {titleOne}
                     </ContainerHeadline>
                 </footer>
             </Wrapper>
