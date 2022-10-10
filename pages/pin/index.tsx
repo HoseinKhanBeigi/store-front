@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { PrimaryLayout } from "../../components/primaryLayout";
 import { useEffect, useState } from "react";
 import { ContainerHeadline, useStyles, Wrapper } from "./styles"
+import clsx from "clsx";
 gsap.registerPlugin(ScrollTrigger);
 
 const PinSection = () => {
@@ -61,45 +62,45 @@ const PinSection = () => {
     return (
         <PrimaryLayout>
             <Wrapper>
-                <header className={`${classes.container}`}>
+                <header className={clsx(classes.container)}>
                     <ContainerHeadline className="container__headline">
                         Wanna see something neat?
                     </ContainerHeadline>
                 </header>
-                <section className={`${classes.container}  hero`}>
+                <section className={clsx(classes.container, 'hero')}>
                     <div className={classes.heroInner}>
-                        <div className={`${classes.heroImage} hero__image`}>
-                            <img className={`${classes.heroImage} hero__image`} src={"https://images.unsplash.com/photo-1508781197106-d8c535dcf276?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"} />
+                        <div className={clsx(classes.heroImage, 'hero__image')}>
+                            <img className={clsx(classes.heroImage, 'hero__image')} src={"https://images.unsplash.com/photo-1508781197106-d8c535dcf276?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"} />
                         </div>
                     </div>
-                    <div className={`${classes.heroContent} hero__content`}>
-                        <div className={`${classes.heroHeadLine} hero__headline`}>
+                    <div className={clsx(classes.heroContent, 'hero__content')}>
+                        <div className={clsx(classes.heroHeadLine, 'hero__headline')}>
                             <span className={classes.title}>
                                 How Neat is That?
                             </span>
                         </div>
                     </div>
                 </section>
-                <footer className={`${classes.container}`}>
+                <footer className={clsx(classes.container)}>
                     <ContainerHeadline className="container__headline">
                         That's pretty neat.
                     </ContainerHeadline>
                 </footer>
-                <section className={`${classes.container} hero`}>
+                <section className={clsx(classes.container, 'hero')}>
                     <div className={classes.heroInner}>
-                        <div className={`${classes.heroImage} hero__image`}>
-                            <div className={`${classes.heroImage} hero__image`} />
+                        <div className={clsx(classes.heroImage, 'hero__image')}>
+                            <div className={clsx(classes.heroImage, 'hero__image')} />
                         </div>
                     </div>
-                    <div className={`${classes.heroContent} hero__content`}>
-                        <div className={`${classes.heroHeadLine} hero__headline`}>
+                    <div className={clsx(classes.heroContent, 'hero__content')}>
+                        <div className={clsx(classes.heroHeadLine, 'hero__headline')}>
                             <span className={classes.title}>
                                 How Neat is That?
                             </span>
                         </div>
                     </div>
                 </section>
-                <footer className={`${classes.container}`}>
+                <footer className={clsx(classes.container)}>
                     <ContainerHeadline className="container__headline">
                         That's pretty neat.
                     </ContainerHeadline>
