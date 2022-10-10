@@ -58,8 +58,9 @@ const SideBarTransition: React.FC = () => {
         );
         const createCurve = [...hideMenu.children, ...visibleMenu.children];
         createCurve.forEach((item: any, pos: number) => {
+            const res: number = Math.abs(clickPosition - pos) * 60
             item.style.animationDelay =
-                parseInt(Math.abs(clickPosition - pos) * 60) + "ms";
+                parseInt(`${res}`) + "ms";
         });
 
         setElement(name);
@@ -78,13 +79,14 @@ const SideBarTransition: React.FC = () => {
         }
         const hideMenu: any = findMenu(dataName);
         const visibleMenu: any = findMenu(name);
-        const clickPosition = [...hideMenu.children].findIndex(
+        const clickPosition: number = [...hideMenu.children].findIndex(
             (item) => item.getAttribute("data-name") === name
         );
         const createCurve = [...hideMenu.children, ...visibleMenu.children];
         createCurve.forEach((item: any, pos: number) => {
+            const res: number = Math.abs(clickPosition - pos) * 60
             item.style.animationDelay =
-                parseInt(Math.abs(clickPosition - pos) * 60) + "ms";
+                parseInt(`${res}`) + "ms";
         });
 
         setElement(name);
