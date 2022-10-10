@@ -8,7 +8,6 @@ import { GetStaticProps } from "next";
 
 const Home = () => {
   const root = useRef();
-
   return (
     <PrimaryLayout>
       <div>content</div>
