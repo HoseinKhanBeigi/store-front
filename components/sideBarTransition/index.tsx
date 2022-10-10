@@ -17,6 +17,8 @@ const SideBarTransition: React.FC = () => {
     const root: any = useRef(null);
     const [BreadcrumbList, setBreadcrumb] = useState(["root"]);
     const [element, setElement] = useState("root");
+
+
     useEffect(() => {
         if (root.current.getAttribute("data-name") === "root") {
             root.current.classList.add(`${styles.currentMenu}`);
@@ -37,15 +39,20 @@ const SideBarTransition: React.FC = () => {
         );
     };
 
+    const findMenuItem = (value: string) => {
+        return Array.from(dataSubmenu.current.children).find((e: any) => {
+            return [...e.children].find((el: any) => el.getAttribute("data-name") === value)
+        });
+    };
+
     const menuIn = (name: string, dataName: string) => {
         const hideMenu: any = findMenu(dataName);
         const visibleMenu: any = findMenu(name);
         if (!visibleMenu) {
             router.push(name)
+
             return;
         }
-
-
         const clickPosition = [...hideMenu.children].findIndex(
             (item) => item.getAttribute("data-name") === name
         );
@@ -92,6 +99,26 @@ const SideBarTransition: React.FC = () => {
         setBreadcrumb(Breadcrumbs);
     };
 
+
+    // useEffect(() => {
+    //     if (router.pathname === `/anchor`) {
+    //         const hideMenu: any = findMenu('root');
+    //         const visibleMenu: any = findMenu('scrollTrigger');
+
+
+    //         console.log(findMenuItem('anchor'));
+
+
+
+    //         setElement('scrollTrigger');
+    //         visibleMenu.classList.add(`${styles.currentMenu}`);
+    //         visibleMenu.classList.add(`${styles.animateInFromRight}`);
+    //         hideMenu.classList.add(`${styles.animateOutToLeft}`);
+    //         hideMenu.classList.remove(`${styles.animateInFromRight}`);
+    //         hideMenu.classList.remove(`${styles.animateInFromLeft}`);
+    //         setBreadcrumb((prev) => [...prev, 'scrollTrigger']);
+    //     }
+    // }, [router.pathname])
     return (
         <div className={styles.menu}>
             <ul>
@@ -127,9 +154,10 @@ const SideBarTransition: React.FC = () => {
                         name: "scrollTrigger",
                         items: [
                             { name: "anchor", value: "anchor" },
-                            { name: "phsics-A", value: "phsics-A" },
-                            { name: "chemestry-A", value: "chemestry-A" },
-                            { name: "sport-A", value: "sport-A" },
+                            { name: "velocity", value: "velocity" },
+                            { name: "pin", value: "pin" },
+                            { name: "pinmap", value: "pinmap" },
+                            { name: "observer", value: "observer" },
                         ],
                     }}
                 />
@@ -137,5 +165,10 @@ const SideBarTransition: React.FC = () => {
         </div>
     );
 };
+
+
+<div>
+
+</div>
 
 export default memo(SideBarTransition);

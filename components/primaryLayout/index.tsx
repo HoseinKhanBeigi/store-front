@@ -15,7 +15,7 @@ const Wrapper = styled(Box)<MainProps>(({ theme, open }) => ({
             top: 0,
             left: 0,
             content: '""',
-            position: "absolute",
+            position: "fixed",
             display: "block",
             width: "100%",
             height: "100%",
@@ -76,7 +76,7 @@ export const PrimaryLayout: React.FC<PropsType> = ({
     return (
         <Wrapper onClick={closeNavBar} open={position} data-name="wrapper">
             <Header openMenu={openNavBar} status={position} setPosition={setPosition}>
-            {HeaderContent ? (<HeaderContent />):''}
+                {HeaderContent ? (<HeaderContent />) : ''}
             </Header>
             <Nav open={position}>
                 <SideBarTransition />

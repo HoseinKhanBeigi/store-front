@@ -1,5 +1,6 @@
 import { styled, useTheme } from "@mui/material/styles";
 import { useRef } from "react"
+import { GetStaticProps } from "next";
 
 // import gsap from "gsap";
 import { gsap } from "gsap";
@@ -8,7 +9,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin"
 import styles from "../../styles/anchor.module.scss";
 import { PrimaryLayout } from "../../components/primaryLayout";
-import type { NextPageWithLayout } from "../_app";
+// import type { NextPageWithLayout } from "../_app";
 import { Container } from "@mui/material";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -49,6 +50,7 @@ const PanelsContainer = styled("div")(({ theme }) => ({
 const Anchor = styled('a')(({ theme }) => ({
     textDecoration: 'none',
     padding: theme.spacing(3),
+    color: theme.palette.grey[900]
 }));
 
 const NaviagetionAnchor = styled('nav')(({ theme }) => ({
@@ -76,7 +78,7 @@ const AncherNavigation = () => {
                 pin: true,
                 start: "top top",
                 scrub: 1,
-                end: () => "+=" + (panelsContainer.current.offsetWidth - window.innerWidth)
+                end: () => "+=" + (panelsContainer.current.offsetWidth - window.innerWidth),
             }
         });
     };
@@ -175,6 +177,10 @@ const AncherNavigation = () => {
         </PrimaryLayout>
 
     );
+};
+
+export const getInitialProps: GetStaticProps = async ({ params }) => {
+    return { props: { launches: "" } };
 };
 
 export default AncherNavigation

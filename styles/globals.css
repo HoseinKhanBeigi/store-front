@@ -7,3 +7,19 @@ body {
   font-family: "apercu",sans-serif;
   /* height: 100%; */
 }
+
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+  --color-text: #fff;
+  --color-bg: #000;
+  --color-link: rgba(255, 255, 255, 0.5);
+  --color-link-hover: #f8c5dc;
+  --color-bg-slide: #171719;
+}
+
