@@ -9,7 +9,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin"
 import styles from "../../styles/anchor.module.scss";
 import { PrimaryLayout } from "../../components/primaryLayout";
-// import type { NextPageWithLayout } from "../_app";
 import { Container } from "@mui/material";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 

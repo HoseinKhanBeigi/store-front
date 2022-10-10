@@ -3,11 +3,10 @@ import type { ReactElement } from "react";
 import Box from '@mui/material/Box';
 import { PrimaryLayout } from "../components/primaryLayout";
 import { styled, useTheme } from '@mui/material/styles';
-import type { NextPageWithLayout } from "./_app";
 import { GetStaticProps } from "next";
 
 
-const Home: NextPageWithLayout = () => {
+const Home = () => {
   const root = useRef();
 
   return (
