@@ -3,8 +3,8 @@ import { PrimaryLayout } from "../../components/primaryLayout";
 import { gsap } from "gsap";
 import { Observer } from "gsap/dist/Observer";
 import { clsx } from 'clsx';
-import { Slide } from './slide'
-import { CursorText } from './cursor';
+import { Slide } from '../../components/slide'
+import { CursorText } from '../../components/cursor';
 import styles from "../../styles/observer.module.scss";
 
 gsap.registerPlugin(Observer);

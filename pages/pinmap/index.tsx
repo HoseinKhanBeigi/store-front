@@ -3,13 +3,28 @@ import { gsap } from "gsap";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/dist/MotionPathPlugin";
-const DrawSVGPlugin = require("./draw.js")
+const DrawSVGPlugin = require("../../lib/draw")
 import { PrimaryLayout } from "../../components/primaryLayout";
-import { useStyles } from "./styles"
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles(() => ({
+    container: {
+        opacity: 0
+    },
+    wrapper: {
+        width: "100%",
+        height: '100%',
+        overflowX: 'hidden',
+        background: '#f2efe9'
+    },
+    elPosition: {
+        position: 'absolute',
+    }
+}));
 
 
 const PinMap = () => {
-    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin,DrawSVGPlugin);
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, DrawSVGPlugin);
     const classes = useStyles();
     const init = () => {
         gsap.set('#scrollDist', { width: '100%', height: '500%' });
