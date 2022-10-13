@@ -160,6 +160,7 @@ const SideBarTransition: React.FC = () => {
                             { name: "pin", value: "pin" },
                             { name: "pinmap", value: "pinmap" },
                             { name: "observer", value: "observer" },
+                            { name: "menuToGrid", value: "menuToGrid" },
                         ],
                     }}
                 />

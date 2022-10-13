@@ -23,3 +23,20 @@ body {
   --color-bg-slide: #171719;
 }
 
+:root {
+  font-size: 14px;
+  --color-text: #131313;
+  --color-bg: #fff;
+  --color-link: #000;
+  --color-link-hover: #131313;
+  --padding-sides: 2rem;
+  --padding-row: 1rem;
+  --color-row-border: #f0f0f0;
+  --color-bg-row-hover: #f0f0f0;
+  --color-text-alt: #000;
+  --image-gap: 1vw;
+  --image-gap-large: 2vw;
+  --img-size: 5vw;
+  --img-size-large: 14vw;
+}
+

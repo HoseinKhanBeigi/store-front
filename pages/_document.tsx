@@ -1,8 +1,15 @@
 import React from 'react';
+const fs = require('fs').promises;
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@mui/styles'; // works with @material-ui/core/styles, if you prefer to use it.
 import theme from '../src/theme'; // Adjust here as well
 
+
+
+async function loadMonoCounter() {
+    const data = await fs.readFile("monolitic.txt", "binary");
+    return Buffer.from(data);
+}
 export default class MyDocument extends Document {
     render() {
         return (
@@ -55,7 +62,6 @@ MyDocument.getInitialProps = async (ctx) => {
         });
 
     const initialProps = await Document.getInitialProps(ctx);
-
     return {
         ...initialProps,
         // Styles fragment is rendered after the app and page rendering finish.
