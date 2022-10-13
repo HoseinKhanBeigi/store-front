@@ -306,7 +306,7 @@ const MenuToGrid: React.FC<Props> = ({ images }) => {
                     return (
                         <div className={clsx(styles.preview__item)} key={i}>
                             <h2 className={clsx(styles.preview__itemTitle, styles.oh)}>
-                                <span className={clsx(styles.oh__inner)}>Nobody's Love</span>
+                                <span className={clsx(styles.oh__inner)}></span>
                             </h2>
                             <div className={clsx(styles.grid)}>
                                 {e.img.map((image: any, n: number) => {
