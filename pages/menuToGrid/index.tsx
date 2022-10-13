@@ -18,7 +18,8 @@ interface Props {
 }
 const MenuToGrid: React.FC<Props> = ({ images }) => {
     const contents: any = useRef([]);
-    const [items, setItems]: any = useState([])
+    const [items, setItems]: any = useState([]);
+    const titles = ["Nobody's Love", "Good Wings", "Maniac Fly", "Crumble Toe", "Finger Wax", "Haunted X", "Next Horror", "Nobody's Love", "Maniac Fly", "Crumble Toe", "Finger Wax", "Haunted X", "Next Horror", "Nobody's Love"]
     const computeContents = useCallback(() => {
         let grid: any = [];
         let count = 0;
@@ -32,7 +33,7 @@ const MenuToGrid: React.FC<Props> = ({ images }) => {
         };
         const content = grid.map((el: any, n: number) => {
             return {
-                name: '',
+                name: titles[n],
                 img: el
             }
         });
@@ -283,7 +284,7 @@ const MenuToGrid: React.FC<Props> = ({ images }) => {
                         <div className={clsx(styles.row, 'row')} key={i}>
                             <div className={clsx(styles.cell, styles.cellText)}>
                                 <h2 className={clsx(styles.cell__title, styles.oh)}>
-                                    <span className={clsx(styles.oh__inner)}>Nobody's Love</span>
+                                    <span className={clsx(styles.oh__inner)}>{e.name}</span>
                                 </h2>
                             </div>
                             <div className={clsx(styles.cell, styles.cellImages)}>
