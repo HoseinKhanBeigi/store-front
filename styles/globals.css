@@ -40,3 +40,18 @@ body {
   --img-size-large: 14vw;
 }
 
+
+:root {
+	font-size: 18px;
+	--color-text: #5e5754;
+	--color-title: #944d3e;
+	--color-bg: #080808;
+	--color-link: #5e5754;
+	--color-link-hover: #5e5754;
+	--color-switch-bg: #f1e4dd;
+	--color-switch: #000;
+	--color-switch-active: #c1b7b1;
+	--color-heading: #f1e4dd;
+}
+
+

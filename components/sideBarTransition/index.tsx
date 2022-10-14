@@ -145,6 +145,8 @@ const SideBarTransition: React.FC = () => {
                         name: "root",
                         items: [
                             { name: "scrollTrigger", value: "scrollTrigger" },
+                            { name: "menuToGrid", value: "menuToGrid" },
+                            { name: "onScrollView", value: "onScrollView" },
 
                         ],
                     }}
@@ -160,7 +162,7 @@ const SideBarTransition: React.FC = () => {
                             { name: "pin", value: "pin" },
                             { name: "pinmap", value: "pinmap" },
                             { name: "observer", value: "observer" },
-                            { name: "menuToGrid", value: "menuToGrid" },
+
                         ],
                     }}
                 />
