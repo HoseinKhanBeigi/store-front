@@ -38,10 +38,10 @@ export class Item {
     this.DOM.imageInner = this.DOM.image.querySelector(
       `.${styles.item__imageinner}`
     );
-    this.DOM.title = this.DOM.el.querySelector(`${styles.item__captiontitle}`);
+    this.DOM.title = this.DOM.el.querySelector(`.${styles.item__captiontitle}`);
     this.DOM.titleInner = this.DOM.title.querySelector(`.${styles.oh__inner}`);
     this.DOM.number = this.DOM.el.querySelector(
-      `.${styles.stylesitem__captionnumber}`
+      `.${styles.item__captionnumber}`
     );
     this.DOM.numberInner = this.DOM.number.querySelector(
       `.${styles.oh__inner}`
