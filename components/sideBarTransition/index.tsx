@@ -144,6 +144,7 @@ const SideBarTransition: React.FC = () => {
                     data={{
                         name: "root",
                         items: [
+                            { name: 'modelCustomizer', value: '3DmodelCustomizer' },
                             { name: "scrollTrigger", value: "scrollTrigger" },
                             { name: "menuToGrid", value: "menuToGrid" },
                             { name: "onScrollView", value: "onScrollView" },
