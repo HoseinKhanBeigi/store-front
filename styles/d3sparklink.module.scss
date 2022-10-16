@@ -1,0 +1,64 @@
+.title {
+  flex: 1 0 100%;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--textHeadingColor);
+}
+
+.fieldsetHeader {
+  max-width: 30rem;
+  margin: 0 auto;
+  border: 2px solid var(--fill);
+}
+
+.chartwrapper {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--fill);
+}
+
+.chartinfo {
+  flex: 1 1 auto;
+  padding: 0 1.5rem 0.5rem 0;
+  align-self: end;
+}
+
+
+.controls {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+}
+
+.controlslist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  accent-color: var(--stroke);
+}
+
+.red {
+  --stroke: hsl(338 100% 50%);
+  --fill: hsl(338 100% 83%);
+  --marker: hsl(277 100% 50%);
+  --textHeadingColor: hsl(277 5% 9%);
+
+  background-color: hsl(338 100% 93%);
+  color: hsl(277 5% 9%);
+}
+
+.blue {
+  --stroke: hsl(173 82% 46%);
+  --fill: hsl(173 82% 56% / 0.2);
+  --marker: hsl(183 100% 99%);
+  --textHeadingColor: var(--stroke);
+
+  background-color: hsl(211 16% 12%);
+  color: white;
+  color-scheme: dark;
+}

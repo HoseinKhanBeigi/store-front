@@ -132,7 +132,7 @@ const SideBarTransition: React.FC = () => {
                         }}
                     >
                         <ArrowForward color="white" width="25" height="25" />
-                        {label}
+                        <span>{label}</span>
                     </div>
                 ))}
             </ul>
@@ -144,10 +144,12 @@ const SideBarTransition: React.FC = () => {
                     data={{
                         name: "root",
                         items: [
-                            { name: 'modelCustomizer', value: '3DmodelCustomizer' },
-                            { name: "scrollTrigger", value: "scrollTrigger" },
-                            { name: "menuToGrid", value: "menuToGrid" },
-                            { name: "onScrollView", value: "onScrollView" },
+                            { name: 'modelCustomizer', title: '3DmodelCustomizer' },
+                            { name: 'draggableScroll', title: 'DraggableScroll' },
+                            { name: "d3sparklink", title: 'D3-sparklink-chart' },
+                            { name: "scrollTrigger", title: "scrollTrigger" },
+                            { name: "menuToGrid", title: "menuToGrid" },
+                            { name: "onScrollView", title: "onScrollView" },
 
                         ],
                     }}
@@ -158,11 +160,11 @@ const SideBarTransition: React.FC = () => {
                     data={{
                         name: "scrollTrigger",
                         items: [
-                            { name: "anchor", value: "anchor" },
-                            { name: "velocity", value: "velocity" },
-                            { name: "pin", value: "pin" },
-                            { name: "pinmap", value: "pinmap" },
-                            { name: "observer", value: "observer" },
+                            { name: "anchor", title: "anchor" },
+                            { name: "velocity", title: "velocity" },
+                            { name: "pin", title: "pin" },
+                            { name: "pinmap", title: "pinmap" },
+                            { name: "observer", title: "observer" },
 
                         ],
                     }}

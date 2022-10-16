@@ -2,7 +2,7 @@ import { forwardRef, useCallback } from "react";
 import styles from "../../styles/sideBarTransition.module.scss";
 interface item {
     name: string;
-    value: string;
+    title: string;
 }
 
 interface TData {
@@ -43,7 +43,7 @@ const GroupOfMenuItems = forwardRef<HTMLUListElement, ItemsProps>(
                                 aria-owns="submenu-1"
                                 href="#"
                             >
-                                {item.value}
+                                {item.title}
                             </a>
                         </li>
                     );

@@ -506,8 +506,6 @@ const ModelCustomizer = () => {
 
 
         function slide(wrapper: any, items: any) {
-            console.log(items);
-
             var posX1 = 0,
                 posX2 = 0,
                 posInitial: any,
@@ -580,7 +578,7 @@ const ModelCustomizer = () => {
 
     return (
 
-        <PrimaryLayout >
+        <PrimaryLayout>
             <span className={clsx(styles.dragnotice)} id="js-drag-notice">Drag to rotate 360&#176;</span>
             <div className={clsx(styles.wrapper)}>
                 <div className={clsx(styles.options)}>

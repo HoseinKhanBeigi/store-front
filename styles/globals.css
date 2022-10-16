@@ -6,7 +6,17 @@ body {
   scroll-behavior: auto;
   font-family: "apercu",sans-serif;
   /* height: 100%; */
+  min-height: 100vh;
 }
+
+html {
+	overscroll-behavior: contain;
+	
+	@media (prefers-reduced-motion: no-preference) {
+		scroll-behavior: smooth;
+	}
+}
+
 
 * {
   touch-action: manipulation;
@@ -24,6 +34,14 @@ body {
   --color-link: rgba(255, 255, 255, 0.5);
   --color-link-hover: #f8c5dc;
   --color-bg-slide: #171719;
+}
+
+
+
+:root {
+	--textHeadingColor: rgb(117, 117, 117);
+	--fill: hsl(258.1, 100%, 92%);
+	--stroke: hsl(258.1, 100%, 66.9%);
 }
 
 :root {
@@ -57,4 +75,11 @@ body {
 	--color-heading: #f1e4dd;
 }
 
+
+:root{
+--activeColor: rgb(240 240 240);
+--navBgColor: rgb(37 38 41);
+--navTextColor: rgb(144 144 150);
+--mainBg: rgb(20 20 23);
+}
 
