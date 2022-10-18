@@ -144,6 +144,7 @@ const SideBarTransition: React.FC = () => {
                     data={{
                         name: "root",
                         items: [
+                            { name: '/', title: 'me' },
                             { name: 'modelCustomizer', title: '3DmodelCustomizer' },
                             { name: 'draggableScroll', title: 'DraggableScroll' },
                             { name: "d3sparklink", title: 'D3-sparklink-chart' },
